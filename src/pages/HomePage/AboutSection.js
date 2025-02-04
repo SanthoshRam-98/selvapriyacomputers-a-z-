@@ -32,50 +32,68 @@ const AboutContainer = styled.section`
 `;
 
 const Heading = styled.h2`
-  font-size: 22px;
+  font-size: 1.2rem; /* Reduce font size for tiny screens */
   color: #333;
   margin-bottom: 15px;
 
-  @media (max-width: 768px) {
-    font-size: 20px;
+  @media (max-width: 230px) {
+    font-size: 0.8rem;
+  }
+  @media (max-width: 330px) {
+    font-size: 1rem;
   }
 
-  @media (max-width: 480px) {
-    font-size: 18px;
+  @media (min-width: 768px) {
+    font-size: 1.8rem;
+  }
+
+  @media (min-width: 992px) {
+    font-size: 2rem;
+    text-align: left;
   }
 `;
 
 const SubHeading = styled.h1`
-  font-size: 32px;
+  font-size: 1.4rem;
   font-weight: bold;
   color: #222;
   margin-bottom: 20px;
 
-  @media (max-width: 768px) {
-    font-size: 28px;
+  @media (max-width: 230px) {
+    font-size: 1rem;
+  }
+  @media (max-width: 330px) {
+    font-size: 1.1rem;
   }
 
-  @media (max-width: 480px) {
-    font-size: 24px;
+  @media (min-width: 768px) {
+    font-size: 2rem;
+  }
+
+  @media (min-width: 992px) {
+    font-size: 2.5rem;
+    text-align: left;
   }
 `;
 
 const Text = styled.p`
-  font-size: 16px;
+  font-size: 0.85rem;
   color: #555;
   line-height: 1.6;
   max-width: 750px;
-  margin-bottom: 20px;
-
-  @media (max-width: 768px) {
-    font-size: 14px;
-    padding: 0 5%;
+  margin-bottom: 1.5rem;
+  @media (max-width: 230px) {
+    font-size: 0.45rem;
+  }
+  @media (max-width: 330px) {
+    font-size: 0.75rem; /* Smaller font for tiny screens */
   }
 
-  @media (max-width: 480px) {
-    font-size: 13px;
-    line-height: 1.5;
-    padding: 0 3%;
+  @media (min-width: 768px) {
+    font-size: 1rem;
+  }
+
+  @media (min-width: 992px) {
   }
 `;
 

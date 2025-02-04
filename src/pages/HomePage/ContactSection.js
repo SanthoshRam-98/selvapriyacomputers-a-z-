@@ -101,46 +101,59 @@ const HeaderWrapper = styled.header`
 `;
 
 const Title = styled.h1`
-  font-size: 32px;
+  font-size: 1.2rem;
   margin: 0;
 
-  @media (max-width: 768px) {
-    font-size: 28px;
+  @media (max-width: 230px) {
+    font-size: 0.8rem;
+  }
+  @media (max-width: 330px) {
+    font-size: 1rem;
   }
 
-  @media (max-width: 480px) {
-    font-size: 24px;
+  @media (min-width: 768px) {
+    font-size: 1.8rem;
+  }
+
+  @media (min-width: 992px) {
+    font-size: 2rem;
   }
 `;
 
 const MainHeading = styled.h2`
-  font-size: 48px;
-  font-weight: 700;
+  font-size: 1.4rem;
+  font-weight: bold;
   margin: 36px 0;
 
-  @media (max-width: 768px) {
-    font-size: 36px;
-    margin: 24px 0;
+  @media (max-width: 230px) {
+    font-size: 1rem;
+  }
+  @media (max-width: 330px) {
+    font-size: 1.1rem;
   }
 
-  @media (max-width: 480px) {
-    font-size: 28px;
-    margin: 16px 0;
+  @media (min-width: 768px) {
+    font-size: 2rem;
+  }
+
+  @media (min-width: 992px) {
+    font-size: 2.5rem;
   }
 `;
 
 const SubHeading = styled.p`
-  font-size: 20px;
+  font-size: 0.85rem;
   margin: 36px 0 0;
 
-  @media (max-width: 768px) {
-    font-size: 18px;
-    margin: 24px 0 0;
+  @media (max-width: 230px) {
+    font-size: 0.45rem;
+  }
+  @media (max-width: 330px) {
+    font-size: 0.75rem; /* Smaller font for tiny screens */
   }
 
-  @media (max-width: 480px) {
-    font-size: 16px;
-    margin: 16px 0 0;
+  @media (min-width: 768px) {
+    font-size: 1rem;
   }
 `;
 
@@ -167,30 +180,40 @@ const InfoSection = styled.div`
 `;
 
 const InfoLabel = styled.h3`
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 1.4rem;
+  font-weight: bold;
   margin: 0;
 
-  @media (max-width: 768px) {
-    font-size: 20px;
+  @media (max-width: 230px) {
+    font-size: 1rem;
+  }
+  @media (max-width: 330px) {
+    font-size: 1.1rem;
   }
 
-  @media (max-width: 480px) {
-    font-size: 18px;
+  @media (min-width: 768px) {
+    font-size: 2rem;
+  }
+
+  @media (min-width: 992px) {
+    font-size: 2.5rem;
   }
 `;
 
 const InfoValue = styled.p`
-  font-size: 20px;
+  font-size: 0.85rem;
   font-weight: 400;
   margin: 8px 0 0;
 
-  @media (max-width: 768px) {
-    font-size: 18px;
+  @media (max-width: 230px) {
+    font-size: 0.45rem;
+  }
+  @media (max-width: 330px) {
+    font-size: 0.75rem; /* Smaller font for tiny screens */
   }
 
-  @media (max-width: 480px) {
-    font-size: 16px;
+  @media (min-width: 768px) {
+    font-size: 1rem;
   }
 `;
 

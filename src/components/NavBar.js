@@ -28,7 +28,7 @@ const LogoWrapper = styled.div`
 `;
 
 const CompanyName = styled.span`
-  font-weight: 700;
+  font-weight: bold;
   font-size: 36px;
   color: rgba(30, 30, 30, 1);
   display: block;
@@ -71,9 +71,12 @@ const MenuItem = styled.li`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  font-size: 18px;
+  font-weight: 500;
+  font-family: "Philosopher", ${({ active }) => (active ? "Bold" : "Regular")};
+  font-size: 16px;
   color: ${({ active }) => (active ? "pink" : "black")};
-  font-weight: ${({ active }) => (active ? "bold" : "normal")};
+  font-weight: ${({ active }) =>
+    active ? "bold" : "normal"}; /* Use normal for non-active links */
 
   &:hover {
     color: pink;
@@ -95,6 +98,7 @@ const QuoteButton = styled(Link)`
   background-color: pink;
   color: white;
   font-size: 16px;
+  font-family: "Philosoper", Regular;
   padding: 10px 15px;
   text-decoration: none;
   white-space: nowrap; /* Prevents text from wrapping */
@@ -103,7 +107,7 @@ const QuoteButton = styled(Link)`
   margin-left: auto; /* Ensures it stays aligned */
 
   &:hover {
-    background-color: rgba(255, 182, 193, 0.8);
+    background-color: #ffaaaa;
   }
 
   @media (max-width: 768px) {

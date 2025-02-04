@@ -61,16 +61,19 @@ const Footer = () => {
 export default Footer;
 
 const FooterContainer = styled.footer`
-  background: #111;
+  background: #1e1e1e;
   color: #fff;
-  padding: 40px 20px; /* Ensure padding is not too large */
+  width: 100vw; /* Ensure full width */
+  padding: 40px 20px;
   font-family: "Philosopher", Regular;
   overflow: hidden; /* Prevent content overflow */
+  box-sizing: border-box; /* Ensures padding doesn't add extra width */
 
   @media (max-width: 330px) {
-    padding: 20px 10px; /* Adjust padding for narrow viewports */
+    padding: 20px 10px;
   }
 `;
+
 const TopSection = styled.div`
   display: flex;
   justify-content: space-between;

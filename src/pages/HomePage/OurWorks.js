@@ -136,16 +136,70 @@ const Header = styled.div`
     margin-bottom: 0.5rem;
     color: #ccc;
   }
-
+  @media (max-width: 230px) {
+    h3 {
+      font-size: 0.8rem;
+    }
+  }
+  @media (max-width: 330px) {
+    h3 {
+      font-size: 1rem;
+    }
+  }
+  @media (min-width: 768px) {
+    h3 {
+      font-size: 1.8rem;
+    }
+  }
+  @media (min-width: 992px) {
+    h3 {
+      font-size: 2rem;
+    }
+  }
   h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
+  }
+  @media (max-width: 230px) {
+    h1 {
+      font-size: 1rem;
+    }
+  }
+  h1 {
+    @media (max-width: 330px) {
+      font-size: 1.1rem;
+    }
+  }
+  h1 {
+    @media (min-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+  h1 {
+    @media (min-width: 992px) {
+      font-size: 2.5rem;
+    }
   }
 
   p {
     font-size: 1rem;
     line-height: 1.5;
     color: #aaa;
+  }
+  @media (max-width: 230px) {
+    p {
+      font-size: 0.45rem;
+    }
+  }
+  p {
+    @media (max-width: 330px) {
+      font-size: 0.75rem; /* Smaller font for tiny screens */
+    }
+  }
+  p {
+    @media (min-width: 768px) {
+      font-size: 1rem;
+    }
   }
 `;
 
@@ -207,5 +261,15 @@ const BannerContainer = styled.div`
   padding: 20px;
   font-size: 1rem;
   margin-bottom: 5px;
+  @media (max-width: 230px) {
+    font-size: 0.45rem;
+  }
+  @media (max-width: 330px) {
+    font-size: 0.75rem; /* Smaller font for tiny screens */
+  }
+
+  @media (min-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 export default PremiumPrintingSolutions;

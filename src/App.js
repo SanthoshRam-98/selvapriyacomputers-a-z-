@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../src/App.css"; // or import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavigationBar from "./components/NavBar";
 import Footer from "./components/Footer";
@@ -80,14 +81,18 @@ function App() {
             {/* <Route path="/quote" element={<QuotationForm />} /> */}
           </Routes>
         </MainContent>
-        <Footer />
       </AppContainer>
+      <FooterContainer>
+        <Footer />
+      </FooterContainer>
     </Router>
   );
 }
 
 const AppContainer = styled.div``;
-
+const FooterContainer = styled.div`
+  background-color: black;
+`;
 const MainContent = styled.main``;
 
 export default App;

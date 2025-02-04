@@ -136,7 +136,9 @@ const ContentWrapper = styled.div`
 const Title = styled.h1`
   font-size: 1.2rem; /* Reduce font size for tiny screens */
   text-align: center;
-
+  @media (max-width: 230px) {
+    font-size: 0.8rem;
+  }
   @media (max-width: 330px) {
     font-size: 1rem;
   }
@@ -157,6 +159,9 @@ const Subtitle = styled.h2`
   text-align: center;
   margin-bottom: 1rem;
 
+  @media (max-width: 230px) {
+    font-size: 1rem;
+  }
   @media (max-width: 330px) {
     font-size: 1.1rem;
   }
@@ -175,7 +180,9 @@ const Description = styled.p`
   font-size: 0.85rem;
   text-align: center;
   margin-bottom: 1.5rem;
-
+  @media (max-width: 230px) {
+    font-size: 0.45rem;
+  }
   @media (max-width: 330px) {
     font-size: 0.75rem; /* Smaller font for tiny screens */
   }
@@ -214,9 +221,14 @@ const StyledButton = styled.div`
     outline-offset: 2px;
   }
 
-  @media (max-width: 991px) {
-    width: 100%;
-    padding: 10px 16px;
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding: 10px 18px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 13px;
+    padding: 8px 16px;
   }
 `;
 
