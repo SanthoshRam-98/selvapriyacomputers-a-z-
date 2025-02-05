@@ -1,8 +1,21 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import { FiMenu, FiX } from "react-icons/fi";
 import QuotationForm from "../pages/QuotationForm"; // Import the form component
+
+// Global Styles
+const GlobalStyle = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Philosopher:wght@400&display=swap');
+
+  body {
+    font-family: 'Philosopher', serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+`;
+
 // Styled Components
 const Nav = styled.nav`
   display: flex;
@@ -99,11 +112,11 @@ const MenuItem = styled.li`
 const StyledLink = styled(Link)`
   text-decoration: none;
   padding: 12px 24px;
-  font-family: "Philosopher", ${({ active }) => (active ? "Bold" : "Regular")};
+  font-family: "Philosopher", serif;
   font-size: 16px;
   color: ${({ active }) =>
     active ? "#FFAAAA" : "black"}; /* Active links are light red */
-  font-weight: ${({ active }) => (active ? "bold" : "normal")};
+
   transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out; /* Smooth transition */
 
   &:hover {
@@ -182,6 +195,7 @@ const NavigationBar = () => {
 
   return (
     <Nav>
+      <GlobalStyle />
       <LogoWrapper as={Link} to="/">
         <CompanyName>Selvapriya</CompanyName>
         <CompanyType>Computers</CompanyType>
