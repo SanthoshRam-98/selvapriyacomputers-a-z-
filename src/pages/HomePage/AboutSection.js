@@ -8,12 +8,11 @@ const AboutContainer = styled.section`
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 20px;
+  padding: 50px 15%;
   background: #fff;
   border: 2px solid black;
-  margin-right: 20px;
-  margin-left: 20px;
-
+  max-width: 900px;
+  margin: auto;
   margin-bottom: 80px;
 
   @media (max-width: 1024px) {

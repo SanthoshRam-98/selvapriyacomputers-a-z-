@@ -8,28 +8,19 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  padding: 20px 100px;
-  height: auto;
+  padding: 15px 20px;
   background: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1001;
-
-  @media (max-width: 660px) {
-    padding: 10px 50px; /* Halved padding below 660px */
-  }
-  @media (max-width: 330px) {
-    padding: 5px 25px; /* Further reduced padding for ultra-small screens */
-  }
+  position: sticky; /* ✅ Makes the navbar sticky */
+  top: 0; /* ✅ Sticks to the top */
+  z-index: 1001; /* ✅ Ensures it stays above other content */
 `;
 
 const LogoWrapper = styled.div`
   color: rgba(30, 30, 30, 1);
   font-weight: 500;
   text-align: left;
-  text-decoration: none; /* Removes the underline */
+
   @media (max-width: 991px) {
     text-align: center;
     margin-bottom: 20px;
@@ -41,91 +32,63 @@ const CompanyName = styled.span`
   font-size: 36px;
   color: rgba(30, 30, 30, 1);
   display: block;
-  @media (max-width: 330px) {
-    font-size: 28px; /* Reduced font size for smaller screens */
-  }
 `;
 
 const CompanyType = styled.span`
-  text-align: right;
   font-weight: 400;
   font-size: 20px;
   display: block;
-  @media (max-width: 330px) {
-    font-size: 16px; /* Adjusted font size */
-  }
 `;
 
 const Menu = styled.ul`
   display: flex;
   align-items: center;
   list-style: none;
-  padding: 0;
-  margin: 0;
-  gap: 64px;
 
-  @media (max-width: 660px) {
-    gap: 32px; /* Halved spacing below 660px */
-  }
-
-  @media (max-width: 1130px) {
+  @media (max-width: 768px) {
     display: ${({ open }) => (open ? "flex" : "none")};
+    align-items: stretch;
     flex-direction: column;
     position: absolute;
-    top: 80px;
+    top: 60px;
     left: 0;
     width: 100%;
     background: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 12px 24px;
-    z-index: 1000;
-    gap: 32px;
-  }
-  @media (max-width: 330px) {
-    gap: 16px; /* Further halved below 330px */
+    z-index: 1000; /* Ensure it appears above other content */
+    padding: 20px 0;
   }
 `;
 
 const MenuItem = styled.li`
+  margin: 0 15px;
+
   @media (max-width: 768px) {
     padding: 10px 0;
     text-align: center;
-  }
-  @media (max-width: 1130px) {
-    padding: 12px 24px;
   }
 `;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  padding: 12px 24px;
+  font-weight: 500;
   font-family: "Philosopher", ${({ active }) => (active ? "Bold" : "Regular")};
   font-size: 16px;
-  color: ${({ active }) =>
-    active ? "#FFAAAA" : "black"}; /* Active links are light red */
-  font-weight: ${({ active }) => (active ? "bold" : "normal")};
-  transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out; /* Smooth transition */
+  color: ${({ active }) => (active ? "pink" : "black")};
+  font-weight: ${({ active }) =>
+    active ? "bold" : "normal"}; /* Use normal for non-active links */
 
   &:hover {
-    ${({ active }) =>
-      !active &&
-      `
-      color: black;
-      text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.6); /* Fake bold effect */
-    `}
-  }
-  @media (max-width: 330px) {
-    font-size: 14px; /* Smaller font size for better spacing */
-    padding: 8px 16px; /* Adjusted padding */
+    color: pink;
   }
 `;
 
 const MenuIcon = styled.div`
   display: none;
-  font-size: 28px;
+  font-size: 24px;
   cursor: pointer;
 
-  @media (max-width: 1130px) {
+  @media (max-width: 768px) {
     display: block;
   }
 `;
@@ -142,35 +105,14 @@ const QuoteButton = styled(Link)`
   display: inline-block;
   text-align: center;
   margin-left: auto; /* Ensures it stays aligned */
-  transition: background-color 0.5s ease;
+
   &:hover {
-    background-color: black;
+    background-color: #ffaaaa;
   }
 
   @media (max-width: 768px) {
     margin: 10px 0;
     text-align: center;
-  }
-  @media (max-width: 330px) {
-    font-size: 14px; /* Adjusted font size */
-    padding: 8px 12px; /* Reduced padding */
-  }
-`;
-const GetAQuote = styled.div``;
-const LinkMenu = styled.div`
-  display: flex;
-  gap: 8px;
-
-  @media (max-width: 660px) {
-    gap: 4px; /* Halved gap below 660px */
-  }
-
-  @media (max-width: 1130px) {
-    flex-direction: column;
-    align-items: center;
-  }
-  @media (max-width: 330px) {
-    gap: 2px; /* Further reduced gap */
   }
 `;
 
@@ -182,7 +124,7 @@ const NavigationBar = () => {
 
   return (
     <Nav>
-      <LogoWrapper as={Link} to="/">
+      <LogoWrapper>
         <CompanyName>Selvapriya</CompanyName>
         <CompanyType>Computers</CompanyType>
       </LogoWrapper>
@@ -192,52 +134,48 @@ const NavigationBar = () => {
       </MenuIcon>
 
       <Menu open={menuOpen}>
-        <LinkMenu>
-          <MenuItem>
-            <StyledLink to="/" active={location.pathname === "/" ? 1 : 0}>
-              HOME
-            </StyledLink>
-          </MenuItem>
-          <MenuItem>
-            <StyledLink
-              to="/services"
-              active={location.pathname === "/services" ? 1 : 0}
-            >
-              SERVICES
-            </StyledLink>
-          </MenuItem>
-          <MenuItem>
-            <StyledLink
-              to="/pricing"
-              active={location.pathname === "/pricing" ? 1 : 0}
-            >
-              PRICING
-            </StyledLink>
-          </MenuItem>
-          <MenuItem>
-            <StyledLink
-              to="/about"
-              active={location.pathname === "/about" ? 1 : 0}
-            >
-              ABOUT
-            </StyledLink>
-          </MenuItem>
-          <MenuItem>
-            <StyledLink
-              to="/contact"
-              active={location.pathname === "/contact" ? 1 : 0}
-            >
-              CONTACT
-            </StyledLink>
-          </MenuItem>
-        </LinkMenu>
-        <GetAQuote>
-          <MenuItem>
-            <QuoteButton onClick={() => setIsQuoteOpen(true)}>
-              Get a Quote
-            </QuoteButton>
-          </MenuItem>
-        </GetAQuote>
+        <MenuItem>
+          <StyledLink to="/" active={location.pathname === "/" ? 1 : 0}>
+            HOME
+          </StyledLink>
+        </MenuItem>
+        <MenuItem>
+          <StyledLink
+            to="/services"
+            active={location.pathname === "/services" ? 1 : 0}
+          >
+            SERVICES
+          </StyledLink>
+        </MenuItem>
+        <MenuItem>
+          <StyledLink
+            to="/pricing"
+            active={location.pathname === "/pricing" ? 1 : 0}
+          >
+            PRICING
+          </StyledLink>
+        </MenuItem>
+        <MenuItem>
+          <StyledLink
+            to="/about"
+            active={location.pathname === "/about" ? 1 : 0}
+          >
+            ABOUT
+          </StyledLink>
+        </MenuItem>
+        <MenuItem>
+          <StyledLink
+            to="/contact"
+            active={location.pathname === "/contact" ? 1 : 0}
+          >
+            CONTACT
+          </StyledLink>
+        </MenuItem>
+        <MenuItem>
+          <QuoteButton onClick={() => setIsQuoteOpen(true)}>
+            Get a Quote
+          </QuoteButton>
+        </MenuItem>
         <QuotationForm
           isOpen={isQuoteOpen}
           onClose={() => setIsQuoteOpen(false)}
