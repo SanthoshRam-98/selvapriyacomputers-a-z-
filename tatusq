@@ -1,0 +1,48 @@
+[33mcommit 95f9a08e8732878025e1b12b2520f18477133542[m
+Author: SanthoshRam-98 <santhoshram.rubydev@gmail.com>
+Date:   Wed Feb 5 09:34:49 2025 +0530
+
+    Updates
+
+ delete mode 100644 README.md
+ delete mode 100644 package-lock.json
+ delete mode 100644 package.json
+ delete mode 100644 public/index.html
+ delete mode 100644 src/App.css
+ delete mode 100644 src/App.js
+ delete mode 100644 src/WhyChooseUsIcons/45162deebe59d6fa7021484f5fb4b6ba66cb132f1a17a016c7f74ba02ece81ae.png
+ delete mode 100644 src/WhyChooseUsIcons/b0192ed4bee0374317c54a6df9985bac3396afaa7af92dd65d6527f93833d7a5.png
+ delete mode 100644 src/WhyChooseUsIcons/f61db3384504bc3b9107b107fe907cc3019427cba15d2bc0ae2690bb2249d130.png
+ delete mode 100644 src/components/Footer.js
+ delete mode 100644 src/components/MainNavigation.js
+ delete mode 100644 src/components/NavBar.js
+ delete mode 100644 src/index.js
+ delete mode 100644 src/pages/About.js
+ delete mode 100644 src/pages/Contact.js
+ delete mode 100644 src/pages/HomePage/AboutSection.js
+ delete mode 100644 src/pages/HomePage/ContactSection.js
+ delete mode 100644 src/pages/HomePage/HeroSection.js
+ delete mode 100644 src/pages/HomePage/HomePage.js
+ delete mode 100644 src/pages/HomePage/OurWorks.js
+ delete mode 100644 src/pages/HomePage/WhyChooseUsSection.js
+ delete mode 100644 src/pages/Pricing.js
+ delete mode 100644 src/pages/PrivacyPolicy.js
+ delete mode 100644 src/pages/QuotationForm.js
+ delete mode 100644 src/pages/Root.js
+ delete mode 100644 src/pages/Services/BuisnessCards.js
+ delete mode 100644 src/pages/Services/Calendars.js
+ delete mode 100644 src/pages/Services/DisplayBanner.js
+ delete mode 100644 src/pages/Services/InvoiceBooks.js
+ delete mode 100644 src/pages/Services/LabelStickers.js
+ delete mode 100644 src/pages/Services/LetterPads.js
+ delete mode 100644 src/pages/Services/NoticePrints.js
+ delete mode 100644 src/pages/Services/PhotoPrintings.js
+ delete mode 100644 src/pages/Services/ServiceDetailLayout.js
+ delete mode 100644 src/pages/Services/Services.js
+ delete mode 100644 src/pages/Services/SignBoards.js
+ delete mode 100644 src/pages/Services/SunpackBoards.js
+ delete mode 100644 src/pages/Services/ThampoolamBaf.js
+ delete mode 100644 src/pages/Services/WeddingCards.js
+ delete mode 100644 src/pages/TermsAndCondition.js
+ delete mode 100644 src/reportWebVitals.js
+ delete mode 100644 src/setupTests.js
