@@ -229,7 +229,7 @@ const GridItem = styled.div`
   &:hover div {
     opacity: 1;
     background-color: #ffaaaa; /* Rose color */
-    color: #000; /* White text */
+    /* White text */
   }
 `;
 
@@ -257,7 +257,6 @@ const BannerContainer = styled.div`
   font-family: "Philosopher", Italic;
   text-align: center;
   background-color: black;
-  color: white;
   padding: 20px;
   font-size: 1rem;
   margin-bottom: 5px;
