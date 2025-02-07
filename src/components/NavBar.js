@@ -5,12 +5,15 @@ import { FiMenu, FiX } from "react-icons/fi";
 import QuotationForm from "../pages/QuotationForm"; // Import the form component
 
 // Global Styles
+// Global Styles
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Philosopher:wght@400&display=swap');
 
   body {
     font-family: 'Philosopher', serif;
     font-weight: 400;
+    margin: 0; /* Reset margins */
+    padding: 0; /* Reset paddings */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -21,20 +24,19 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
   padding: 20px 100px;
-  height: auto;
-  background: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  position: sticky;
+  position: fixed; /* Keep the navbar fixed */
   top: 0;
+  left: 0;
+  right: 0;
+  background: white;
   z-index: 1001;
-
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   @media (max-width: 660px) {
-    padding: 10px 50px; /* Halved padding below 660px */
+    padding: 10px 50px;
   }
   @media (max-width: 330px) {
-    padding: 5px 25px; /* Further reduced padding for ultra-small screens */
+    padding: 5px 25px;
   }
 `;
 
