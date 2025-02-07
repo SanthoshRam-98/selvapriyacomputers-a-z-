@@ -77,7 +77,7 @@ const Menu = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: 64px;
+  gap: 178px;
 
   @media (max-width: 660px) {
     gap: 32px; /* Halved spacing below 660px */
