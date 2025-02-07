@@ -9,84 +9,78 @@ const SectionContainer = styled.section`
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 50px 200px;
   background: #e7f2fd;
-  border: 2px solid black;
-  max-width: 900px;
-  margin: auto;
-  margin-bottom: 80px;
-
-  @media (max-width: 910px) {
-    padding: 50px 100px;
-    max-width: 95%;
-  }
-
-  @media (max-width: 768px) {
-    padding: 40px 15px;
-    max-width: 100%;
-  }
+  margin: 0;
 `;
 
-const Heading = styled.h2`
-  font-size: 1.2rem;
+const Heading = styled.h3`
+  font-family: "Philosopher", serif;
+  font-size: 2rem; /* Base font size */
+  font-weight: 100;
   color: #333;
-  margin-bottom: 15px;
-  @media (max-width: 230px) {
-    font-size: 0.8rem;
+  margin: auto;
+
+  @media (max-width: 992px) {
+    font-size: 2rem;
+    text-align: left;
+  }
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
   }
   @media (max-width: 330px) {
     font-size: 1rem;
   }
-
-  @media (min-width: 768px) {
-    font-size: 1.8rem;
-  }
-
-  @media (min-width: 992px) {
-    font-size: 2rem;
-    text-align: left;
+  @media (max-width: 230px) {
+    font-size: 0.8rem;
   }
 `;
 
 const SubHeading = styled.h1`
-  font-size: 1.4rem;
+  font-size: 3rem; /* Base font size for large screens */
   font-weight: bold;
-  color: #222;
-  margin-bottom: 20px;
+  text-align: center;
+  margin: 0;
 
-  @media (max-width: 230px) {
-    font-size: 1rem;
+  @media (max-width: 992px) {
+    font-size: 2.5rem;
+    text-align: center;
   }
-  @media (max-width: 330px) {
-    font-size: 1.1rem;
-  }
-
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     font-size: 2rem;
   }
-
-  @media (min-width: 992px) {
-    font-size: 2.5rem;
-    text-align: left;
+  @media (max-width: 330px) {
+    font-size: 1.3rem;
+  }
+  @media (max-width: 230px) {
+    font-size: 1rem;
   }
 `;
-
 const Text = styled.p`
-  font-size: 0.85rem;
-  color: #555;
-  line-height: 1.6;
-  margin: 0 auto 30px;
-  max-width: 80%;
+  font-size: 1.25rem; /* Default font size for larger screens */
+  line-height: 1.6; /* Maintain readability */
+  max-width: 750px; /* Limit width for readability */
+  margin: 0 auto; /* Center-align text */
 
-  @media (max-width: 230px) {
-    font-size: 0.45rem;
-  }
-  @media (max-width: 330px) {
-    font-size: 0.75rem; /* Smaller font for tiny screens */
+  @media (max-width: 1200px) {
+    font-size: 1.15rem; /* Slightly reduce font size for medium screens */
   }
 
-  @media (min-width: 768px) {
-    font-size: 1rem;
+  @media (max-width: 992px) {
+    font-size: 1.1rem; /* Further reduction for smaller screens */
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem; /* Adjust for tablets and small devices */
+    line-height: 1.5; /* Adjust line height for compact text */
+  }
+
+  @media (max-width: 576px) {
+    font-size: 0.95rem; /* Slightly smaller for smaller phones */
+  }
+
+  @media (max-width: 420px) {
+    font-size: 0.9rem; /* Final reduction for very small screens */
+    line-height: 1.4; /* Tighten line spacing for smaller space */
   }
 `;
 
@@ -94,27 +88,41 @@ const BoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 900px;
-  width: 100%;
-  padding: 30px 50px;
-
-  @media (max-width: 910px) {
-    padding: 30px 30px;
-    max-width: 95%;
-  }
-
+  justify-content: center;
+  text-align: center;
+  padding: 110px 220px;
+  border: 4px solid black;
+  margin-right: 100px;
+  margin-left: 100px;
+  margin-bottom: 100px;
+  gap: 64px;
   @media (max-width: 768px) {
-    padding: 20px;
-    max-width: 100%;
+    padding: 60px 75px;
+  }
+  @media (max-width: 992px) {
+    padding: 75px 80px;
+  }
+  @media (max-width: 660px) {
+    padding: 40px 50px;
+    margin-right: 50px;
+    margin-left: 50px;
+  }
+  @media (max-width: 420px) {
+    padding: 25px 35px;
+  }
+  @media (max-width: 330px) {
+    padding: 20px 25px;
+    margin-right: 20px;
+    margin-left: 20px;
   }
 `;
 
 const Box = styled.div`
-  width: 100%;
-  max-width: 600px;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
   text-align: center;
-  margin-bottom: 20px;
 
   @media (max-width: 910px) {
     max-width: 85%;
@@ -129,21 +137,67 @@ const Box = styled.div`
 const Icon = styled.img`
   width: 50px;
   height: 50px;
-  margin-bottom: 15px;
+  margin: 0;
 `;
 
 const BoxHeading = styled.h3`
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 10px;
+  font-family: "Philosopher", serif;
+  font-size: 2rem; /* Base font size */
+  font-weight: 800;
+  color: #333;
+  margin: auto;
+
+  @media (max-width: 992px) {
+    font-size: 2rem;
+  }
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+  }
+  @media (max-width: 330px) {
+    font-size: 1rem;
+  }
+  @media (max-width: 230px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const BoxText = styled.p`
-  font-size: 14px;
-  color: #555;
-  line-height: 1.5;
+  font-size: 1.25rem; /* Default font size for larger screens */
+  line-height: 1.6; /* Maintain readability */
+  max-width: 750px; /* Limit width for readability */
+  margin: 0 auto; /* Center-align text */
+
+  @media (max-width: 1200px) {
+    font-size: 1.15rem; /* Slightly reduce font size for medium screens */
+  }
+
+  @media (max-width: 992px) {
+    font-size: 1.1rem; /* Further reduction for smaller screens */
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem; /* Adjust for tablets and small devices */
+    line-height: 1.5; /* Adjust line height for compact text */
+  }
+
+  @media (max-width: 576px) {
+    font-size: 0.95rem; /* Slightly smaller for smaller phones */
+  }
+
+  @media (max-width: 420px) {
+    font-size: 0.9rem; /* Final reduction for very small screens */
+    line-height: 1.4; /* Tighten line spacing for smaller space */
+  }
 `;
 
+const HeaderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  margin-top: 92px;
+  margin-bottom: 98px;
+  width: 100%;
+`;
 const WhyChooseUsSection = () => {
   const data = [
     {
@@ -168,13 +222,15 @@ const WhyChooseUsSection = () => {
 
   return (
     <SectionContainer>
-      <Heading>Why Choose Us</Heading>
-      <SubHeading>Quality That Speaks for Itself</SubHeading>
-      <Text>
-        With decades of experience, we know that quality can never be
-        compromised. Each project is handled with precision and attention to
-        detail, ensuring your satisfaction every time.
-      </Text>
+      <HeaderContainer>
+        <Heading>Why Choose Us</Heading>
+        <SubHeading>Quality That Speaks for Itself</SubHeading>
+        <Text>
+          With decades of experience, we know that quality can never be
+          compromised. Each project is handled with precision and attention to
+          detail, ensuring your satisfaction every time.
+        </Text>
+      </HeaderContainer>
       <BoxContainer>
         {data.map((item, index) => (
           <Box key={index}>

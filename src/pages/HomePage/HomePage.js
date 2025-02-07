@@ -4,12 +4,15 @@ import AboutSection from "./AboutSection";
 import OurWorks from "./OurWorks";
 import WhyChooseUsSection from "./WhyChooseUsSection";
 import ContactPage from "./ContactSection";
+import BannerQuote from "./BannerQuote";
+
 function HomePage() {
   return (
     <div>
       <HeroSection />
       <AboutSection />
-      <OurWorks />
+      {/* <OurWorks /> */}
+      {/* <BannerQuote /> */}
       <WhyChooseUsSection />
       <ContactPage />
     </div>

@@ -8,118 +8,160 @@ const AboutContainer = styled.section`
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 50px 15%;
+  padding: 100px 200px;
   background: #fff;
-  border: 2px solid black;
-  max-width: 900px;
-  margin: auto;
-  margin-bottom: 80px;
-
-  @media (max-width: 1024px) {
-    padding: 40px 10%;
-    max-width: 85%;
-  }
-
+  border: 4px solid black;
+  margin-right: 100px;
+  margin-left: 100px;
+  margin-bottom: 64px;
+  gap: 36px;
   @media (max-width: 768px) {
-    padding: 40px 5%;
-    max-width: 95%;
+    padding: 60px 75px;
   }
-
-  @media (max-width: 480px) {
-    padding: 30px 5%;
-    max-width: 100%;
+  @media (max-width: 992px) {
+    padding: 75px 80px;
+  }
+  @media (max-width: 660px) {
+    padding: 40px 50px;
+    margin-right: 50px;
+    margin-left: 50px;
+  }
+  @media (max-width: 420px) {
+    padding: 25px 35px;
+  }
+  @media (max-width: 330px) {
+    padding: 20px 25px;
+    margin-right: 20px;
+    margin-left: 20px;
   }
 `;
 
-const Heading = styled.h2`
-  font-size: 1.2rem; /* Reduce font size for tiny screens */
+const Heading = styled.h3`
+  font-family: "Philosopher", serif;
+  font-size: 2rem; /* Base font size */
+  font-weight: 100;
   color: #333;
-  margin-bottom: 15px;
+  margin: auto;
 
-  @media (max-width: 230px) {
-    font-size: 0.8rem;
+  @media (max-width: 992px) {
+    font-size: 2rem;
+    text-align: left;
+  }
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
   }
   @media (max-width: 330px) {
     font-size: 1rem;
   }
-
-  @media (min-width: 768px) {
-    font-size: 1.8rem;
-  }
-
-  @media (min-width: 992px) {
-    font-size: 2rem;
-    text-align: left;
+  @media (max-width: 230px) {
+    font-size: 0.8rem;
   }
 `;
 
 const SubHeading = styled.h1`
-  font-size: 1.4rem;
+  font-size: 3rem; /* Base font size for large screens */
   font-weight: bold;
-  color: #222;
-  margin-bottom: 20px;
+  text-align: center;
+  margin: 0;
+  text-align: left;
 
-  @media (max-width: 230px) {
-    font-size: 1rem;
+  @media (max-width: 992px) {
+    font-size: 2.5rem;
+    text-align: center;
   }
-  @media (max-width: 330px) {
-    font-size: 1.1rem;
-  }
-
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     font-size: 2rem;
   }
-
-  @media (min-width: 992px) {
-    font-size: 2.5rem;
-    text-align: left;
+  @media (max-width: 330px) {
+    font-size: 1.3rem;
+  }
+  @media (max-width: 230px) {
+    font-size: 1rem;
   }
 `;
 
 const Text = styled.p`
-  font-size: 0.85rem;
-  color: #555;
-  line-height: 1.6;
-  max-width: 750px;
-  margin-bottom: 1.5rem;
-  @media (max-width: 230px) {
-    font-size: 0.45rem;
-  }
-  @media (max-width: 330px) {
-    font-size: 0.75rem; /* Smaller font for tiny screens */
+  font-size: 1.25rem; /* Default font size for larger screens */
+  line-height: 1.6; /* Maintain readability */
+  max-width: 750px; /* Limit width for readability */
+  margin: 0 auto; /* Center-align text */
+
+  @media (max-width: 1200px) {
+    font-size: 1.15rem; /* Slightly reduce font size for medium screens */
   }
 
-  @media (min-width: 768px) {
-    font-size: 1rem;
+  @media (max-width: 992px) {
+    font-size: 1.1rem; /* Further reduction for smaller screens */
   }
 
-  @media (min-width: 992px) {
+  @media (max-width: 768px) {
+    font-size: 1rem; /* Adjust for tablets and small devices */
+    line-height: 1.5; /* Adjust line height for compact text */
+  }
+
+  @media (max-width: 576px) {
+    font-size: 0.95rem; /* Slightly smaller for smaller phones */
+  }
+
+  @media (max-width: 420px) {
+    font-size: 0.9rem; /* Final reduction for very small screens */
+    line-height: 1.4; /* Tighten line spacing for smaller space */
   }
 `;
 
 const KnowMoreButton = styled(Link)`
-  background: pink;
-  color: white;
-  font-size: 16px;
-  padding: 12px 20px;
+  background: #ffaaaa; /* Default background color */
+  color: #1e1e1e; /* Default text color */
+  font-size: 1rem;
+  padding: 12px 24px; /* Default padding */
   border: none;
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex; /* For alignment of text and icon */
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
+  position: relative; /* For absolute positioning of arrow */
+  overflow: hidden;
+  transition: width 0.6s ease, background-color 0.6s ease;
+
+  width: auto; /* Default size */
 
   &:hover {
-    background: rgba(255, 182, 193, 0.8);
-    transform: scale(1.05);
+    background: black; /* Hover background color */
+    color: #ffffff;
+    width: auto; /* Slightly expand width */
+  }
+
+  span {
+    display: inline-block;
+    transition: margin-right 0.6s ease; /* Smooth arrow reveal */
+  }
+
+  &:hover span {
+    margin-right: 12px; /* Move the arrow icon further */
+  }
+
+  svg {
+    position: absolute;
+    right: -24px; /* Start outside the button */
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: opacity 0.6s ease, transform 0.3s ease;
+  }
+
+  &:hover svg {
+    opacity: 1; /* Reveal the arrow */
+    transform: translateX(0); /* Slide it into view */
+    right: 12px; /* Position it correctly on hover */
   }
 
   @media (max-width: 768px) {
-    font-size: 14px;
+    font-size: 0.875rem;
     padding: 10px 18px;
   }
 
   @media (max-width: 480px) {
-    font-size: 13px;
+    font-size: 0.8125rem;
     padding: 8px 16px;
   }
 `;
@@ -136,7 +178,21 @@ const AboutSection = () => {
         the best in printing solutions. We believe in putting quality first –
         always.
       </Text>
-      <KnowMoreButton to="/about">Know More</KnowMoreButton>
+      <KnowMoreButton to="/about">
+        <span>Know More</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="white"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fillRule="evenodd"
+            d="M1 8a.5.5 0 0 1 .5-.5h11.793L9.146 3.354a.5.5 0 1 1 .708-.708l4.5 4.5a.5.5 0 0 1 0 .708l-4.5 4.5a.5.5 0 1 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+          />
+        </svg>
+      </KnowMoreButton>
     </AboutContainer>
   );
 };

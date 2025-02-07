@@ -66,7 +66,7 @@ const HeroContainer = styled.section`
   overflow: hidden;
   font-family: "Philosopher", regular;
   color: rgba(30, 30, 30, 1);
-  margin-bottom: 80px;
+  margin-bottom: 64px;
 
   @media (min-width: 992px) {
     flex-direction: row;
@@ -79,15 +79,12 @@ const CarouselContainer = styled.div`
   position: relative;
   width: 100%;
   min-height: 250px;
-  height: 50vh; /* Allow flexible height on smaller screens */
+  height: 100vh; /* Ensure it fills the viewport */
+  max-height: 100vh;
   overflow: hidden;
 
-  @media (min-width: 768px) {
-    height: 60vh;
-  }
-
-  @media (min-width: 992px) {
-    height: 100%;
+  @media (max-width: 992px) {
+    min-height: 400px; /* Allow flexibility for smaller screens */
   }
 `;
 
@@ -105,10 +102,13 @@ const Slide = styled.img`
   object-fit: cover;
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
   transition: opacity 1s ease-in-out;
+  @media (max-width: 992px) {
+    width: 100%; /* Increase height for smaller screens */
+    height: 100%;
+  }
 `;
 
 const ContentWrapper = styled.div`
-  width: 100%;
   position: relative;
   z-index: 1;
   display: flex;
@@ -117,7 +117,7 @@ const ContentWrapper = styled.div`
   align-items: center;
   padding: 15px;
   background-color: rgba(240, 248, 255, 0.9);
-
+  gap: 24px;
   @media (max-width: 330px) {
     padding: 10px; /* Reduce padding for very small screens */
   }
@@ -134,65 +134,72 @@ const ContentWrapper = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 1.2rem; /* Reduce font size for tiny screens */
+  font-family: "Philosopher", serif;
+  font-size: 1.625rem;
+  font-weight: 100;
+  margin: 0;
   text-align: center;
-  @media (max-width: 230px) {
-    font-size: 0.8rem;
+  @media (max-width: 768px) {
+    font-size: 1.375rem;
   }
+
   @media (max-width: 330px) {
-    font-size: 1rem;
-  }
-
-  @media (min-width: 768px) {
-    font-size: 1.8rem;
-  }
-
-  @media (min-width: 992px) {
-    font-size: 2rem;
-    text-align: left;
+    font-size: 0.875rem;
   }
 `;
 
 const Subtitle = styled.h2`
-  font-size: 1.4rem;
+  font-size: 3rem; /* Base font size for large screens */
   font-weight: bold;
   text-align: center;
-  margin-bottom: 1rem;
+  margin: 0;
+  text-align: left;
 
-  @media (max-width: 230px) {
-    font-size: 1rem;
+  @media (max-width: 992px) {
+    font-size: 2.5rem;
+    text-align: center;
   }
-  @media (max-width: 330px) {
-    font-size: 1.1rem;
-  }
-
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     font-size: 2rem;
   }
-
-  @media (min-width: 992px) {
-    font-size: 2.5rem;
-    text-align: left;
+  @media (max-width: 330px) {
+    font-size: 1.3rem;
+  }
+  @media (max-width: 230px) {
+    font-size: 1rem;
   }
 `;
 
 const Description = styled.p`
-  font-size: 0.85rem;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  @media (max-width: 230px) {
-    font-size: 0.45rem;
+  margin: 0;
+  text-align: left;
+  font-size: 1.25rem; /* Base font size for paragraph */
+
+  @media (max-width: 1200px) {
+    font-size: 1.15rem; /* Slightly reduce font size for medium screens */
+  }
+  @media (max-width: 992px) {
+    font-size: 1.1rem; /* Further reduction for smaller screens */
+    text-align: center;
+  }
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1.5; /* Adjust line height for compact text */
+  }
+
+  @media (max-width: 576px) {
+    font-size: 0.95rem; /* Slightly smaller for smaller phones */
+  }
+  @media (max-width: 420px) {
+    font-size: 0.9rem; /* Final reduction for very small screens */
+    line-height: 1.4; /* Tighten line spacing for smaller space */
   }
   @media (max-width: 330px) {
     font-size: 0.75rem; /* Smaller font for tiny screens */
   }
-
-  @media (min-width: 768px) {
-    font-size: 1rem;
-  }
-
-  @media (min-width: 992px) {
-    text-align: left;
+  @media (max-width: 230px) {
+    font-size: 0.45rem;
   }
 `;
 
@@ -207,13 +214,14 @@ const ButtonWrapper = styled.div`
 const StyledButton = styled.div`
   background-color: rgba(255, 170, 170, 1);
   color: rgba(255, 255, 255, 1);
-  padding: 12px 20px;
+  padding: 12px 24px;
   cursor: pointer;
   text-align: center;
   font-size: 1rem;
   transition: background-color 0.3s ease;
   &:hover {
-    background-color: rgba(255, 120, 120, 1);
+    color: white;
+    background-color: black;
   }
 
   &:focus {
@@ -222,12 +230,12 @@ const StyledButton = styled.div`
   }
 
   @media (max-width: 768px) {
-    font-size: 14px;
+    font-size: 0.875rem;
     padding: 10px 18px;
   }
 
   @media (max-width: 480px) {
-    font-size: 13px;
+    font-size: 0.8125;
     padding: 8px 16px;
   }
 `;

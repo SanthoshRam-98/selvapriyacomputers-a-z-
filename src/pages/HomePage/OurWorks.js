@@ -110,12 +110,6 @@ const PremiumPrintingSolutions = () => {
           ))}
         </Grid>
       </Container>
-      <BannerContainer>
-        <p>
-          "Creating high-quality print solutions and custom designs, from
-          concept to completion, with precision and dedication"
-        </p>
-      </BannerContainer>
     </div>
   );
 };
@@ -123,82 +117,72 @@ const PremiumPrintingSolutions = () => {
 const Container = styled.div`
   background-color: #1a1a1a;
   color: #fff;
-  padding-top: 40px;
-  padding-bottom: 40px;
   text-align: center;
 `;
 
 const Header = styled.div`
-  margin-bottom: 30px;
-  font-family: "Philosopher", Regular;
-  h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: #ccc;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+  margin: 0; /* Initial margin set to 0 */
+  font-family: "Philosopher", serif;
+
+  h1,
+  h3,
+  p {
+    font-family: "Philosopher", serif; /* Ensure all text uses Philosopher font */
+    margin: 0; /* Reset margin for all */
   }
-  @media (max-width: 230px) {
-    h3 {
-      font-size: 0.8rem;
+
+  h1 {
+    font-size: 3rem; /* Base font size for large screens */
+
+    @media (max-width: 992px) {
+      font-size: 2.5rem;
     }
-  }
-  @media (max-width: 330px) {
-    h3 {
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+    @media (max-width: 330px) {
+      font-size: 1.3rem;
+    }
+    @media (max-width: 230px) {
       font-size: 1rem;
     }
   }
-  @media (min-width: 768px) {
-    h3 {
+
+  h3 {
+    font-size: 2rem; /* Base font size */
+    font-weight: 100;
+
+    @media (max-width: 992px) {
+      font-size: 2rem;
+    }
+    @media (max-width: 768px) {
       font-size: 1.8rem;
     }
-  }
-  @media (min-width: 992px) {
-    h3 {
-      font-size: 2rem;
-    }
-  }
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  @media (max-width: 230px) {
-    h1 {
+    @media (max-width: 330px) {
       font-size: 1rem;
     }
-  }
-  h1 {
-    @media (max-width: 330px) {
-      font-size: 1.1rem;
-    }
-  }
-  h1 {
-    @media (min-width: 768px) {
-      font-size: 2rem;
-    }
-  }
-  h1 {
-    @media (min-width: 992px) {
-      font-size: 2.5rem;
+    @media (max-width: 230px) {
+      font-size: 0.8rem;
     }
   }
 
   p {
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 1.25rem; /* Base font size for paragraph */
     color: #aaa;
-  }
-  @media (max-width: 230px) {
-    p {
-      font-size: 0.45rem;
+    font-family: "Philosopher", Italic;
+    @media (max-width: 768px) {
+      font-size: 1rem;
+      text-align: center;
     }
-  }
-  p {
     @media (max-width: 330px) {
       font-size: 0.75rem; /* Smaller font for tiny screens */
     }
-  }
-  p {
-    @media (min-width: 768px) {
-      font-size: 1rem;
+    @media (max-width: 230px) {
+      font-size: 0.45rem;
     }
   }
 `;
@@ -254,22 +238,23 @@ const Overlay = styled.div`
   transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
 `;
 const BannerContainer = styled.div`
-  font-family: "Philosopher", Italic;
+  font-family: "Philosopher";
+  font-style: italic;
   text-align: center;
   background-color: black;
   color: white;
-  padding: 20px;
-  font-size: 1rem;
-  margin-bottom: 5px;
-  @media (max-width: 230px) {
-    font-size: 0.45rem;
-  }
-  @media (max-width: 330px) {
-    font-size: 0.75rem; /* Smaller font for tiny screens */
-  }
-
-  @media (min-width: 768px) {
-    font-size: 1rem;
+  margin-right: 100px;
+  margin-left: 100px;
+  font-size: 1.5rem;
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
+    @media (max-width: 330px) {
+      font-size: 0.75rem; /* Smaller font for tiny screens */
+    }
+    @media (max-width: 230px) {
+      font-size: 0.45rem;
+    }
   }
 `;
 export default PremiumPrintingSolutions;

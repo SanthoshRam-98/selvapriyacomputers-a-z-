@@ -30,13 +30,13 @@ const Nav = styled.nav`
   left: 0;
   right: 0;
   background: white;
-  z-index: 1001;
+  z-index: 9999;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   @media (max-width: 660px) {
-    padding: 10px 50px;
+    padding: 20px 50px;
   }
   @media (max-width: 330px) {
-    padding: 5px 25px;
+    padding: 10px 20px;
   }
 `;
 
@@ -83,7 +83,7 @@ const Menu = styled.ul`
     gap: 32px; /* Halved spacing below 660px */
   }
 
-  @media (max-width: 1130px) {
+  @media (max-width: 1230px) {
     display: ${({ open }) => (open ? "flex" : "none")};
     flex-direction: column;
     position: absolute;
@@ -106,7 +106,7 @@ const MenuItem = styled.li`
     padding: 10px 0;
     text-align: center;
   }
-  @media (max-width: 1130px) {
+  @media (max-width: 1230px) {
     padding: 12px 24px;
   }
 `;
@@ -140,7 +140,7 @@ const MenuIcon = styled.div`
   font-size: 28px;
   cursor: pointer;
 
-  @media (max-width: 1130px) {
+  @media (max-width: 1230px) {
     display: block;
   }
 `;
@@ -149,7 +149,7 @@ const MenuIcon = styled.div`
 const QuoteButton = styled(Link)`
   background-color: pink;
   color: white;
-  font-size: 16px;
+  font-size: 1rem;
   font-family: "Philosoper", Regular;
   padding: 10px 15px;
   text-decoration: none;
@@ -163,12 +163,13 @@ const QuoteButton = styled(Link)`
   }
 
   @media (max-width: 768px) {
-    margin: 10px 0;
-    text-align: center;
+    font-size: 0.875rem;
+    padding: 10px 18px;
   }
-  @media (max-width: 330px) {
-    font-size: 14px; /* Adjusted font size */
-    padding: 8px 12px; /* Reduced padding */
+
+  @media (max-width: 480px) {
+    font-size: 0.8125rem;
+    padding: 8px 16px;
   }
 `;
 const GetAQuote = styled.div``;
@@ -180,7 +181,7 @@ const LinkMenu = styled.div`
     gap: 4px; /* Halved gap below 660px */
   }
 
-  @media (max-width: 1130px) {
+  @media (max-width: 1230px) {
     flex-direction: column;
     align-items: center;
   }
