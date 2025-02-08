@@ -137,12 +137,19 @@ const Header = styled.div`
 
   h1 {
     font-size: 3rem; /* Base font size for large screens */
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
 
     @media (max-width: 992px) {
       font-size: 2.5rem;
+      text-align: center;
     }
     @media (max-width: 768px) {
       font-size: 2rem;
+    }
+    @media (max-width: 420px) {
+      font-size: 1.6rem; /* Final reduction for very small screens */
     }
     @media (max-width: 330px) {
       font-size: 1.3rem;
@@ -153,11 +160,15 @@ const Header = styled.div`
   }
 
   h3 {
+    font-family: "Philosopher", serif;
     font-size: 2rem; /* Base font size */
     font-weight: 100;
 
+    margin: auto;
+
     @media (max-width: 992px) {
       font-size: 2rem;
+      text-align: left;
     }
     @media (max-width: 768px) {
       font-size: 1.8rem;
@@ -171,18 +182,31 @@ const Header = styled.div`
   }
 
   p {
-    font-size: 1.25rem; /* Base font size for paragraph */
+    font-size: 1.25rem; /* Default font size for larger screens */
+    line-height: 1.6; /* Maintain readability */
+    max-width: 750px; /* Limit width for readability */
+    margin: 0 auto; /* Center-align text */
     color: #aaa;
-    font-family: "Philosopher", Italic;
+    @media (max-width: 1200px) {
+      font-size: 1.15rem; /* Slightly reduce font size for medium screens */
+    }
+
+    @media (max-width: 992px) {
+      font-size: 1.1rem; /* Further reduction for smaller screens */
+    }
+
     @media (max-width: 768px) {
-      font-size: 1rem;
-      text-align: center;
+      font-size: 1rem; /* Adjust for tablets and small devices */
+      line-height: 1.5; /* Adjust line height for compact text */
     }
-    @media (max-width: 330px) {
-      font-size: 0.75rem; /* Smaller font for tiny screens */
+
+    @media (max-width: 576px) {
+      font-size: 0.95rem; /* Slightly smaller for smaller phones */
     }
-    @media (max-width: 230px) {
-      font-size: 0.45rem;
+
+    @media (max-width: 420px) {
+      font-size: 0.9rem; /* Final reduction for very small screens */
+      line-height: 1.4; /* Tighten line spacing for smaller space */
     }
   }
 `;
@@ -236,25 +260,5 @@ const Overlay = styled.div`
   font-weight: bold;
   opacity: 0;
   transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
-`;
-const BannerContainer = styled.div`
-  font-family: "Philosopher";
-  font-style: italic;
-  text-align: center;
-  background-color: black;
-  color: white;
-  margin-right: 100px;
-  margin-left: 100px;
-  font-size: 1.5rem;
-    @media (max-width: 768px) {
-      font-size: 1rem;
-    }
-    @media (max-width: 330px) {
-      font-size: 0.75rem; /* Smaller font for tiny screens */
-    }
-    @media (max-width: 230px) {
-      font-size: 0.45rem;
-    }
-  }
 `;
 export default PremiumPrintingSolutions;

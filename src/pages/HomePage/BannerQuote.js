@@ -15,17 +15,15 @@ const BannerContainer = styled.div`
   font-size: 1.5rem;
   font-style: italic;
   padding: 24px;
-  margin: 0 auto; /* Center horizontally */
+  margin: 0;
   text-align: center; /* Centers text */
   border-top: 4px solid white; /* Top stroke */
   border-bottom: 4px solid white; /* Bottom stroke */
 
   @media (max-width: 1200px) {
-    max-width: calc(100% - 40px); /* Reduces margins for smaller screens */
   }
 
   @media (max-width: 768px) {
-    max-width: calc(100% - 20px); /* Further reduces margins on small screens */
     font-size: 1.2rem;
   }
   @media (max-width: 330px) {

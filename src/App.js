@@ -82,17 +82,25 @@ function App() {
           </Routes>
         </MainContent>
       </AppContainer>
-      <FooterContainer>
+      <FooterContainers>
         <Footer />
-      </FooterContainer>
+      </FooterContainers>
     </Router>
   );
 }
 
-const AppContainer = styled.div``;
-const FooterContainer = styled.div`
-  background-color: black;
+const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure it takes up full viewport height */
 `;
-const MainContent = styled.main``;
+
+const MainContent = styled.main`
+  flex: 1; /* Allow the main content to grow and push the footer down */
+`;
+
+const FooterContainers = styled.div`
+  background: #1e1e1e;
+`;
 
 export default App;

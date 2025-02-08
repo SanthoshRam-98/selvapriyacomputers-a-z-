@@ -14,10 +14,12 @@ const Footer = () => {
     <FooterContainer>
       <TopSection>
         <ContactInfo>
-          <Title>Let's keep in touch!</Title>
-          <Subtitle>
-            Find us on any of these platforms, we respond 1-2 business days.
-          </Subtitle>
+          <TitleAndSubtitle>
+            <Title>Let's keep in touch!</Title>
+            <Subtitle>
+              Find us on any of these platforms, we respond 1-2 business days.
+            </Subtitle>
+          </TitleAndSubtitle>
           <SocialIcons>
             <SocialLink href="#" target="_blank" rel="noopener noreferrer">
               <FaWhatsapp />
@@ -61,17 +63,25 @@ const Footer = () => {
 export default Footer;
 
 const FooterContainer = styled.footer`
+  margin-right: 100px;
   background: #1e1e1e;
   color: #fff;
-  width: 100vw; /* Ensure full width */
-  padding: 40px 20px;
+  padding-top: 36px;
+  padding-bottom: 36px;
+  margin-left: 100px;
   font-family: "Philosopher", Regular;
-  overflow: hidden; /* Prevent content overflow */
+
   box-sizing: border-box; /* Ensures padding doesn't add extra width */
 
   @media (max-width: 330px) {
     padding: 20px 10px;
   }
+`;
+
+const TitleAndSubtitle = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 `;
 
 const TopSection = styled.div`
@@ -80,7 +90,7 @@ const TopSection = styled.div`
   flex-wrap: wrap;
   gap: 20px; /* Reduce gap for narrow screens */
   max-width: 100%; /* Ensure no overflow */
-  margin: 0 auto;
+  margin: 0;
 
   @media (max-width: 330px) {
     flex-direction: column; /* Stack elements vertically */
@@ -95,36 +105,56 @@ const ContactInfo = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 24px;
-  font-weight: 600;
-  max-width: 100%; /* Ensures it doesn't overflow */
-  text-align: left; /* Default alignment */
+  font-family: "Philosopher", serif;
+  font-size: 2rem; /* Base font size */
+  font-weight: 100;
 
+  @media (max-width: 992px) {
+    font-size: 2rem;
+    text-align: left;
+  }
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+  }
   @media (max-width: 330px) {
-    font-size: 16px; /* Reduce size for very small screens */
-    text-align: center; /* Center align */
+    font-size: 1rem;
+  }
+  @media (max-width: 230px) {
+    font-size: 0.8rem;
   }
 `;
 
 const Subtitle = styled.p`
-  font-size: 14px;
-  color: #bbb;
-  max-width: 100%;
-  line-height: 1.4;
-  text-align: left;
+  font-size: 1.25rem; /* Default font size for larger screens */
+  line-height: 1.6; /* Maintain readability */
+  max-width: 750px; /* Limit width for readability */
 
-  @media (max-width: 330px) {
-    font-size: 12px; /* Reduce size */
-    overflow-wrap: break-word;
-    white-space: normal;
+  color: #aaa;
+  @media (max-width: 1200px) {
+    font-size: 1.15rem; /* Slightly reduce font size for medium screens */
+  }
+
+  @media (max-width: 992px) {
+    font-size: 1.1rem; /* Further reduction for smaller screens */
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem; /* Adjust for tablets and small devices */
+  }
+
+  @media (max-width: 576px) {
+    font-size: 0.95rem; /* Slightly smaller for smaller phones */
+  }
+
+  @media (max-width: 420px) {
+    font-size: 0.9rem; /* Final reduction for very small screens */
   }
 `;
 
 const SocialIcons = styled.div`
   display: flex;
   gap: 10px; /* Reduce spacing */
-  margin-top: 10px;
-  justify-content: center; /* Center align icons for narrow screens */
+  margin-top: 36px;
 
   @media (max-width: 330px) {
     gap: 8px;
@@ -173,36 +203,57 @@ const LinksGroup = styled.div`
   flex-direction: column;
   align-items: center; /* Center for small screens */
   text-align: center; /* Center text alignment */
-
+  gap: 12px;
   @media (max-width: 330px) {
     width: 100%; /* Ensure it adjusts within the viewport */
   }
 `;
 
 const LinksTitle = styled.h3`
-  font-size: 16px;
+  font-size: 1.25rem; /* Default font size for larger screens */
   font-weight: 500;
-  margin-bottom: 10px;
-  @media (max-width: 330px) {
-    font-size: 12px;
+  @media (max-width: 1200px) {
+    font-size: 1.15rem; /* Slightly reduce font size for medium screens */
+  }
+
+  @media (max-width: 992px) {
+    font-size: 1.1rem; /* Further reduction for smaller screens */
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem; /* Adjust for tablets and small devices */
+  }
+
+  @media (max-width: 576px) {
+    font-size: 0.95rem; /* Slightly smaller for smaller phones */
+  }
+
+  @media (max-width: 420px) {
+    font-size: 0.9rem; /* Final reduction for very small screens */
   }
 `;
 
 const StyledLink = styled(Link)`
-  color: #bbb;
+  color: #939393;
   text-decoration: none;
-  font-size: 14px;
-  margin-bottom: 5px;
+  font-size: 1rem;
 
-  &:hover {
+  @media (max-width: 992px) {
+    font-size: 0.5 rem;
+  }
+  @media (max-width: 768px) {
+    font-size: 0.375 rem;
   }
   @media (max-width: 330px) {
-    font-size: 10px;
+    font-size: 0.25 rem;
+  }
+  @media (max-width: 230px) {
+    font-size: 0.25 rem;
   }
 `;
 
 const BottomSection = styled.div`
-  border-top: 1px solid #333;
+  border-top: 2px solid #939393;
   text-align: center;
   padding-top: 20px;
   margin-top: 20px;

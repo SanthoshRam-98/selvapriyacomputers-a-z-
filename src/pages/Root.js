@@ -4,9 +4,9 @@ import Footer from "../components/Footer";
 function RootLayout() {
   return (
     <>
-      <MainNavigation />
+      {/* <MainNavigation />
       <Outlet />
-      <Footer />
+      <Footer /> */}
     </>
   );
 }

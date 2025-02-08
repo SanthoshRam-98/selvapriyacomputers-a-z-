@@ -129,6 +129,9 @@ const MainHeading = styled.h2`
   @media (max-width: 768px) {
     font-size: 2rem;
   }
+  @media (max-width: 420px) {
+    font-size: 1.6rem; /* Final reduction for very small screens */
+  }
   @media (max-width: 330px) {
     font-size: 1.3rem;
   }
@@ -136,7 +139,6 @@ const MainHeading = styled.h2`
     font-size: 1rem;
   }
 `;
-
 const SubHeading = styled.p`
   font-size: 1.25rem; /* Default font size for larger screens */
   line-height: 1.6; /* Maintain readability */
@@ -186,7 +188,6 @@ const InfoSection = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 12px;
 `;
 
 const InfoLabel = styled.h3`

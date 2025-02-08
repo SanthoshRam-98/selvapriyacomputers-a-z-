@@ -63,7 +63,6 @@ const SubHeading = styled.h1`
   font-weight: bold;
   text-align: center;
   margin: 0;
-  text-align: left;
 
   @media (max-width: 992px) {
     font-size: 2.5rem;
@@ -71,6 +70,9 @@ const SubHeading = styled.h1`
   }
   @media (max-width: 768px) {
     font-size: 2rem;
+  }
+  @media (max-width: 420px) {
+    font-size: 1.6rem; /* Final reduction for very small screens */
   }
   @media (max-width: 330px) {
     font-size: 1.3rem;
@@ -122,7 +124,7 @@ const KnowMoreButton = styled(Link)`
   cursor: pointer;
   position: relative; /* For absolute positioning of arrow */
   overflow: hidden;
-  transition: width 0.6s ease, background-color 0.6s ease;
+  transition: width 0.3s ease, background-color 0.6s ease;
 
   width: auto; /* Default size */
 
@@ -134,7 +136,7 @@ const KnowMoreButton = styled(Link)`
 
   span {
     display: inline-block;
-    transition: margin-right 0.6s ease; /* Smooth arrow reveal */
+    transition: margin-right 0.3s ease; /* Smooth arrow reveal */
   }
 
   &:hover span {
@@ -146,7 +148,7 @@ const KnowMoreButton = styled(Link)`
     right: -24px; /* Start outside the button */
     opacity: 0;
     transform: translateX(-5px);
-    transition: opacity 0.6s ease, transform 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
   }
 
   &:hover svg {
@@ -161,8 +163,15 @@ const KnowMoreButton = styled(Link)`
   }
 
   @media (max-width: 480px) {
-    font-size: 0.8125rem;
-    padding: 8px 16px;
+    font-size: 0.8125rem !important;
+    padding: 8px 16px !important;
+  }
+
+  @media (max-width: 330px) {
+    && {
+      font-size: 0.625rem !important;
+      padding: 6px 12px !important;
+    }
   }
 `;
 

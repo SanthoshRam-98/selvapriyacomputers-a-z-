@@ -7,13 +7,11 @@ import QuotationForm from "../pages/QuotationForm"; // Import the form component
 // Global Styles
 // Global Styles
 const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Philosopher:wght@400&display=swap');
-
-  body {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'Philosopher', serif;
-    font-weight: 400;
-    margin: 0; /* Reset margins */
-    padding: 0; /* Reset paddings */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -35,6 +33,8 @@ const Nav = styled.nav`
   @media (max-width: 660px) {
     padding: 20px 50px;
   }
+  @media (max-width: 420px) {
+  }
   @media (max-width: 330px) {
     padding: 10px 20px;
   }
@@ -47,27 +47,62 @@ const LogoWrapper = styled.div`
   text-decoration: none; /* Removes the underline */
   @media (max-width: 991px) {
     text-align: center;
-    margin-bottom: 20px;
   }
 `;
 
 const CompanyName = styled.span`
   font-weight: bold;
-  font-size: 36px;
+  font-size: 2.25rem; /* 36px */
   color: rgba(30, 30, 30, 1);
   display: block;
+
+  @media (max-width: 1200px) {
+    font-size: 2rem; /* 32px */
+  }
+
+  @media (max-width: 992px) {
+    font-size: 1.75rem; /* 28px */
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem; /* 24px */
+  }
+
+  @media (max-width: 420px) {
+    font-size: 1.375rem; /* 14.4px */
+    margin: auto;
+  }
+
   @media (max-width: 330px) {
-    font-size: 28px; /* Reduced font size for smaller screens */
+    font-size: 0.875rem; /* 12px */
   }
 `;
 
 const CompanyType = styled.span`
   text-align: right;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 1.25rem; /* 20px */
   display: block;
+
+  @media (max-width: 1200px) {
+    font-size: 1.125rem; /* 18px */
+  }
+
+  @media (max-width: 992px) {
+    font-size: 1.0625rem; /* 17px */
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem; /* 16px */
+  }
+
+  @media (max-width: 420px) {
+    font-size: 0.75rem; /* 12px */
+    margin: auto;
+  }
+
   @media (max-width: 330px) {
-    font-size: 16px; /* Adjusted font size */
+    font-size: 0.625rem; /* 10px */
   }
 `;
 
@@ -79,25 +114,19 @@ const Menu = styled.ul`
   margin: 0;
   gap: 178px;
 
-  @media (max-width: 660px) {
-    gap: 32px; /* Halved spacing below 660px */
-  }
-
   @media (max-width: 1230px) {
-    display: ${({ open }) => (open ? "flex" : "none")};
     flex-direction: column;
-    position: absolute;
-    top: 80px;
-    left: 0;
-    width: 100%;
+    position: fixed;
+    top: 0;
+    right: ${({ open }) => (open ? "0" : "-100%")};
+    width: 50%;
+    height: 100vh;
     background: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 12px 24px;
+    box-shadow: -4px 0 6px rgba(0, 0, 0, 0.1);
+    padding: 80px 24px;
     z-index: 1000;
+    transition: right 0.3s ease-in-out;
     gap: 32px;
-  }
-  @media (max-width: 330px) {
-    gap: 16px; /* Further halved below 330px */
   }
 `;
 
@@ -129,35 +158,49 @@ const StyledLink = styled(Link)`
       text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.6); /* Fake bold effect */
     `}
   }
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 0.8125rem;
+  }
   @media (max-width: 330px) {
-    font-size: 14px; /* Smaller font size for better spacing */
+    font-size: 0.75rem; /* Smaller font size for better spacing */
     padding: 8px 16px; /* Adjusted padding */
   }
 `;
 
 const MenuIcon = styled.div`
   display: none;
-  font-size: 28px;
+  font-size: 1.75rem;
   cursor: pointer;
 
   @media (max-width: 1230px) {
     display: block;
+    z-index: 1100;
+  }
+  @media (max-width: 420px) {
+    font-size: 1.25rem; /* 20px */
+  }
+
+  @media (max-width: 330px) {
+    font-size: 1.125rem; /* 18px */
   }
 `;
 
-// Get a Quote Button
 const QuoteButton = styled(Link)`
   background-color: pink;
   color: white;
   font-size: 1rem;
-  font-family: "Philosoper", Regular;
+  font-family: "Philosopher", serif;
   padding: 10px 15px;
   text-decoration: none;
-  white-space: nowrap; /* Prevents text from wrapping */
+  white-space: nowrap;
   display: inline-block;
   text-align: center;
-  margin-left: auto; /* Ensures it stays aligned */
-  transition: background-color 0.5s ease;
+  margin-left: auto;
+  transition: background-color 0.3s ease;
+
   &:hover {
     background-color: black;
   }
@@ -168,11 +211,18 @@ const QuoteButton = styled(Link)`
   }
 
   @media (max-width: 480px) {
-    font-size: 0.8125rem;
-    padding: 8px 16px;
+    font-size: 0.8125rem !important;
+    padding: 8px 16px !important;
+  }
+
+  @media (max-width: 330px) {
+    && {
+      font-size: 0.625rem !important;
+      padding: 6px 12px !important;
+    }
   }
 `;
-const GetAQuote = styled.div``;
+
 const LinkMenu = styled.div`
   display: flex;
   gap: 8px;
@@ -248,13 +298,11 @@ const NavigationBar = () => {
             </StyledLink>
           </MenuItem>
         </LinkMenu>
-        <GetAQuote>
-          <MenuItem>
-            <QuoteButton onClick={() => setIsQuoteOpen(true)}>
-              Get a Quote
-            </QuoteButton>
-          </MenuItem>
-        </GetAQuote>
+        <MenuItem>
+          <QuoteButton onClick={() => setIsQuoteOpen(true)}>
+            Get a Quote
+          </QuoteButton>
+        </MenuItem>
         <QuotationForm
           isOpen={isQuoteOpen}
           onClose={() => setIsQuoteOpen(false)}

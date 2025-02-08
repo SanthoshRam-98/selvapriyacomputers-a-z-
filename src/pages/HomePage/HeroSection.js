@@ -151,9 +151,7 @@ const Title = styled.h1`
 const Subtitle = styled.h2`
   font-size: 3rem; /* Base font size for large screens */
   font-weight: bold;
-  text-align: center;
   margin: 0;
-  text-align: left;
 
   @media (max-width: 992px) {
     font-size: 2.5rem;
@@ -161,6 +159,9 @@ const Subtitle = styled.h2`
   }
   @media (max-width: 768px) {
     font-size: 2rem;
+  }
+  @media (max-width: 420px) {
+    font-size: 1.6rem; /* Final reduction for very small screens */
   }
   @media (max-width: 330px) {
     font-size: 1.3rem;
@@ -235,8 +236,15 @@ const StyledButton = styled.div`
   }
 
   @media (max-width: 480px) {
-    font-size: 0.8125;
-    padding: 8px 16px;
+    font-size: 0.8125rem !important;
+    padding: 8px 16px !important;
+  }
+
+  @media (max-width: 330px) {
+    && {
+      font-size: 0.625rem !important;
+      padding: 6px 12px !important;
+    }
   }
 `;
 

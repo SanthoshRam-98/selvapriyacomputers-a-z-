@@ -11,8 +11,8 @@ function HomePage() {
     <div>
       <HeroSection />
       <AboutSection />
-      {/* <OurWorks /> */}
-      {/* <BannerQuote /> */}
+      <OurWorks />
+      <BannerQuote />
       <WhyChooseUsSection />
       <ContactPage />
     </div>
