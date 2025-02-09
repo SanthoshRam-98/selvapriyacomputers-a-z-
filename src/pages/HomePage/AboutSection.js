@@ -8,34 +8,76 @@ const AboutContainer = styled.section`
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 100px 200px;
+  padding: 100px;
   background: #fff;
   border: 4px solid black;
   margin-right: 100px;
   margin-left: 100px;
   margin-bottom: 64px;
   gap: 36px;
-  @media (max-width: 768px) {
-    padding: 60px 75px;
-  }
   @media (max-width: 992px) {
-    padding: 75px 80px;
+    padding: 50px;
   }
+  @media (max-width: 768px) {
+    padding: 40px;
+  }
+
   @media (max-width: 660px) {
-    padding: 40px 50px;
+    padding: 30px;
     margin-right: 50px;
     margin-left: 50px;
   }
-  @media (max-width: 420px) {
-    padding: 25px 35px;
+  @media (max-width: 480px) {
+    padding: 20px;
+    gap: 28px;
   }
-  @media (max-width: 330px) {
-    padding: 20px 25px;
+  @media (max-width: 360px) {
+    padding: 15px;
     margin-right: 20px;
     margin-left: 20px;
+    gap: 24px;
   }
 `;
 
+//
+
+const BoxContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 110px 220px;
+  border: 4px solid black;
+  margin-right: 100px;
+  margin-left: 100px;
+  margin-bottom: 100px;
+  gap: 64px;
+  @media (max-width: 992px) {
+    padding: 50px;
+  }
+  @media (max-width: 768px) {
+    padding: 40px;
+  }
+
+  @media (max-width: 660px) {
+    padding: 30px;
+    margin-right: 50px;
+    margin-left: 50px;
+  }
+  @media (max-width: 480px) {
+    padding: 20px;
+    gap: 28px;
+  }
+  @media (max-width: 360px) {
+    padding: 15px;
+    margin-right: 20px;
+    margin-left: 20px;
+    gap: 24px;
+  }
+`;
+
+//
 const Heading = styled.h3`
   font-family: "Philosopher", serif;
   font-size: 2rem; /* Base font size */

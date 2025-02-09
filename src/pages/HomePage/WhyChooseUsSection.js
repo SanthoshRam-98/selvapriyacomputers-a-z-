@@ -92,7 +92,7 @@ const Text = styled.p`
   }
 
   @media (max-width: 330px) {
-    width: 150px;
+    width: 200px;
   }
 `;
 const BoxContainer = styled.div`
@@ -101,32 +101,33 @@ const BoxContainer = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 110px 220px;
+  padding: 110px;
   border: 4px solid black;
   margin-right: 100px;
   margin-left: 100px;
   margin-bottom: 100px;
   gap: 64px;
-  @media (max-width: 768px) {
-    padding: 60px 75px;
-  }
   @media (max-width: 992px) {
-    padding: 75px 80px;
+    padding: 50px;
   }
+  @media (max-width: 768px) {
+    padding: 40px;
+  }
+
   @media (max-width: 660px) {
-    padding: 40px 50px;
+    padding: 30px;
     margin-right: 50px;
     margin-left: 50px;
   }
-  @media (max-width: 420px) {
-    padding: 25px 35px;
-    gap: 32px;
+  @media (max-width: 480px) {
+    padding: 20px 20px;
+    gap: 28px;
   }
-  @media (max-width: 330px) {
-    padding: 20px 25px;
+  @media (max-width: 360px) {
+    padding: 15px 15px;
     margin-right: 20px;
     margin-left: 20px;
-    gap: 32px;
+    gap: 24px;
   }
 `;
 
@@ -143,7 +144,6 @@ const Box = styled.div`
 
   @media (max-width: 768px) {
     width: 90%;
-    padding: 15px;
   }
 `;
 
@@ -215,9 +215,25 @@ const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 36px;
-  margin-top: 92px;
+  margin-top: 98px;
   margin-bottom: 98px;
   width: 100%;
+  @media (max-width: 768px) {
+    margin-top: 78px;
+    margin-bottom: 78px;
+  }
+  @media (max-width: 660px) {
+    margin-top: 58px;
+    margin-bottom: 58px;
+  }
+  @media (max-width: 480px) {
+    margin-top: 48px;
+    margin-bottom: 48px;
+  }
+  @media (max-width: 360px) {
+    margin-top: 38px;
+    margin-bottom: 38px;
+  }
 `;
 const WhyChooseUsSection = () => {
   const data = [

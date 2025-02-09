@@ -72,7 +72,14 @@ const FooterContainer = styled.footer`
   font-family: "Philosopher", Regular;
 
   box-sizing: border-box; /* Ensures padding doesn't add extra width */
-
+  @media (max-width: 660px) {
+    margin-right: 50px;
+    margin-left: 50px;
+  }
+  @media (max-width: 420px) {
+    margin-right: 25px;
+    margin-left: 25px;
+  }
   @media (max-width: 330px) {
     padding: 20px 10px;
   }
@@ -91,7 +98,9 @@ const TopSection = styled.div`
   gap: 20px; /* Reduce gap for narrow screens */
   max-width: 100%; /* Ensure no overflow */
   margin: 0;
-
+  @media (max-width: 660px) {
+    gap: 32px;
+  }
   @media (max-width: 330px) {
     flex-direction: column; /* Stack elements vertically */
     align-items: center; /* Center align elements */
@@ -190,6 +199,10 @@ const LinksContainer = styled.div`
   flex-wrap: wrap;
   min-width: 300px;
 
+  @media (max-width: 660px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
   @media (max-width: 330px) {
     flex-direction: column; /* Stack links vertically */
     gap: 10px; /* Reduce spacing */
@@ -204,6 +217,9 @@ const LinksGroup = styled.div`
   align-items: center; /* Center for small screens */
   text-align: center; /* Center text alignment */
   gap: 12px;
+  @media (max-width: 660px) {
+    align-items: flex-start;
+  }
   @media (max-width: 330px) {
     width: 100%; /* Ensure it adjusts within the viewport */
   }

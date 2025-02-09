@@ -24,6 +24,9 @@ import SunpackBoards from "./pages/Services/SunpackBoards";
 import ThampoolamBag from "./pages/Services/ThampoolamBaf";
 import TermsAndConditions from "./pages/TermsAndCondition";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+
 function App() {
   const [showQuotation, setShowQuotation] = useState(false);
 
