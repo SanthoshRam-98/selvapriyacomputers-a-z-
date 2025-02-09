@@ -226,6 +226,8 @@ const Grid = styled.div`
 
   @media (max-width: 480px) {
     grid-template-columns: 1fr;
+    padding: 50px;
+    background: white;
   }
 `;
 
