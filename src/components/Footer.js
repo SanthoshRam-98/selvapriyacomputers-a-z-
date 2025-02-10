@@ -77,11 +77,10 @@ const FooterContainer = styled.footer`
     margin-left: 50px;
   }
   @media (max-width: 420px) {
-    margin-right: 25px;
-    margin-left: 25px;
   }
   @media (max-width: 330px) {
-    padding: 20px 10px;
+    margin-right: 20px;
+    margin-left: 20px;
   }
 `;
 
@@ -95,7 +94,7 @@ const TopSection = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 20px; /* Reduce gap for narrow screens */
+  gap: 32px; /* Reduce gap for narrow screens */
   max-width: 100%; /* Ensure no overflow */
   margin: 0;
   @media (max-width: 660px) {
@@ -157,13 +156,16 @@ const Subtitle = styled.p`
 
   @media (max-width: 420px) {
     font-size: 0.9rem; /* Final reduction for very small screens */
+    width: 250px;
+  }
+  @media (max-width: 230px) {
+    width: 150px;
   }
 `;
 
 const SocialIcons = styled.div`
   display: flex;
   gap: 10px; /* Reduce spacing */
-  margin-top: 36px;
 
   @media (max-width: 330px) {
     gap: 8px;
@@ -214,8 +216,7 @@ const LinksContainer = styled.div`
 const LinksGroup = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center for small screens */
-  text-align: center; /* Center text alignment */
+
   gap: 12px;
   @media (max-width: 660px) {
     align-items: flex-start;

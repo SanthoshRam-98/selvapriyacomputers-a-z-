@@ -76,6 +76,7 @@ const Section = styled.section`
 `;
 
 const Header = styled.div`
+  margin-top: 100px;
   margin-bottom: 40px;
 `;
 

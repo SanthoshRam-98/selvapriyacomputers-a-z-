@@ -34,19 +34,10 @@ export function HeroSectionCarousel() {
 
       <ContentWrapper>
         <Title>Welcome to Selvapriya Computers</Title>
-        <Subtitle>
-          40 Years of Trusted
-          <br />
-          Quality in Printing
-          <br />& Design
-        </Subtitle>
+        <Subtitle>40 Years of Trusted Quality in Printing & Design</Subtitle>
         <Description>
-          Our commitment to quality and innovation has
-          <br />
-          made us a trusted name in the printing industry.
-          <br />
-          Explore our services and discover why quality
-          <br />
+          Our commitment to quality and innovation has made us a trusted name in
+          the printing industry. Explore our services and discover why quality
           matters to us and our clients.
         </Description>
         <ButtonWrapper>
@@ -115,21 +106,35 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 15px;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 15px;
   background-color: rgba(240, 248, 255, 0.9);
   gap: 24px;
+  width: 50%;
+  align-items: flex-start;
+  padding-bottom: 24px;
+  @media (max-width: 992px) {
+    align-items: center;
+    padding-right: 80px;
+    padding-left: 80px;
+    padding-top: 80px;
+    width: 100%;
+  }
+  @media (max-width: 768px) {
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-top: 40px;
+  }
+  @media (max-width: 420px) {
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 30px;
+  }
   @media (max-width: 330px) {
-    padding: 10px; /* Reduce padding for very small screens */
-  }
-
-  @media (min-width: 768px) {
-    padding: 40px;
-  }
-
-  @media (min-width: 992px) {
-    width: 40%;
-    align-items: flex-start;
-    padding: 80px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 10px; /* Reduce padding for very small screens */
   }
 `;
 
@@ -197,10 +202,8 @@ const Description = styled.p`
     line-height: 1.4; /* Tighten line spacing for smaller space */
   }
   @media (max-width: 330px) {
-    font-size: 0.75rem; /* Smaller font for tiny screens */
   }
   @media (max-width: 230px) {
-    font-size: 0.45rem;
   }
 `;
 

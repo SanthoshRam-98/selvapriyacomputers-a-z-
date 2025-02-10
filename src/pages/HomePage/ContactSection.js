@@ -62,14 +62,12 @@ const MainContainer = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 60px 20px;
+  margin-bottom: 64px;
   font-family: "Philosopher", Regular;
   @media (max-width: 768px) {
-    padding: 40px 15px;
   }
 
   @media (max-width: 480px) {
-    padding: 20px 10px;
   }
 `;
 

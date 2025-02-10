@@ -99,13 +99,10 @@ const ContactWrapper = styled.main`
   flex-direction: column;
   align-items: center;
   padding: 50px 20px;
-  overflow: hidden;
-  min-height: 100vh;
 `;
 
 const ContentContainer = styled.div`
-  width: 100%;
-  max-width: 1200px;
+  margin-top: 128px;
   display: flex;
   flex-direction: column;
   align-items: center;

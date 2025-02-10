@@ -239,7 +239,7 @@ const GridItem = styled.div`
   &:hover div {
     opacity: 1;
     background-color: #ffaaaa; /* Rose color */
-    color: #000; /* White text */
+    color: white; /* White text */
   }
 `;
 
