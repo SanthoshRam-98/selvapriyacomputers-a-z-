@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import "../src/App.css"; // or import './App.css';
-import {
-  BrowserRouter,
-  HashRouter,
-  Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavigationBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import styled from "styled-components";
@@ -33,11 +27,6 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
-// Detect if running on GitHub Pages
-const isGithubPages = window.location.hostname.includes("github.io");
-
-const RouterComponent = isGithubPages ? HashRouter : BrowserRouter;
-
 function App() {
   const [showQuotation, setShowQuotation] = useState(false);
 
@@ -46,71 +35,60 @@ function App() {
   };
 
   return (
-    <RouterComponent basename={isGithubPages ? "selvapriyacomputers-a-z-" : ""}>
-      <Router>
-        <AppContainer>
-          <NavigationBar
-            onQuoteClick={handleQuoteClick}
-            isDisabled={showQuotation}
-          />
-          <QuotationForm isOpen={showQuotation} onClose={handleQuoteClick} />
-          <MainContent $isBlurred={showQuotation}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/services" element={<ServicesPage />} />
-              <Route path="/pricing" element={<PricingPage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route
-                path="/services/wedding-cards"
-                element={<WeddingCards />}
-              />
-              <Route
-                path="/services/business-cards"
-                element={<BusinessCards />}
-              />
-              <Route path="/services/calendars" element={<Calendars />} />
-              <Route
-                path="/services/display-banners"
-                element={<DisplayBanner />}
-              />
-              <Route
-                path="/services/invoice-books"
-                element={<InvoiceBooks />}
-              />
-              <Route
-                path="/services/label-stickers"
-                element={<LabelStickers />}
-              />
-              <Route path="/services/letter-pads" element={<LetterPads />} />
-              <Route
-                path="/services/notice-prints"
-                element={<NoticePrints />}
-              />
-              <Route
-                path="/services/photo-printings"
-                element={<PhotoPrintings />}
-              />
-              <Route path="/services/sign-boards" element={<SignBoards />} />
-              <Route
-                path="/services/sunpack-boards"
-                element={<SunpackBoards />}
-              />
-              <Route
-                path="/services/thampoolam-bag"
-                element={<ThampoolamBag />}
-              />
-              <Route path="/terms" element={<TermsAndConditions />} />
-              <Route path="/privacy" element={<PrivacyPolicy />} />
-              {/* <Route path="/quote" element={<QuotationForm />} /> */}
-            </Routes>
-          </MainContent>
-        </AppContainer>
-        <FooterContainers>
-          <Footer />
-        </FooterContainers>
-      </Router>
-    </RouterComponent>
+    <Router>
+      <AppContainer>
+        <NavigationBar
+          onQuoteClick={handleQuoteClick}
+          isDisabled={showQuotation}
+        />
+        <QuotationForm isOpen={showQuotation} onClose={handleQuoteClick} />
+        <MainContent $isBlurred={showQuotation}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/pricing" element={<PricingPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/services/wedding-cards" element={<WeddingCards />} />
+            <Route
+              path="/services/business-cards"
+              element={<BusinessCards />}
+            />
+            <Route path="/services/calendars" element={<Calendars />} />
+            <Route
+              path="/services/display-banners"
+              element={<DisplayBanner />}
+            />
+            <Route path="/services/invoice-books" element={<InvoiceBooks />} />
+            <Route
+              path="/services/label-stickers"
+              element={<LabelStickers />}
+            />
+            <Route path="/services/letter-pads" element={<LetterPads />} />
+            <Route path="/services/notice-prints" element={<NoticePrints />} />
+            <Route
+              path="/services/photo-printings"
+              element={<PhotoPrintings />}
+            />
+            <Route path="/services/sign-boards" element={<SignBoards />} />
+            <Route
+              path="/services/sunpack-boards"
+              element={<SunpackBoards />}
+            />
+            <Route
+              path="/services/thampoolam-bag"
+              element={<ThampoolamBag />}
+            />
+            <Route path="/terms" element={<TermsAndConditions />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            {/* <Route path="/quote" element={<QuotationForm />} /> */}
+          </Routes>
+        </MainContent>
+      </AppContainer>
+      <FooterContainers>
+        <Footer />
+      </FooterContainers>
+    </Router>
   );
 }
 
