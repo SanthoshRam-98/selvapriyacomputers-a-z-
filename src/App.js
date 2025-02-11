@@ -41,7 +41,7 @@ function App() {
           onQuoteClick={handleQuoteClick}
           isDisabled={showQuotation}
         />
-        <QuotationForm isOpen={showQuotation} onClose={handleQuoteClick} />
+        {/* <QuotationForm isOpen={showQuotation} onClose={handleQuoteClick} /> */}
         <MainContent $isBlurred={showQuotation}>
           <Routes>
             <Route path="/" element={<HomePage />} />

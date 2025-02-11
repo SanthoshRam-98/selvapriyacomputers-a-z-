@@ -303,10 +303,6 @@ const NavigationBar = () => {
             Get a Quote
           </QuoteButton>
         </MenuItem>
-        <QuotationForm
-          isOpen={isQuoteOpen}
-          onClose={() => setIsQuoteOpen(false)}
-        />
       </Menu>
     </Nav>
   );

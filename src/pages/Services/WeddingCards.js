@@ -31,14 +31,12 @@ const cards = [
 const Container = styled.div`
   min-height: 100vh;
   background-color: #e0f7fa;
-  padding: 2rem;
+
   position: relative;
 `;
 
 const BackButton = styled.button`
   position: absolute;
-  top: 3rem;
-  left: 3rem;
   background-color: transparent;
   border: 3px solid black;
   width: 3rem;
@@ -50,29 +48,73 @@ const BackButton = styled.button`
   font-size: 1.5rem;
   color: #333;
   transition: background-color 0.3s;
-
+  font-weight: bold;
   &:hover {
     background-color: transparent;
+  }
+  @media (max-width: 380px) {
+    width: 1.8rem;
+    height: 1.8rem;
+    font-size: 0.8rem;
+  }
+  @media (max-width: 280px) {
+    width: 1.2rem;
+    height: 1.2rem;
+    font-size: 0.4rem;
   }
 `;
 
 const Title = styled.h1`
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 1rem;
-  color: #333;
+  margin: 0;
+
+  @media (max-width: 992px) {
+    font-size: 2.5rem;
+  }
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+  @media (max-width: 420px) {
+    font-size: 1.6rem;
+  }
+  @media (max-width: 330px) {
+    font-size: 1.3rem;
+  }
+  @media (max-width: 230px) {
+    font-size: 1rem;
+  }
 `;
 
 const Subtitle = styled.p`
+  font-size: 1.25rem;
+  line-height: 1.6;
   text-align: center;
-  color: #666;
-  margin-bottom: 2rem;
+  @media (max-width: 1200px) {
+    font-size: 1.15rem;
+  }
+  @media (max-width: 992px) {
+    font-size: 1.1rem;
+  }
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  @media (max-width: 576px) {
+    font-size: 0.95rem;
+
+    align-items: flex-start;
+  }
+  @media (max-width: 420px) {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
 `;
 
 const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 
   @media (max-width: 1024px) {
@@ -90,7 +132,7 @@ const GridContainer = styled.div`
 
 const ImageContainer = styled.div`
   position: relative;
-  height: 476px;
+
   overflow: hidden;
 
   img {
@@ -140,6 +182,11 @@ const LikeButton = styled.button`
   }
 `;
 
+const TitleSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
 const WeddingCardsGrid = () => {
   const [likedCards, setLikedCards] = useState({});
   const navigate = useNavigate();
@@ -152,27 +199,57 @@ const WeddingCardsGrid = () => {
     navigate("/services");
   };
 
+  const Header = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  `;
+  const EntireContainer = styled.div`
+    margin-right: 100px;
+    margin-left: 100px;
+    padding-top: 128px;
+    padding-bottom: 64px;
+    @media (max-width: 1900px) {
+      padding-top: 146px;
+    }
+    @media (max-width: 660px) {
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+    @media (max-width: 330px) {
+      margin-left: 20px;
+      margin-right: 20px;
+      padding-top: 98px;
+    }
+  `;
   return (
     <Container>
-      <BackButton onClick={goBack}>←</BackButton>
-      <Title>Wedding Cards</Title>
-      <Subtitle>
-        Celebrate your special day with our exquisite wedding card designs. Find
-        the one that suits your style and make your big day unforgettable.
-      </Subtitle>
-      <GridContainer>
-        {cards.map((card) => (
-          <ImageContainer key={card.id}>
-            <img src={card.image} alt={`Card ${card.id}`} />
-            <LikeButton
-              liked={likedCards[card.id]}
-              onClick={() => toggleLike(card.id)}
-            >
-              {likedCards[card.id] ? "❤" : "♡"}
-            </LikeButton>
-          </ImageContainer>
-        ))}
-      </GridContainer>
+      <EntireContainer>
+        <Header>
+          <TitleSection>
+            <BackButton onClick={goBack}>←</BackButton>
+            <Title>Wedding Cards</Title>
+          </TitleSection>
+          <Subtitle>
+            Celebrate your special day with our exquisite wedding card designs.
+            Find the one that suits your style and make your big day
+            unforgettable.
+          </Subtitle>
+        </Header>
+        <GridContainer>
+          {cards.map((card) => (
+            <ImageContainer key={card.id}>
+              <img src={card.image} alt={`Card ${card.id}`} />
+              <LikeButton
+                liked={likedCards[card.id]}
+                onClick={() => toggleLike(card.id)}
+              >
+                {likedCards[card.id] ? "❤" : "♡"}
+              </LikeButton>
+            </ImageContainer>
+          ))}
+        </GridContainer>
+      </EntireContainer>
     </Container>
   );
 };

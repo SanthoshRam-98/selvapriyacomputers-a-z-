@@ -69,30 +69,83 @@ export function ProductGrid() {
 
 // Styled Components
 const Section = styled.section`
-  padding: 50px 20px;
+  padding-top: 48px;
+  padding-bottom: 48px;
   text-align: center;
   background-color: #f5f5f5;
   color: black;
 `;
 
 const Header = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   margin-top: 100px;
   margin-bottom: 40px;
+  @media (max-width: 330px) {
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
 `;
 
 const Heading = styled.h1`
-  font-size: 32px;
+  font-size: 3rem; /* Base font size for large screens */
   font-weight: bold;
+  text-align: center;
+  margin: 0;
+
+  @media (max-width: 992px) {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+  @media (max-width: 420px) {
+    font-size: 1.6rem; /* Final reduction for very small screens */
+  }
+  @media (max-width: 330px) {
+    font-size: 1.3rem;
+  }
+  @media (max-width: 230px) {
+    font-size: 1rem;
+  }
 `;
 
 const SubHeading = styled.p`
-  font-size: 18px;
-  color: black;
+  font-size: 1.25rem; /* Default font size for larger screens */
+  line-height: 1.6; /* Maintain readability */
+  max-width: 750px; /* Limit width for readability */
+  margin: 0 auto; /* Center-align text */
+
+  @media (max-width: 1200px) {
+    font-size: 1.15rem; /* Slightly reduce font size for medium screens */
+  }
+
+  @media (max-width: 992px) {
+    font-size: 1.1rem; /* Further reduction for smaller screens */
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem; /* Adjust for tablets and small devices */
+    line-height: 1.5; /* Adjust line height for compact text */
+  }
+
+  @media (max-width: 576px) {
+    font-size: 0.95rem; /* Slightly smaller for smaller phones */
+  }
+
+  @media (max-width: 420px) {
+    font-size: 0.9rem; /* Final reduction for very small screens */
+    line-height: 1.4; /* Tighten line spacing for smaller space */
+  }
 `;
 
 const GridContainer = styled.div`
+  margin-right: 100px;
+  margin-left: 100px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 
   @media (max-width: 1024px) {
@@ -102,15 +155,21 @@ const GridContainer = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
-
+  @media (max-width: 660px) {
+    margin-right: 50px;
+    margin-left: 50px;
+  }
   @media (max-width: 480px) {
     grid-template-columns: 1fr;
+  }
+  @media (max-width: 330px) {
+    margin-right: 20px;
+    margin-left: 20px;
   }
 `;
 
 const ImageContainer = styled.div`
   position: relative;
-  height: 476px;
   overflow: hidden;
 
   img {
@@ -137,7 +196,7 @@ const Overlay = styled.div`
   bottom: -100%; /* Initially hidden */
   left: 0;
   right: 0;
-  height: 25px; /* Approx height of hover effect */
+  height: 40px; /* Approx height of hover effect */
   background-color: rgba(0, 0, 0, 0.6); /* Default background color */
   display: flex;
   justify-content: center;

@@ -1,245 +1,168 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const QuotationForm = ({ isOpen, onClose }) => {
-  const [selectedFile, setSelectedFile] = useState(null);
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f8f8f8;
+  margin-right: 100px;
+  margin-left: 100px;
+`;
+
+const Title = styled.h2`
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+`;
+
+const Subtitle = styled.p`
+  color: #666;
+  font-size: 14px;
+`;
+
+const Form = styled.form`
+  margin-top: 20px;
+  width: 100%;
+
+  background: #fff;
+  padding: 30px;
+`;
+
+const InputGroup = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 500px);
+  gap: 15px;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+
+  font-size: 14px;
+`;
+
+const TextArea = styled.textarea`
+  width: 500px;
+  padding: 10px;
+  border: 1px solid #ccc;
+
+  font-size: 14px;
+  margin-top: 15px;
+`;
+
+const FileUploadContainer = styled.div`
+  margin-top: 20px;
+  background: #d1ecf1;
+  padding: 20px;
+
+  border: 2px dashed #a3c1d1;
+  text-align: center;
+`;
+
+const FileText = styled.p`
+  font-size: 14px;
+  color: #666;
+`;
+
+const SubmitButton = styled.button`
+  margin-top: 20px;
+  width: 100%;
+  background: #ffb6c1;
+  color: white;
+  padding: 10px;
+  border: none;
+
+  font-size: 16px;
+  cursor: pointer;
+  &:hover {
+    background: #ff96a0;
+  }
+`;
+
+const QuotationForm = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
-    phone: "",
+    whatsapp: "",
     message: "",
+    files: [],
   });
 
-  const handleOverlayClick = (e) => {
-    if (e.target === e.currentTarget) {
-      resetForm();
-      onClose();
-    }
-  };
-
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      setSelectedFile(file.name);
-    }
-  };
-
-  const triggerFileUpload = () => {
-    document.getElementById("fileInput").click();
-  };
-
-  const resetForm = () => {
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      message: "",
-    });
-    setSelectedFile(null);
-  };
-
-  const handleInputChange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleFileChange = (e) => {
+    setFormData({ ...formData, files: [...e.target.files] });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
   };
 
   return (
-    <FormOverlay $isOpen={isOpen} onClick={handleOverlayClick}>
-      <FormContainer onClick={(e) => e.stopPropagation()}>
-        <CloseButton onClick={onClose}>&times;</CloseButton>
-        <Title>Get a Quotation</Title>
-        <Subtitle>Tell us about your project or just say hello!</Subtitle>
-        <InputRow>
+    <Container>
+      <Title>Get a Quotation</Title>
+      <Subtitle>Tell us about your project or just say hello!</Subtitle>
+      <Form onSubmit={handleSubmit}>
+        <InputGroup>
           <Input
             type="text"
-            placeholder="First Name*"
             name="firstName"
+            placeholder="Enter your First Name*"
             value={formData.firstName}
-            onChange={handleInputChange}
+            onChange={handleChange}
             required
           />
           <Input
             type="text"
-            placeholder="Last Name*"
             name="lastName"
+            placeholder="Enter your Last Name*"
             value={formData.lastName}
-            onChange={handleInputChange}
+            onChange={handleChange}
             required
           />
-        </InputRow>
-        <InputRow>
           <Input
             type="email"
-            placeholder="Email*"
             name="email"
+            placeholder="Enter your Email*"
             value={formData.email}
-            onChange={handleInputChange}
+            onChange={handleChange}
             required
           />
           <Input
-            type="tel"
-            placeholder="WhatsApp Number*"
-            name="phone"
-            value={formData.phone}
-            onChange={handleInputChange}
+            type="text"
+            name="whatsapp"
+            placeholder="Enter your Whatsapp Number*"
+            value={formData.whatsapp}
+            onChange={handleChange}
             required
           />
-        </InputRow>
-        <MessageBox
+        </InputGroup>
+        <TextArea
           name="message"
           placeholder="Type your message here..."
           value={formData.message}
-          onChange={handleInputChange}
+          onChange={handleChange}
         />
-        <FileUploadBox>
-          <UploadText>Insert your file</UploadText>
-          <AllowedTypes>
-            Allowed formats: .jpg, .jpeg, .doc, .docx, .pdf, .png, .gif
-          </AllowedTypes>
-          <UploadArea onClick={triggerFileUpload}>
-            <input
-              type="file"
-              id="fileInput"
-              style={{ display: "none" }}
-              onChange={handleFileChange}
-              accept=".jpg, .jpeg, .doc, .docx, .pdf, .png, .gif"
-            />
-            <UploadIcon>📂</UploadIcon>
-            <UploadButton>Upload Files</UploadButton>
-            <DropText>
-              {selectedFile
-                ? `Selected: ${selectedFile}`
-                : "or drop files here"}
-            </DropText>
-          </UploadArea>
-        </FileUploadBox>
-        <SubmitButton>Submit</SubmitButton>
-      </FormContainer>
-    </FormOverlay>
+        <FileUploadContainer>
+          <p>
+            <strong>Insert your file</strong>
+          </p>
+          <FileText>
+            Allowed documents (.jpg, .jpeg, .doc, .docx, .pdf, .png, .gif)
+          </FileText>
+          <input type="file" multiple onChange={handleFileChange} />
+        </FileUploadContainer>
+        <SubmitButton type="submit">Submit</SubmitButton>
+      </Form>
+    </Container>
   );
 };
 
 export default QuotationForm;
-
-// Styled Components
-const FormOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  display: ${({ $isOpen }) => ($isOpen ? "flex" : "none")};
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  padding: 20px;
-`;
-
-const FormContainer = styled.div`
-  background: white;
-  padding: 20px;
-  width: 90%;
-  max-width: 500px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  border-radius: 8px;
-`;
-
-const CloseButton = styled.button`
-  align-self: flex-end;
-  font-size: 28px;
-  background: none;
-  border: none;
-  cursor: pointer;
-`;
-
-const Title = styled.h2`
-  text-align: center;
-  font-size: 24px;
-`;
-
-const Subtitle = styled.p`
-  text-align: center;
-  font-size: 16px;
-`;
-
-const InputRow = styled.div`
-  display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
-  @media (max-width: 480px) {
-    flex-direction: column;
-  }
-`;
-
-const Input = styled.input`
-  flex: 1;
-  padding: 8px;
-  border: 1px solid #ccc;
-  width: 100%;
-`;
-
-const MessageBox = styled.textarea`
-  width: 100%;
-  height: 80px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  margin-bottom: 15px;
-`;
-
-const FileUploadBox = styled.div`
-  background: #e0f0ff;
-  padding: 15px;
-  text-align: center;
-  margin-bottom: 15px;
-`;
-
-const UploadText = styled.h3`
-  font-size: 16px;
-`;
-
-const AllowedTypes = styled.p`
-  font-size: 12px;
-  color: #555;
-  margin-bottom: 10px;
-`;
-
-const UploadArea = styled.div`
-  border: 2px dashed #ccc;
-  padding: 15px;
-  cursor: pointer;
-`;
-
-const UploadIcon = styled.div`
-  font-size: 30px;
-`;
-
-const UploadButton = styled.button`
-  background: #ffaaaa;
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  cursor: pointer;
-  margin-top: 8px;
-`;
-
-const DropText = styled.p`
-  font-size: 12px;
-`;
-
-const SubmitButton = styled.button`
-  display: block;
-  margin: auto;
-  background: #ffaaaa;
-  color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-`;
