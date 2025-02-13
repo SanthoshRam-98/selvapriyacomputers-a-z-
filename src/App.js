@@ -28,21 +28,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
 function App() {
-  const [showQuotation, setShowQuotation] = useState(false);
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
 
   const handleQuoteClick = () => {
-    setShowQuotation(!showQuotation);
+    setIsQuoteOpen(!isQuoteOpen);
   };
 
   return (
     <Router>
       <AppContainer>
-        <NavigationBar
-          onQuoteClick={handleQuoteClick}
-          isDisabled={showQuotation}
-        />
+        <NavigationBar onQuoteClick={handleQuoteClick} />
         {/* <QuotationForm isOpen={showQuotation} onClose={handleQuoteClick} /> */}
-        <MainContent $isBlurred={showQuotation}>
+        <MainContent $isBlurred={isQuoteOpen}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/services" element={<ServicesPage />} />
@@ -81,7 +78,8 @@ function App() {
             />
             <Route path="/terms" element={<TermsAndConditions />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
-            {/* <Route path="/quote" element={<QuotationForm />} /> */}
+            <Route path="/quoteform" element={<QuotationForm />} />
+            {/* <QuotationForm isOpen={isQuoteOpen} onClose={handleQuoteClick} /> */}
           </Routes>
         </MainContent>
       </AppContainer>

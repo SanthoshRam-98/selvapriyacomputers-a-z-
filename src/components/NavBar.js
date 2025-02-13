@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 import { FiMenu, FiX } from "react-icons/fi";
 import QuotationForm from "../pages/QuotationForm"; // Import the form component
@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
 `;
 
 // Styled Components
@@ -172,39 +173,60 @@ const StyledLink = styled(Link)`
 
 const MenuIcon = styled.div`
   display: none;
-  font-size: 1.75rem;
+
   cursor: pointer;
 
   @media (max-width: 1230px) {
     display: block;
     z-index: 1100;
+    padding: 6px;
+    border: ${({ isQuoteOpen }) =>
+      isQuoteOpen
+        ? "2px solid black"
+        : "none"}; /* ✅ Border added when Quote Form is open */
+
+    transition: all 0.3s ease-in-out;
   }
+
   @media (max-width: 420px) {
-    font-size: 1.25rem; /* 20px */
+    font-size: 1.25rem;
   }
 
   @media (max-width: 330px) {
-    font-size: 1.125rem; /* 18px */
+    font-size: 1.125rem;
   }
 `;
 
+/* Styling the Quote Button */
 const QuoteButton = styled(Link)`
-  background-color: pink;
+  background-color: ${({ isQuoteOpen }) =>
+    isQuoteOpen
+      ? "black"
+      : "pink"}; /* ✅ Ensures background is black only when the form is open */
   color: white;
   font-size: 1rem;
   font-family: "Philosopher", serif;
   padding: 10px 15px;
   text-decoration: none;
   white-space: nowrap;
-  display: inline-block;
+  display: inline-flex; /* ✅ Use inline-flex for proper alignment */
+  align-items: center;
+  justify-content: center;
   text-align: center;
   margin-left: auto;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
 
   &:hover {
     background-color: black;
+    color: white;
   }
-
+  @media (max-width: 1230px) {
+    &:hover {
+      background: black;
+      color: white;
+    }
+  }
   @media (max-width: 768px) {
     font-size: 0.875rem;
     padding: 10px 18px;
@@ -216,10 +238,31 @@ const QuoteButton = styled(Link)`
   }
 
   @media (max-width: 330px) {
-    && {
-      font-size: 0.625rem !important;
-      padding: 6px 12px !important;
-    }
+    font-size: 0.625rem !important;
+    padding: 6px 12px !important;
+  }
+`;
+const StyledFiX = styled(FiX)`
+  background: transparent; /* ✅ Ensures no background is inherited */
+  color: white;
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s ease-in-out;
+
+ @media (max-width: 1230px) {
+  color: black;
+ }
+  }
+`;
+
+/* Styling the FiMenu (Hamburger Icon) */
+const StyledFiMenu = styled(FiMenu)`
+  font-size: 1.75rem;
+  color: black;
+  transition: color 0.3s ease;
+
+  @media (max-width: 420px) {
+    font-size: 1.25rem;
   }
 `;
 
@@ -245,66 +288,115 @@ const NavigationBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isQuoteOpen, setIsQuoteOpen] = useState(false); // ✅ State for Quote Form
   const location = useLocation();
+  const navigate = useNavigate();
+  const [prevPage, setPrevPage] = useState("/"); // Default previous page
+  const handleQuoteClick = () => {
+    setIsQuoteOpen((prev) => !prev);
+    setMenuOpen(false); // Ensure menu closes when Quote Form opens
+    if (!isQuoteOpen) {
+      setPrevPage(
+        location.pathname !== "/quoteform" ? location.pathname : prevPage
+      );
+      navigate("/quoteform");
+    } else {
+      navigate(prevPage);
+    }
+  };
+
+  const handleMenuClick = () => {
+    setMenuOpen((prev) => !prev);
+    setIsQuoteOpen(false); // Ensure Quote Form closes when menu opens
+  };
+
+  useEffect(() => {
+    if (location.pathname === "/quoteform") {
+      setIsQuoteOpen(true); // ✅ Ensure <FiX /> appears if on quote form after refresh
+    } else {
+      setIsQuoteOpen(false); // ✅ Otherwise, reset to default
+    }
+  }, [location.pathname]); // 🔥 Runs whenever the page changes
 
   return (
-    <Nav>
-      <GlobalStyle />
-      <LogoWrapper as={Link} to="/">
-        <CompanyName>Selvapriya</CompanyName>
-        <CompanyType>Computers</CompanyType>
-      </LogoWrapper>
+    <>
+      <Nav>
+        <GlobalStyle isQuoteOpen={isQuoteOpen} />
+        <LogoWrapper as={Link} to="/">
+          <CompanyName>Selvapriya</CompanyName>
+          <CompanyType>Computers</CompanyType>
+        </LogoWrapper>
+        <MenuIcon
+          isQuoteOpen={isQuoteOpen}
+          onClick={() => {
+            if (isQuoteOpen) {
+              navigate(prevPage);
+              setIsQuoteOpen(false);
+            } else {
+              setMenuOpen(!menuOpen);
+            }
+          }}
+        >
+          {isQuoteOpen || menuOpen ? <StyledFiX /> : <StyledFiMenu />}
+        </MenuIcon>
 
-      <MenuIcon onClick={() => setMenuOpen(!menuOpen)}>
-        {menuOpen ? <FiX /> : <FiMenu />}
-      </MenuIcon>
-
-      <Menu open={menuOpen}>
-        <LinkMenu>
+        <Menu open={menuOpen}>
+          <LinkMenu>
+            <MenuItem>
+              <StyledLink
+                to="/"
+                active={location.pathname === "/" ? 1 : 0}
+                onClick={handleMenuClick}
+              >
+                HOME
+              </StyledLink>
+            </MenuItem>
+            <MenuItem>
+              <StyledLink
+                to="/services"
+                active={location.pathname === "/services" ? 1 : 0}
+                onClick={handleMenuClick}
+              >
+                SERVICES
+              </StyledLink>
+            </MenuItem>
+            <MenuItem>
+              <StyledLink
+                to="/pricing"
+                active={location.pathname === "/pricing" ? 1 : 0}
+                onClick={handleMenuClick}
+              >
+                PRICING
+              </StyledLink>
+            </MenuItem>
+            <MenuItem>
+              <StyledLink
+                to="/about"
+                active={location.pathname === "/about" ? 1 : 0}
+                onClick={handleMenuClick}
+              >
+                ABOUT
+              </StyledLink>
+            </MenuItem>
+            <MenuItem>
+              <StyledLink
+                to="/contact"
+                active={location.pathname === "/contact" ? 1 : 0}
+                onClick={handleMenuClick}
+              >
+                CONTACT
+              </StyledLink>
+            </MenuItem>
+          </LinkMenu>
           <MenuItem>
-            <StyledLink to="/" active={location.pathname === "/" ? 1 : 0}>
-              HOME
-            </StyledLink>
-          </MenuItem>
-          <MenuItem>
-            <StyledLink
-              to="/services"
-              active={location.pathname === "/services" ? 1 : 0}
+            <QuoteButton
+              to={isQuoteOpen ? prevPage : "/quoteform"}
+              onClick={handleQuoteClick}
             >
-              SERVICES
-            </StyledLink>
+              {isQuoteOpen ? <StyledFiX /> : "Get a Quote"}
+            </QuoteButton>
           </MenuItem>
-          <MenuItem>
-            <StyledLink
-              to="/pricing"
-              active={location.pathname === "/pricing" ? 1 : 0}
-            >
-              PRICING
-            </StyledLink>
-          </MenuItem>
-          <MenuItem>
-            <StyledLink
-              to="/about"
-              active={location.pathname === "/about" ? 1 : 0}
-            >
-              ABOUT
-            </StyledLink>
-          </MenuItem>
-          <MenuItem>
-            <StyledLink
-              to="/contact"
-              active={location.pathname === "/contact" ? 1 : 0}
-            >
-              CONTACT
-            </StyledLink>
-          </MenuItem>
-        </LinkMenu>
-        <MenuItem>
-          <QuoteButton onClick={() => setIsQuoteOpen(true)}>
-            Get a Quote
-          </QuoteButton>
-        </MenuItem>
-      </Menu>
-    </Nav>
+        </Menu>
+      </Nav>
+    </>
   );
 };
 
