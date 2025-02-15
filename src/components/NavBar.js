@@ -15,7 +15,11 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 `;
 
 // Styled Components
@@ -24,12 +28,13 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 20px 100px;
-  position: fixed; /* Keep the navbar fixed */
+  position: sticky;
+  width: 100%;
   top: 0;
   left: 0;
   right: 0;
   background: white;
-  z-index: 9999;
+  z-index: 10000;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   @media (max-width: 660px) {
     padding: 20px 50px;
@@ -116,6 +121,9 @@ const Menu = styled.ul`
   gap: 178px;
 
   @media (max-width: 1230px) {
+    gap: 128px;
+  }
+  @media (max-width: 1230px) {
     flex-direction: column;
     position: fixed;
     top: 0;
@@ -189,11 +197,9 @@ const MenuIcon = styled.div`
   }
 
   @media (max-width: 420px) {
-    font-size: 1.25rem;
   }
 
   @media (max-width: 330px) {
-    font-size: 1.125rem;
   }
 `;
 
@@ -249,9 +255,17 @@ const StyledFiX = styled(FiX)`
   height: 24px;
   transition: all 0.3s ease-in-out;
 
- @media (max-width: 1230px) {
-  color: black;
- }
+  @media (max-width: 1230px) {
+    color: black;
+  }
+  @media (max-width: 480px) {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media (max-width: 330px) {
+    width: 16px;
+    height: 16px;
   }
 `;
 

@@ -7,10 +7,11 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #f8f8f8;
-  padding-top: 50px;
+  padding-top: 64px;
   padding-bottom: 64px;
+
   @media (max-width: 330px) {
-    padding-top: 0px;
+    padding-top: 32px;
   }
 `;
 
@@ -61,6 +62,8 @@ const Subtitle = styled.p`
     line-height: 1.4;
   }
   @media (max-width: 330px) {
+    max-width: 200px;
+    text-align: center;
   }
 `;
 
@@ -78,15 +81,13 @@ const FormFields = styled.div`
   @media (max-width: 768px) {
     width: 60%;
   }
-  @media (max-width: 480px) {
-    width: 75%;
-  }
 `;
 const FormRow = styled.div`
   display: flex;
   gap: 20px;
   @media (max-width: 768px) {
     flex-direction: column;
+    gap: 0px;
   }
 `;
 
@@ -291,8 +292,10 @@ const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin-top: 128px;
   margin-bottom: 64px;
+  @media (max-width: 480px) {
+    margin-bottom: 32px;
+  }
 `;
 const InsertText = styled.div`
   font-size: 36px;
@@ -344,6 +347,8 @@ const AllowedDocText = styled.div`
     line-height: 1.4;
   }
   @media (max-width: 330px) {
+    font-size: 0.6rem;
+    text-align: center;
   }
 `;
 
@@ -351,6 +356,10 @@ const Forms = styled.div`
   display: flex;
   flex-direction: column;
   gap: 64px;
+
+  @media (max-width: 480px) {
+    gap: 32px;
+  }
 `;
 const QuotationForm = () => {
   const [formData, setFormData] = useState({

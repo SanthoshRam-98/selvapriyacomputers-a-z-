@@ -8,7 +8,7 @@ const AboutContainer = styled.section`
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 100px;
+  padding: 64px;
   background: #fff;
   border: 4px solid black;
   margin-right: 100px;
@@ -16,68 +16,29 @@ const AboutContainer = styled.section`
   margin-bottom: 64px;
   gap: 36px;
   @media (max-width: 992px) {
-    padding: 50px;
+    padding: 48px;
   }
   @media (max-width: 768px) {
     padding: 40px;
   }
 
   @media (max-width: 660px) {
-    padding: 30px;
+    padding: 32px;
     margin-right: 50px;
     margin-left: 50px;
   }
   @media (max-width: 480px) {
-    padding: 20px;
-    gap: 28px;
+    padding: 22px;
+    gap: 16px;
   }
   @media (max-width: 360px) {
-    padding: 15px;
+    padding: 18px;
     margin-right: 20px;
     margin-left: 20px;
     gap: 24px;
   }
 `;
 
-//
-
-const BoxContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 110px 220px;
-  border: 4px solid black;
-  margin-right: 100px;
-  margin-left: 100px;
-  margin-bottom: 100px;
-  gap: 64px;
-  @media (max-width: 992px) {
-    padding: 50px;
-  }
-  @media (max-width: 768px) {
-    padding: 40px;
-  }
-
-  @media (max-width: 660px) {
-    padding: 30px;
-    margin-right: 50px;
-    margin-left: 50px;
-  }
-  @media (max-width: 480px) {
-    padding: 20px;
-    gap: 28px;
-  }
-  @media (max-width: 360px) {
-    padding: 15px;
-    margin-right: 20px;
-    margin-left: 20px;
-    gap: 24px;
-  }
-`;
-
-//
 const Heading = styled.h3`
   font-family: "Philosopher", serif;
   font-size: 2rem; /* Base font size */
@@ -86,24 +47,24 @@ const Heading = styled.h3`
   margin: auto;
 
   @media (max-width: 992px) {
-    font-size: 2rem;
+    font-size: 1.75rem;
     text-align: left;
   }
   @media (max-width: 768px) {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
+
   @media (max-width: 330px) {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
   @media (max-width: 230px) {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 `;
 
 const SubHeading = styled.h1`
   font-size: 3rem; /* Base font size for large screens */
   font-weight: bold;
-  text-align: center;
   margin: 0;
 
   @media (max-width: 992px) {
@@ -111,16 +72,16 @@ const SubHeading = styled.h1`
     text-align: center;
   }
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 2.25rem;
+  }
+  @media (max-width: 660px) {
+    font-size: 1.75rem;
   }
   @media (max-width: 420px) {
-    font-size: 1.6rem; /* Final reduction for very small screens */
+    font-size: 1.5rem; /* Final reduction for very small screens */
   }
   @media (max-width: 330px) {
-    font-size: 1.3rem;
-  }
-  @media (max-width: 230px) {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 `;
 
@@ -128,14 +89,15 @@ const Text = styled.p`
   font-size: 1.25rem; /* Default font size for larger screens */
   line-height: 1.6; /* Maintain readability */
   max-width: 750px; /* Limit width for readability */
-  margin: 0 auto; /* Center-align text */
+  text-align: center;
+  color: #1e1e1e;
 
   @media (max-width: 1200px) {
     font-size: 1.15rem; /* Slightly reduce font size for medium screens */
   }
 
   @media (max-width: 992px) {
-    font-size: 1.1rem; /* Further reduction for smaller screens */
+    font-size: 1.125rem; /* Further reduction for smaller screens */
   }
 
   @media (max-width: 768px) {
@@ -144,11 +106,11 @@ const Text = styled.p`
   }
 
   @media (max-width: 576px) {
-    font-size: 0.95rem; /* Slightly smaller for smaller phones */
+    font-size: 0.875rem; /* Slightly smaller for smaller phones */
   }
 
   @media (max-width: 420px) {
-    font-size: 0.9rem; /* Final reduction for very small screens */
+    font-size: 0.75rem; /* Final reduction for very small screens */
     line-height: 1.4; /* Tighten line spacing for smaller space */
   }
 `;

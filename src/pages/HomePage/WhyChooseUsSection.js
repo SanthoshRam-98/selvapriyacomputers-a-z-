@@ -17,101 +17,81 @@ const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 36px;
-  margin-top: 64px;
-  margin-bottom: 64px;
+  padding: 64px;
   width: 100%;
-
-  @media (max-width: 768px) {
-    margin-top: 78px;
-    margin-bottom: 78px;
-  }
-  @media (max-width: 660px) {
-    margin-top: 58px;
-    margin-bottom: 58px;
-  }
-  @media (max-width: 480px) {
-    margin-top: 48px;
-    margin-bottom: 48px;
-  }
-  @media (max-width: 360px) {
-    margin-top: 38px;
-    margin-bottom: 38px;
-  }
 `;
 
 const Heading = styled.h3`
-  font-family: "Philosopher", serif;
-  font-size: 2rem;
+  font-size: 2rem; /* Base font size */
   font-weight: 100;
-  color: #333;
+
   margin: auto;
 
   @media (max-width: 992px) {
-    font-size: 2rem;
+    font-size: 1.75rem;
     text-align: left;
   }
   @media (max-width: 768px) {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
   @media (max-width: 330px) {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
   @media (max-width: 230px) {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 `;
 
 const SubHeading = styled.h1`
-  font-size: 3rem;
+  font-size: 3rem; /* Base font size for large screens */
   font-weight: bold;
   text-align: center;
   margin: 0;
 
   @media (max-width: 992px) {
     font-size: 2.5rem;
+    text-align: center;
   }
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 2.25rem;
+  }
+  @media (max-width: 660px) {
+    font-size: 1.75rem;
   }
   @media (max-width: 420px) {
-    font-size: 1.6rem;
+    font-size: 1.5rem; /* Final reduction for very small screens */
   }
   @media (max-width: 330px) {
-    font-size: 1.3rem;
-  }
-  @media (max-width: 230px) {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 `;
 
 const Text = styled.p`
-  font-size: 1.25rem;
-  line-height: 1.6;
-  max-width: 750px;
-  margin: 0 auto;
+  font-size: 1.25rem; /* Default font size for larger screens */
+  line-height: 1.6; /* Maintain readability */
+  text-align: center;
+  color: #1e1e1e;
 
   @media (max-width: 1200px) {
-    font-size: 1.15rem;
+    font-size: 1.15rem; /* Slightly reduce font size for medium screens */
   }
+
   @media (max-width: 992px) {
-    font-size: 1.1rem;
+    font-size: 1.125rem; /* Further reduction for smaller screens */
   }
+
   @media (max-width: 768px) {
-    font-size: 1rem;
-    line-height: 1.5;
-    width: 500px;
+    font-size: 1rem; /* Adjust for tablets and small devices */
+    line-height: 1.5; /* Adjust line height for compact text */
   }
+
   @media (max-width: 576px) {
-    font-size: 0.95rem;
-    width: 400px;
+    font-size: 0.875rem; /* Slightly smaller for smaller phones */
   }
+
   @media (max-width: 420px) {
-    font-size: 0.9rem;
-    line-height: 1.4;
-    width: 300px;
-  }
-  @media (max-width: 330px) {
-    width: 200px;
+    font-size: 0.75rem; /* Final reduction for very small screens */
+    line-height: 1.4; /* Tighten line spacing for smaller space */
   }
 `;
 

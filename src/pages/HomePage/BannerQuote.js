@@ -20,17 +20,20 @@ const BannerContainer = styled.div`
   border-top: 4px solid white; /* Top stroke */
   border-bottom: 4px solid white; /* Bottom stroke */
 
-  @media (max-width: 1200px) {
-  }
-
   @media (max-width: 768px) {
     font-size: 1.2rem;
   }
+  @media (max-width: 660px) {
+    font-size: 1rem;
+  }
+  @media (max-width: 420px) {
+    font-size: 0.75rem;
+  }
   @media (max-width: 330px) {
-    font-size: 0.75rem; /* Smaller font for tiny screens */
+    font-size: 0.625rem; /* Smaller font for tiny screens */
   }
   @media (max-width: 230px) {
-    font-size: 0.45rem;
+    font-size: 0.5rem;
   }
 `;
 

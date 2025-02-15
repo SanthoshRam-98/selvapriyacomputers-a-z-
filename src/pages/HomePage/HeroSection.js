@@ -106,9 +106,7 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-right: 15px;
-  padding-left: 15px;
-  padding-top: 15px;
+  padding: 64px;
   background-color: rgba(240, 248, 255, 0.9);
   gap: 24px;
   width: 50%;
@@ -116,25 +114,21 @@ const ContentWrapper = styled.div`
   padding-bottom: 24px;
   @media (max-width: 992px) {
     align-items: center;
-    padding-right: 80px;
-    padding-left: 80px;
-    padding-top: 80px;
+    padding: 48px;
     width: 100%;
   }
   @media (max-width: 768px) {
-    padding-right: 40px;
-    padding-left: 40px;
-    padding-top: 40px;
+    padding: 40px;
   }
-  @media (max-width: 420px) {
-    padding-right: 30px;
-    padding-left: 30px;
-    padding-top: 30px;
+  @media (max-width: 660px) {
+    padding: 32px;
   }
-  @media (max-width: 330px) {
-    padding-right: 10px;
-    padding-left: 10px;
-    padding-top: 10px; /* Reduce padding for very small screens */
+  @media (max-width: 480px) {
+    padding: 22px;
+    gap: 16px;
+  }
+  @media (max-width: 360px) {
+    padding: 18px;
   }
 `;
 
@@ -143,13 +137,19 @@ const Title = styled.h1`
   font-size: 1.625rem;
   font-weight: 100;
   margin: 0;
+
   text-align: center;
   @media (max-width: 768px) {
     font-size: 1.375rem;
   }
-
-  @media (max-width: 330px) {
+  @media (max-width: 660px) {
+    font-size: 1rem;
+  }
+  @media (max-width: 420px) {
     font-size: 0.875rem;
+  }
+  @media (max-width: 330px) {
+    font-size: 0.75rem;
   }
 `;
 
@@ -157,53 +157,58 @@ const Subtitle = styled.h2`
   font-size: 3rem; /* Base font size for large screens */
   font-weight: bold;
   margin: 0;
-
+  width: 400px;
   @media (max-width: 992px) {
     font-size: 2.5rem;
     text-align: center;
   }
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 2.25rem;
+  }
+  @media (max-width: 660px) {
+    font-size: 1.75rem;
   }
   @media (max-width: 420px) {
-    font-size: 1.6rem; /* Final reduction for very small screens */
+    font-size: 1.5rem; /* Final reduction for very small screens */
+    width: 300px;
   }
   @media (max-width: 330px) {
-    font-size: 1.3rem;
-  }
-  @media (max-width: 230px) {
-    font-size: 1rem;
+    font-size: 1.2rem;
+    max-width: 250px;
   }
 `;
 
 const Description = styled.p`
-  margin: 0;
+  font-size: 1.25rem; /* Default font size for larger screens */
+  line-height: 1.6; /* Maintain readability */
+  max-width: 750px; /* Limit width for readability */
   text-align: left;
-  font-size: 1.25rem; /* Base font size for paragraph */
-
+  color: #1e1e1e;
+  max-width: 400px;
   @media (max-width: 1200px) {
     font-size: 1.15rem; /* Slightly reduce font size for medium screens */
   }
+
   @media (max-width: 992px) {
-    font-size: 1.1rem; /* Further reduction for smaller screens */
+    font-size: 1.125rem; /* Further reduction for smaller screens */
     text-align: center;
   }
+
   @media (max-width: 768px) {
-    font-size: 1rem;
-    text-align: center;
+    font-size: 1rem; /* Adjust for tablets and small devices */
     line-height: 1.5; /* Adjust line height for compact text */
+    text-align: center;
   }
 
   @media (max-width: 576px) {
-    font-size: 0.95rem; /* Slightly smaller for smaller phones */
+    font-size: 0.875rem; /* Slightly smaller for smaller phones */
+    text-align: center;
   }
+
   @media (max-width: 420px) {
-    font-size: 0.9rem; /* Final reduction for very small screens */
+    font-size: 0.75rem; /* Final reduction for very small screens */
     line-height: 1.4; /* Tighten line spacing for smaller space */
-  }
-  @media (max-width: 330px) {
-  }
-  @media (max-width: 230px) {
+    text-align: center;
   }
 `;
 

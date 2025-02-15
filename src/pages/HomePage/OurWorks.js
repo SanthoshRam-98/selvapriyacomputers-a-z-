@@ -124,10 +124,25 @@ const Header = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding: 24px;
+  padding: 64px;
   margin: 0; /* Initial margin set to 0 */
   font-family: "Philosopher", serif;
 
+  @media (max-width: 992px) {
+    padding: 48px;
+  }
+  @media (max-width: 768px) {
+    padding: 40px;
+  }
+  @media (max-width: 660px) {
+    padding: 32px;   
+  }
+  @media (max-width: 480px) {
+      padding: 22px;
+  }
+  @media (max-width: 360px) {
+      padding: 18px;
+  }
   h1,
   h3,
   p {
@@ -136,78 +151,79 @@ const Header = styled.div`
   }
 
   h1 {
-    font-size: 3rem; /* Base font size for large screens */
-    font-weight: bold;
-    text-align: center;
-    margin: 0;
+ font-size: 3rem; /* Base font size for large screens */
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
 
-    @media (max-width: 992px) {
-      font-size: 2.5rem;
-      text-align: center;
-    }
-    @media (max-width: 768px) {
-      font-size: 2rem;
-    }
-    @media (max-width: 420px) {
-      font-size: 1.6rem; /* Final reduction for very small screens */
-    }
-    @media (max-width: 330px) {
-      font-size: 1.3rem;
-    }
-    @media (max-width: 230px) {
-      font-size: 1rem;
-    }
+  @media (max-width: 992px) {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+  @media (max-width: 768px) {
+    font-size: 2.25rem;
+  }
+  @media (max-width: 660px) {
+    font-size: 1.75rem;
+  }
+  @media (max-width: 420px) {
+    font-size: 1.5rem; /* Final reduction for very small screens */
+  }
+  @media (max-width: 330px) {
+    font-size: 1.2rem;
+  }
   }
 
   h3 {
-    font-family: "Philosopher", serif;
-    font-size: 2rem; /* Base font size */
-    font-weight: 100;
+  
+  font-size: 2rem; /* Base font size */
+  font-weight: 100;
+  
+  margin: auto;
 
-    margin: auto;
-
-    @media (max-width: 992px) {
-      font-size: 2rem;
-      text-align: left;
-    }
-    @media (max-width: 768px) {
-      font-size: 1.8rem;
-    }
-    @media (max-width: 330px) {
-      font-size: 1rem;
-    }
-    @media (max-width: 230px) {
-      font-size: 0.8rem;
-    }
+  @media (max-width: 992px) {
+    font-size: 1.75rem;
+    text-align: left;
+  }
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+  @media (max-width: 330px) {
+    font-size: 1.25rem;
+  }
+  @media (max-width: 230px) {
+    font-size: 1rem;
+  }
   }
 
   p {
-    font-size: 1.25rem; /* Default font size for larger screens */
-    line-height: 1.6; /* Maintain readability */
-    max-width: 750px; /* Limit width for readability */
-    margin: 0 auto; /* Center-align text */
-    color: #aaa;
-    @media (max-width: 1200px) {
-      font-size: 1.15rem; /* Slightly reduce font size for medium screens */
-    }
+  color: #aaa;
+   font-size: 1.25rem; /* Default font size for larger screens */
+  line-height: 1.6; /* Maintain readability */
+  max-width: 750px; /* Limit width for readability */
+  text-align: center;
+  
 
-    @media (max-width: 992px) {
-      font-size: 1.1rem; /* Further reduction for smaller screens */
-    }
+  @media (max-width: 1200px) {
+    font-size: 1.15rem; /* Slightly reduce font size for medium screens */
+  }
 
-    @media (max-width: 768px) {
-      font-size: 1rem; /* Adjust for tablets and small devices */
-      line-height: 1.5; /* Adjust line height for compact text */
-    }
+  @media (max-width: 992px) {
+    font-size: 1.125rem; /* Further reduction for smaller screens */
+  }
 
-    @media (max-width: 576px) {
-      font-size: 0.95rem; /* Slightly smaller for smaller phones */
-    }
+  @media (max-width: 768px) {
+    font-size: 1rem; /* Adjust for tablets and small devices */
+    line-height: 1.5; /* Adjust line height for compact text */
+  }
 
-    @media (max-width: 420px) {
-      font-size: 0.9rem; /* Final reduction for very small screens */
-      line-height: 1.4; /* Tighten line spacing for smaller space */
-    }
+  @media (max-width: 576px) {
+    font-size: 0.875rem; /* Slightly smaller for smaller phones */
+  }
+
+  @media (max-width: 420px) {
+    font-size: 0.75rem; /* Final reduction for very small screens */
+    line-height: 1.4; /* Tighten line spacing for smaller space */
   }
 `;
 
@@ -226,7 +242,7 @@ const Grid = styled.div`
 
   @media (max-width: 480px) {
     grid-template-columns: 1fr;
-    padding: 50px;
+
     background: white;
   }
 `;
