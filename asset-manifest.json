@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/selvapriyacomputers-a-z-/static/css/main.630d927b.css",
-    "main.js": "/selvapriyacomputers-a-z-/static/js/main.2577ac5e.js",
+    "main.js": "/selvapriyacomputers-a-z-/static/js/main.b978a605.js",
     "static/js/488.6a82bf20.chunk.js": "/selvapriyacomputers-a-z-/static/js/488.6a82bf20.chunk.js",
     "static/media/png": "/selvapriyacomputers-a-z-/static/media/180bac2e2a9cde6473ddcd39d1b8fe8d05fb375df891ad106ac1792475a11db0.fea0c5413b48f3d7de91.png",
     "static/media/hero1.png": "/selvapriyacomputers-a-z-/static/media/hero1.d47a57a44a6344738a65.png",
@@ -58,11 +58,11 @@
     "static/media/Component 9.png": "/selvapriyacomputers-a-z-/static/media/Component 9.56c7102305d7d3a3ac07.png",
     "index.html": "/selvapriyacomputers-a-z-/index.html",
     "main.630d927b.css.map": "/selvapriyacomputers-a-z-/static/css/main.630d927b.css.map",
-    "main.2577ac5e.js.map": "/selvapriyacomputers-a-z-/static/js/main.2577ac5e.js.map",
+    "main.b978a605.js.map": "/selvapriyacomputers-a-z-/static/js/main.b978a605.js.map",
     "488.6a82bf20.chunk.js.map": "/selvapriyacomputers-a-z-/static/js/488.6a82bf20.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.630d927b.css",
-    "static/js/main.2577ac5e.js"
+    "static/js/main.b978a605.js"
   ]
 }
