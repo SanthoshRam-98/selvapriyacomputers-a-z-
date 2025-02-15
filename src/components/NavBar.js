@@ -27,7 +27,7 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 100px;
+  padding: 24px 100px;
   position: sticky;
   width: 100%;
   top: 0;
@@ -37,12 +37,11 @@ const Nav = styled.nav`
   z-index: 10000;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   @media (max-width: 660px) {
-    padding: 20px 50px;
+    padding: 24px 24px;
   }
-  @media (max-width: 420px) {
-  }
+
   @media (max-width: 330px) {
-    padding: 10px 20px;
+    padding: 12px 12px;
   }
 `;
 

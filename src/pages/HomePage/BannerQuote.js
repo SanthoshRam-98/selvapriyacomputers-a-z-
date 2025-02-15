@@ -14,7 +14,10 @@ const BannerContainer = styled.div`
   color: white;
   font-size: 1.5rem;
   font-style: italic;
-  padding: 24px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  padding-right: 100px;
+  padding-left: 100px;
   margin: 0;
   text-align: center; /* Centers text */
   border-top: 4px solid white; /* Top stroke */
@@ -25,12 +28,16 @@ const BannerContainer = styled.div`
   }
   @media (max-width: 660px) {
     font-size: 1rem;
+    padding-right: 24px;
+    padding-left: 24px;
   }
   @media (max-width: 420px) {
     font-size: 0.75rem;
   }
   @media (max-width: 330px) {
     font-size: 0.625rem; /* Smaller font for tiny screens */
+    padding-right: 12px;
+    padding-left: 12px;
   }
   @media (max-width: 230px) {
     font-size: 0.5rem;

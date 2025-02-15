@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import BoxContainer from "./BoxContainer";
-
 // Styled Components
 const SectionContainer = styled.section`
   display: flex;
@@ -16,9 +14,20 @@ const SectionContainer = styled.section`
 const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 36px;
-  padding: 64px;
+  gap: 24px;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  padding-right: 100px;
+  padding-left: 100px;
   width: 100%;
+  @media (max-width: 660px) {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+  @media (max-width: 330px) {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
 `;
 
 const Heading = styled.h3`

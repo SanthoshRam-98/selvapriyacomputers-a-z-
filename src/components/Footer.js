@@ -14,12 +14,11 @@ const Footer = () => {
     <FooterContainer>
       <TopSection>
         <ContactInfo>
-          <TitleAndSubtitle>
-            <Title>Let's keep in touch!</Title>
-            <Subtitle>
-              Find us on any of these platforms, we respond 1-2 business days.
-            </Subtitle>
-          </TitleAndSubtitle>
+          <Title>Let's keep in touch!</Title>
+          <Subtitle>
+            Find us on any of these platforms, we respond 1-2 business days.
+          </Subtitle>
+
           <SocialIcons>
             <SocialLink href="#" target="_blank" rel="noopener noreferrer">
               <FaWhatsapp />
@@ -66,8 +65,8 @@ const FooterContainer = styled.footer`
   margin-right: 100px;
   background: #1e1e1e;
   color: #fff;
-  padding-top: 36px;
-  padding-bottom: 36px;
+  padding-top: 64px;
+  padding-bottom: 64px;
   margin-left: 100px;
   font-family: "Philosopher", Regular;
 
@@ -82,12 +81,6 @@ const FooterContainer = styled.footer`
     margin-right: 20px;
     margin-left: 20px;
   }
-`;
-
-const TitleAndSubtitle = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
 `;
 
 const TopSection = styled.div`
@@ -108,15 +101,17 @@ const TopSection = styled.div`
 `;
 
 const ContactInfo = styled.div`
-  flex: 1;
+  display: flex;
+  flex-direction: column;
   min-width: 300px;
+  gap: 24px;
 `;
 
 const Title = styled.h2`
   font-family: "Philosopher", serif;
   font-size: 2rem; /* Base font size */
   font-weight: 100;
-
+  margin: 0;
   @media (max-width: 992px) {
     font-size: 2rem;
     text-align: left;
@@ -136,7 +131,7 @@ const Subtitle = styled.p`
   font-size: 1.25rem; /* Default font size for larger screens */
   line-height: 1.6; /* Maintain readability */
   max-width: 750px; /* Limit width for readability */
-
+  margin: 0;
   color: #aaa;
   @media (max-width: 1200px) {
     font-size: 1.15rem; /* Slightly reduce font size for medium screens */
@@ -165,7 +160,7 @@ const Subtitle = styled.p`
 
 const SocialIcons = styled.div`
   display: flex;
-  gap: 10px; /* Reduce spacing */
+  gap: 12px; /* Reduce spacing */
 
   @media (max-width: 330px) {
     gap: 8px;

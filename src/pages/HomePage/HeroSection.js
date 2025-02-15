@@ -106,29 +106,30 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 64px;
+  padding-top: 64px;
+  padding-bottom: 64px;
   background-color: rgba(240, 248, 255, 0.9);
   gap: 24px;
   width: 50%;
   align-items: flex-start;
-  padding-bottom: 24px;
+  padding-right: 100px;
+  padding-left: 100px;
   @media (max-width: 992px) {
     align-items: center;
-    padding: 48px;
     width: 100%;
   }
   @media (max-width: 768px) {
-    padding: 40px;
   }
   @media (max-width: 660px) {
-    padding: 32px;
+    padding-right: 24px;
+    padding-left: 24px;
   }
   @media (max-width: 480px) {
-    padding: 22px;
     gap: 16px;
   }
-  @media (max-width: 360px) {
-    padding: 18px;
+  @media (max-width: 330px) {
+    padding-right: 12px;
+    padding-left: 12px;
   }
 `;
 
@@ -138,7 +139,6 @@ const Title = styled.h1`
   font-weight: 100;
   margin: 0;
 
-  text-align: center;
   @media (max-width: 768px) {
     font-size: 1.375rem;
   }
@@ -161,30 +161,32 @@ const Subtitle = styled.h2`
   @media (max-width: 992px) {
     font-size: 2.5rem;
     text-align: center;
+    width: 400px;
   }
   @media (max-width: 768px) {
     font-size: 2.25rem;
+    width: 400px;
   }
   @media (max-width: 660px) {
     font-size: 1.75rem;
+    width: 300px;
   }
   @media (max-width: 420px) {
     font-size: 1.5rem; /* Final reduction for very small screens */
-    width: 300px;
+    width: 200px;
   }
   @media (max-width: 330px) {
     font-size: 1.2rem;
-    max-width: 250px;
+    width: 200px;
   }
 `;
 
 const Description = styled.p`
   font-size: 1.25rem; /* Default font size for larger screens */
   line-height: 1.6; /* Maintain readability */
-  max-width: 750px; /* Limit width for readability */
   text-align: left;
   color: #1e1e1e;
-  max-width: 400px;
+
   @media (max-width: 1200px) {
     font-size: 1.15rem; /* Slightly reduce font size for medium screens */
   }

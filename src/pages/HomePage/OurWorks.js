@@ -124,24 +124,26 @@ const Header = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding: 64px;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  padding-right:100px;
+  padding-left:100px;
   margin: 0; /* Initial margin set to 0 */
   font-family: "Philosopher", serif;
 
   @media (max-width: 992px) {
-    padding: 48px;
+    
   }
   @media (max-width: 768px) {
-    padding: 40px;
+    
   }
   @media (max-width: 660px) {
-    padding: 32px;   
+        padding-right: 24px;
+  padding-left: 24px;
   }
-  @media (max-width: 480px) {
-      padding: 22px;
-  }
-  @media (max-width: 360px) {
-      padding: 18px;
+  @media (max-width: 330px) {
+              padding-right: 12px;
+  padding-left: 12px;
   }
   h1,
   h3,
@@ -200,16 +202,18 @@ const Header = styled.div`
   color: #aaa;
    font-size: 1.25rem; /* Default font size for larger screens */
   line-height: 1.6; /* Maintain readability */
-  max-width: 750px; /* Limit width for readability */
+  
   text-align: center;
   
 
   @media (max-width: 1200px) {
     font-size: 1.15rem; /* Slightly reduce font size for medium screens */
+    
   }
 
   @media (max-width: 992px) {
     font-size: 1.125rem; /* Further reduction for smaller screens */
+    
   }
 
   @media (max-width: 768px) {
@@ -255,7 +259,7 @@ const GridItem = styled.div`
   &:hover div {
     opacity: 1;
     background-color: #ffaaaa; /* Rose color */
-    color: white; /* White text */
+    /* White text */
   }
 `;
 
@@ -278,5 +282,15 @@ const Overlay = styled.div`
   font-weight: bold;
   opacity: 0;
   transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  ${GridItem}:hover & {
+    opacity: 2; /* Minimal opacity effect */
+    background-color: rgba(
+      255,
+      170,
+      170,
+      0.3
+    ); /* Light rose color with transparency */
+    color: white;
+  }
 `;
 export default PremiumPrintingSolutions;

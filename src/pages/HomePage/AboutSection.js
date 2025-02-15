@@ -24,17 +24,17 @@ const AboutContainer = styled.section`
 
   @media (max-width: 660px) {
     padding: 32px;
-    margin-right: 50px;
-    margin-left: 50px;
+    margin-right: 24px;
+    margin-left: 24px;
   }
   @media (max-width: 480px) {
     padding: 22px;
     gap: 16px;
   }
-  @media (max-width: 360px) {
+  @media (max-width: 330px) {
     padding: 18px;
-    margin-right: 20px;
-    margin-left: 20px;
+    margin-right: 12px;
+    margin-left: 12px;
     gap: 24px;
   }
 `;
