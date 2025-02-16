@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { BsFillHeartFill, BsHeart } from "react-icons/bs"; // Smaller icons for mobile
 import { useNavigate } from "react-router-dom";
 import WeddingCard1 from "../../WeddingCardsImages/D 1.png";
 import WeddingCard2 from "../../WeddingCardsImages/D 2.png";
@@ -31,8 +33,20 @@ const cards = [
 const Container = styled.div`
   min-height: 100vh;
   background-color: #e0f7fa;
-
   position: relative;
+  gap: 64px;
+  padding-top: 64px;
+  padding-right: 100px;
+  padding-left: 100px;
+  padding-bottom: 64px;
+  @media (max-width: 660px) {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+  @media (max-width: 330px) {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
 `;
 
 const BackButton = styled.button`
@@ -176,7 +190,7 @@ const LikeButton = styled.button`
     transform: scale(1.1);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 330px) {
     width: 2rem;
     height: 2rem;
   }
@@ -204,52 +218,33 @@ const WeddingCardsGrid = () => {
     flex-direction: column;
     gap: 24px;
   `;
-  const EntireContainer = styled.div`
-    margin-right: 100px;
-    margin-left: 100px;
-    padding-top: 128px;
-    padding-bottom: 64px;
-    @media (max-width: 1900px) {
-      padding-top: 146px;
-    }
-    @media (max-width: 660px) {
-      margin-left: 50px;
-      margin-right: 50px;
-    }
-    @media (max-width: 330px) {
-      margin-left: 20px;
-      margin-right: 20px;
-      padding-top: 98px;
-    }
-  `;
+
   return (
     <Container>
-      <EntireContainer>
-        <Header>
-          <TitleSection>
-            <BackButton onClick={goBack}>←</BackButton>
-            <Title>Wedding Cards</Title>
-          </TitleSection>
-          <Subtitle>
-            Celebrate your special day with our exquisite wedding card designs.
-            Find the one that suits your style and make your big day
-            unforgettable.
-          </Subtitle>
-        </Header>
-        <GridContainer>
-          {cards.map((card) => (
-            <ImageContainer key={card.id}>
-              <img src={card.image} alt={`Card ${card.id}`} />
-              <LikeButton
-                liked={likedCards[card.id]}
-                onClick={() => toggleLike(card.id)}
-              >
-                {likedCards[card.id] ? "❤" : "♡"}
-              </LikeButton>
-            </ImageContainer>
-          ))}
-        </GridContainer>
-      </EntireContainer>
+      <Header>
+        <TitleSection>
+          <BackButton onClick={goBack}>←</BackButton>
+          <Title>Wedding Cards</Title>
+        </TitleSection>
+        <Subtitle>
+          Celebrate your special day with our exquisite wedding card designs.
+          Find the one that suits your style and make your big day
+          unforgettable.
+        </Subtitle>
+      </Header>
+      <GridContainer>
+        {cards.map((card) => (
+          <ImageContainer key={card.id}>
+            <img src={card.image} alt={`Card ${card.id}`} />
+            <LikeButton
+              liked={likedCards[card.id]}
+              onClick={() => toggleLike(card.id)}
+            >
+              {likedCards[card.id] ? <AiFillHeart /> : <AiOutlineHeart />}
+            </LikeButton>
+          </ImageContainer>
+        ))}
+      </GridContainer>
     </Container>
   );
 };

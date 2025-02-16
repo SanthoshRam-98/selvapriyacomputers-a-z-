@@ -69,23 +69,30 @@ export function ProductGrid() {
 
 // Styled Components
 const Section = styled.section`
-  padding-top: 48px;
-  padding-bottom: 48px;
   text-align: center;
   background-color: #f5f5f5;
   color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  padding-top: 64px;
+  padding-right: 100px;
+  padding-left: 100px;
+  padding-bottom: 64px;
+  @media (max-width: 660px) {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+  @media (max-width: 330px) {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
 `;
 
 const Header = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin-top: 100px;
-  margin-bottom: 40px;
-  @media (max-width: 330px) {
-    margin-top: 50px;
-    margin-bottom: 20px;
-  }
 `;
 
 const Heading = styled.h1`
@@ -142,8 +149,6 @@ const SubHeading = styled.p`
 `;
 
 const GridContainer = styled.div`
-  margin-right: 100px;
-  margin-left: 100px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
@@ -155,16 +160,9 @@ const GridContainer = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
-  @media (max-width: 660px) {
-    margin-right: 50px;
-    margin-left: 50px;
-  }
+
   @media (max-width: 480px) {
     grid-template-columns: 1fr;
-  }
-  @media (max-width: 330px) {
-    margin-right: 20px;
-    margin-left: 20px;
   }
 `;
 
@@ -196,7 +194,7 @@ const Overlay = styled.div`
   bottom: -100%; /* Initially hidden */
   left: 0;
   right: 0;
-  height: 40px; /* Approx height of hover effect */
+  height: 60px; /* Approx height of hover effect */
   background-color: rgba(0, 0, 0, 0.6); /* Default background color */
   display: flex;
   justify-content: center;

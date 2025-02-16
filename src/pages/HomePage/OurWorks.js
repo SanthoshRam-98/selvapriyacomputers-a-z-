@@ -261,6 +261,9 @@ const GridItem = styled.div`
     background-color: #ffaaaa; /* Rose color */
     /* White text */
   }
+  @media (max-width: 768px) {
+    opacity: 1; /* Always visible on mobile */
+  }
 `;
 
 const Image = styled.img`
@@ -288,7 +291,7 @@ const Overlay = styled.div`
       255,
       170,
       170,
-      0.3
+      0.91
     ); /* Light rose color with transparency */
     color: white;
   }
