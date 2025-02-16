@@ -1,188 +1,44 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import Contact from "./HomePage/ContactSection";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import L from "leaflet";
 
-// Custom marker icon
-const customIcon = new L.Icon({
-  iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png", // Replace with your preferred marker icon
-  iconSize: [38, 38],
-});
+const MapContainer = styled.div`
+  width: 100vw; /* Full width of the viewport */
+  height: 450px;
+  overflow: hidden; /* Ensures no unwanted gaps */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-export default function ContactPage() {
-  const [mapView, setMapView] = useState("map");
-
-  function MapLayerToggle() {
-    const map = useMap(); // useMap hook is now inside MapLayerToggle
-
-    useEffect(() => {
-      // This ensures the zoom level is deep when the map is rendered
-      map.setZoom(18); // Fully zoomed into the location
-    }, [map]);
-
-    useEffect(() => {
-      const tileLayerUrl =
-        mapView === "map"
-          ? "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          : "https://mt{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}";
-
-      const tileLayerOptions =
-        mapView === "map"
-          ? {
-              attribution:
-                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-            }
-          : {
-              subdomains: ["0", "1", "2", "3"],
-            };
-
-      map.eachLayer((layer) => {
-        if (layer instanceof L.TileLayer) {
-          map.removeLayer(layer);
-        }
-      });
-
-      L.tileLayer(tileLayerUrl, tileLayerOptions).addTo(map);
-    }, [map, mapView]);
-
-    return null;
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block; /* Prevents extra spacing */
   }
-
-  return (
-    <ContactWrapper>
-      <ContentContainer>
-        <Contact />
-        <MapSection>
-          <MapContainer
-            center={[9.5853, 77.9568]} // Coordinates for the address
-            zoom={18} // Fully zoomed into the location
-            style={{ height: "100%", width: "100%" }}
-          >
-            <MapLayerToggle />
-            <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            />
-            <Marker position={[9.5853, 77.9568]} icon={customIcon}>
-              <Popup>SelvaPriya Computers</Popup>
-            </Marker>
-          </MapContainer>
-
-          {/* Controls */}
-          <Controls>
-            <ViewToggle>
-              <ToggleButton
-                active={mapView === "map"}
-                onClick={() => setMapView("map")}
-              >
-                Map
-              </ToggleButton>
-              <ToggleButton
-                active={mapView === "satellite"}
-                onClick={() => setMapView("satellite")}
-              >
-                Satellite
-              </ToggleButton>
-            </ViewToggle>
-          </Controls>
-        </MapSection>
-      </ContentContainer>
-    </ContactWrapper>
-  );
-}
-
-const ContactWrapper = styled.main`
-  background-color: #cfe6f2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 50px 20px;
 `;
 
-const ContentContainer = styled.div`
-  margin-top: 128px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-`;
-
-const HeaderSection = styled.section`
-  text-align: center;
-`;
-
-const Title = styled.h1`
-  color: #1e1e1e;
-  font: 400 32px Philosopher, Regular;
-`;
-
-const MainHeading = styled.h2`
-  color: #1e1e1e;
-  margin-top: 20px;
-  font: 700 48px Philosopher, Regular;
-`;
-
-const SubHeading = styled.p`
-  color: #1e1e1e;
-  margin-top: 20px;
-  font: 400 20px Philosopher, Regular;
-`;
-
-const InfoSection = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-`;
-
-const ContactDetail = styled.div`
-  text-align: center;
-`;
-
-const Label = styled.h3`
-  color: #6f6f6f;
-  font: 400 20px Philosopher, Regular;
-`;
-
-const Value = styled.p`
-  color: #1e1e1e;
-  font: 700 24px Philosopher, Regular;
-  white-space: pre-line;
-`;
-
-const MapSection = styled.section`
+const Container = styled.div`
+  padding-top: 64px;
   width: 100%;
-  height: 400px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  position: relative;
+  margin-bottom: 0; /* Ensures no margin at the bottom */
+  padding-bottom: 0 !important; /* Overrides any padding */
 `;
 
-const Controls = styled.div`
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  display: flex;
-  gap: 10px;
-`;
+const GoogleMap = () => {
+  return (
+    <Container>
+      <Contact />
+      <MapContainer>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3936.327330139446!2d77.49267027478533!3d9.392642590683915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b06ebc185f2348b%3A0x6d78be89d840c498!2sKarmega%20Nadar%20St%2C%20Dhalavaipuram%2C%20Tamil%20Nadu%20626188!5e0!3m2!1sen!2sin!4v1739726291642!5m2!1sen!2sin"
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </MapContainer>
+    </Container>
+  );
+};
 
-const ViewToggle = styled.div`
-  display: flex;
-  gap: 10px;
-`;
-
-const ToggleButton = styled.button`
-  background-color: ${(props) => (props.active ? "#1e1e1e" : "#d9d9d9")};
-  color: ${(props) => (props.active ? "#fff" : "#1e1e1e")};
-  border: 1px solid #1e1e1e;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 14px;
-  &:hover {
-    background-color: #1e1e1e;
-    color: #fff;
-  }
-`;
+export default GoogleMap;

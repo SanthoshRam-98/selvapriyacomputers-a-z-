@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { BsFillHeartFill, BsHeart } from "react-icons/bs"; // Smaller icons for mobile
+import { IoArrowBack, IoArrowBackOutline } from "react-icons/io5"; // Import icons
 import { useNavigate } from "react-router-dom";
 import WeddingCard1 from "../../WeddingCardsImages/D 1.png";
 import WeddingCard2 from "../../WeddingCardsImages/D 2.png";
@@ -15,6 +16,8 @@ import WeddingCard9 from "../../WeddingCardsImages/D 9.png";
 import WeddingCard10 from "../../WeddingCardsImages/D 10.png";
 import WeddingCard11 from "../../WeddingCardsImages/D 11.png";
 import WeddingCard12 from "../../WeddingCardsImages/D 12.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
 const cards = [
   { id: 1, image: WeddingCard1 },
   { id: 2, image: WeddingCard2 },
@@ -31,10 +34,12 @@ const cards = [
 ];
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
   min-height: 100vh;
   background-color: #e0f7fa;
   position: relative;
-  gap: 64px;
   padding-top: 64px;
   padding-right: 100px;
   padding-left: 100px;
@@ -63,18 +68,20 @@ const BackButton = styled.button`
   color: #333;
   transition: background-color 0.3s;
   font-weight: bold;
+
   &:hover {
     background-color: transparent;
   }
+
   @media (max-width: 380px) {
     width: 1.8rem;
     height: 1.8rem;
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
   @media (max-width: 280px) {
     width: 1.2rem;
     height: 1.2rem;
-    font-size: 0.4rem;
+    font-size: 0.8rem;
   }
 `;
 
@@ -204,6 +211,21 @@ const TitleSection = styled.div`
 const WeddingCardsGrid = () => {
   const [likedCards, setLikedCards] = useState({});
   const navigate = useNavigate();
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 330);
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true, // Ensures animations trigger only once
+    });
+  }, []);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 330);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const toggleLike = (id) => {
     setLikedCards((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -223,7 +245,13 @@ const WeddingCardsGrid = () => {
     <Container>
       <Header>
         <TitleSection>
-          <BackButton onClick={goBack}>←</BackButton>
+          <BackButton onClick={goBack}>
+            {isSmallScreen ? (
+              <IoArrowBackOutline size={16} />
+            ) : (
+              <IoArrowBack size={24} />
+            )}
+          </BackButton>
           <Title>Wedding Cards</Title>
         </TitleSection>
         <Subtitle>
@@ -232,7 +260,7 @@ const WeddingCardsGrid = () => {
           unforgettable.
         </Subtitle>
       </Header>
-      <GridContainer>
+      <GridContainer data-aos="fade-up">
         {cards.map((card) => (
           <ImageContainer key={card.id}>
             <img src={card.image} alt={`Card ${card.id}`} />

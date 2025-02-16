@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 // Importing images
 import Product1 from "../../ProductImages/Products-8.png";
@@ -32,6 +34,13 @@ const products = [
 ];
 
 export function ProductGrid() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true, // Ensures animations trigger only once
+    });
+  }, []);
+
   return (
     <Section>
       <Header>
@@ -41,7 +50,7 @@ export function ProductGrid() {
           design solutions for your needs.
         </SubHeading>
       </Header>
-      <GridContainer>
+      <GridContainer data-aos="fade-up">
         {products.map((product, index) => (
           <GridItem key={index}>
             <Link
