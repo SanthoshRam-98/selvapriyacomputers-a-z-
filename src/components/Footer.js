@@ -72,14 +72,13 @@ const FooterContainer = styled.footer`
 
   box-sizing: border-box; /* Ensures padding doesn't add extra width */
   @media (max-width: 660px) {
-    margin-right: 50px;
-    margin-left: 50px;
+    margin-right: 24px;
+    margin-left: 24px;
   }
-  @media (max-width: 420px) {
-  }
+
   @media (max-width: 330px) {
-    margin-right: 20px;
-    margin-left: 20px;
+    margin-right: 12px;
+    margin-left: 12px;
   }
 `;
 
