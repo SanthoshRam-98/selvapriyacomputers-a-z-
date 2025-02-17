@@ -118,10 +118,6 @@ const Menu = styled.ul`
   padding: 0;
   margin: 0;
   gap: 178px;
-
-  @media (max-width: 1230px) {
-    gap: 128px;
-  }
   @media (max-width: 1230px) {
     flex-direction: column;
     position: fixed;
@@ -134,7 +130,7 @@ const Menu = styled.ul`
     padding: 80px 24px;
     z-index: 1000;
     transition: right 0.3s ease-in-out;
-    gap: 32px;
+    gap: 8px;
   }
 `;
 

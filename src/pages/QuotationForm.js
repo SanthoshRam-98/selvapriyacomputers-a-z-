@@ -72,14 +72,16 @@ const FormContainer = styled.div`
 `;
 
 const FormFields = styled.div`
-  width: 100%;
-  max-width: 820px;
-  margin: auto;
-  @media (max-width: 992px) {
-    width: 75%;
+  padding-right: 100px;
+  padding-left: 100px;
+
+  @media (max-width: 660px) {
+    padding-right: 24px;
+    padding-left: 24px;
   }
-  @media (max-width: 768px) {
-    width: 60%;
+  @media (max-width: 330px) {
+    padding-right: 12px;
+    padding-left: 12px;
   }
 `;
 const FormRow = styled.div`
@@ -142,20 +144,14 @@ const FileUploadContainer = styled.div`
   margin-left: 100px;
   margin-right: 100px;
   gap: 24px;
-  @media (max-width: 992px) {
-    padding: 15px;
-  }
+
   @media (max-width: 660px) {
-    margin-right: 50px;
-    margin-left: 50px;
-  }
-  @media (max-width: 480px) {
-    margin-right: 50px;
-    margin-left: 50px;
+    margin-right: 24px;
+    margin-left: 24px;
   }
   @media (max-width: 330px) {
-    margin-right: 20px;
-    margin-left: 20px;
+    margin-right: 12px;
+    margin-left: 12px;
   }
 `;
 
@@ -204,7 +200,7 @@ const StyledFileComponent = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 80%;
   max-width: 1030px;
   height: 242px;
   border: 2px dashed #a3c1d1;

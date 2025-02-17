@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 // Example local image imports
@@ -90,6 +90,14 @@ const items = [
 ];
 
 const PremiumPrintingSolutions = () => {
+  const [activeId, setActiveId] = useState(null);
+
+  const toggleOverlay = (id) => {
+    if (window.innerWidth <= 768) {
+      setActiveId(activeId === id ? null : id);
+    }
+  };
+
   return (
     <div>
       <Container>
@@ -103,9 +111,9 @@ const PremiumPrintingSolutions = () => {
         </Header>
         <Grid>
           {items.map((item) => (
-            <GridItem key={item.id}>
+            <GridItem key={item.id} onClick={() => toggleOverlay(item.id)}>
               <Image src={item.image} alt={item.text} />
-              <Overlay>{item.text}</Overlay>
+              <Overlay isActive={activeId === item.id}>{item.text}</Overlay>
             </GridItem>
           ))}
         </Grid>
@@ -250,26 +258,11 @@ const Grid = styled.div`
     background: white;
   }
 `;
-
 const GridItem = styled.div`
   background-color: #fff;
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  &:hover div {
-    opacity: 1;
-    background-color: #ffaaaa; /* Rose color */
-    /* White text */
-  }
-  @media (max-width: 768px) {
-    opacity: 1; /* Always visible on mobile */
-  }
-`;
-
-const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 `;
 
 const Overlay = styled.div`
@@ -283,17 +276,23 @@ const Overlay = styled.div`
   align-items: center;
   font-size: 1.2rem;
   font-weight: bold;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  ${GridItem}:hover & {
-    opacity: 2; /* Minimal opacity effect */
-    background-color: rgba(
-      255,
-      170,
-      170,
-      0.91
-    ); /* Light rose color with transparency */
-    color: white;
+  opacity: ${(props) => (props.isActive ? "1" : "0")};
+  background-color: rgba(255, 170, 170, 0.91);
+  color: white;
+  transition: opacity 0.3s ease-in-out;
+
+  @media (min-width: 769px) {
+    opacity: 0;
+    ${GridItem}:hover & {
+      opacity: 1;
+    }
   }
 `;
+
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
 export default PremiumPrintingSolutions;

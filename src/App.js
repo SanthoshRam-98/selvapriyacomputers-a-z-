@@ -93,7 +93,6 @@ function App() {
 const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ensure it takes up full viewport height */
 `;
 
 const MainContent = styled.main`
