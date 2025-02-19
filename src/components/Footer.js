@@ -7,7 +7,7 @@ import {
   FaInstagram,
   FaXTwitter,
 } from "react-icons/fa6";
-
+import ScrollToTop from "../ScrollToTop";
 const Footer = () => {
   const location = useLocation();
   return (
@@ -35,6 +35,7 @@ const Footer = () => {
           </SocialIcons>
         </ContactInfo>
         <LinksContainer>
+          <ScrollToTop />
           <LinksGroup>
             <LinksTitle>USEFULL LINKS</LinksTitle>
             <StyledLink to="/">Home</StyledLink>

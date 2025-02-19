@@ -26,7 +26,7 @@ import TermsAndConditions from "./pages/TermsAndCondition";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-
+import ScrollToTop from "./ScrollToTop";
 function App() {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
 
@@ -36,51 +36,63 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop /> {/* Add this line */}
       <AppContainer>
         <NavigationBar onQuoteClick={handleQuoteClick} />
         {/* <QuotationForm isOpen={showQuotation} onClose={handleQuoteClick} /> */}
         <MainContent $isBlurred={isQuoteOpen}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/pricing" element={<PricingPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/services/wedding-cards" element={<WeddingCards />} />
-            <Route
-              path="/services/business-cards"
-              element={<BusinessCards />}
-            />
-            <Route path="/services/calendars" element={<Calendars />} />
-            <Route
-              path="/services/display-banners"
-              element={<DisplayBanner />}
-            />
-            <Route path="/services/invoice-books" element={<InvoiceBooks />} />
-            <Route
-              path="/services/label-stickers"
-              element={<LabelStickers />}
-            />
-            <Route path="/services/letter-pads" element={<LetterPads />} />
-            <Route path="/services/notice-prints" element={<NoticePrints />} />
-            <Route
-              path="/services/photo-printings"
-              element={<PhotoPrintings />}
-            />
-            <Route path="/services/sign-boards" element={<SignBoards />} />
-            <Route
-              path="/services/sunpack-boards"
-              element={<SunpackBoards />}
-            />
-            <Route
-              path="/services/thampoolam-bag"
-              element={<ThampoolamBag />}
-            />
-            <Route path="/terms" element={<TermsAndConditions />} />
-            <Route path="/privacy" element={<PrivacyPolicy />} />
-            <Route path="/quoteform" element={<QuotationForm />} />
-            {/* <QuotationForm isOpen={isQuoteOpen} onClose={handleQuoteClick} /> */}
-          </Routes>
+          <div>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/pricing" element={<PricingPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route
+                path="/services/wedding-cards"
+                element={<WeddingCards />}
+              />
+              <Route
+                path="/services/business-cards"
+                element={<BusinessCards />}
+              />
+              <Route path="/services/calendars" element={<Calendars />} />
+              <Route
+                path="/services/display-banners"
+                element={<DisplayBanner />}
+              />
+              <Route
+                path="/services/invoice-books"
+                element={<InvoiceBooks />}
+              />
+              <Route
+                path="/services/label-stickers"
+                element={<LabelStickers />}
+              />
+              <Route path="/services/letter-pads" element={<LetterPads />} />
+              <Route
+                path="/services/notice-prints"
+                element={<NoticePrints />}
+              />
+              <Route
+                path="/services/photo-printings"
+                element={<PhotoPrintings />}
+              />
+              <Route path="/services/sign-boards" element={<SignBoards />} />
+              <Route
+                path="/services/sunpack-boards"
+                element={<SunpackBoards />}
+              />
+              <Route
+                path="/services/thampoolam-bag"
+                element={<ThampoolamBag />}
+              />
+              <Route path="/terms" element={<TermsAndConditions />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/quoteform" element={<QuotationForm />} />
+              {/* <QuotationForm isOpen={isQuoteOpen} onClose={handleQuoteClick} /> */}
+            </Routes>
+          </div>
         </MainContent>
       </AppContainer>
       <FooterContainers>

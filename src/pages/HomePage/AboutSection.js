@@ -40,7 +40,6 @@ const AboutContainer = styled.section`
 `;
 
 const Heading = styled.h3`
-  font-family: "Philosopher", serif;
   font-size: 2rem; /* Base font size */
   font-weight: 100;
   color: #333;

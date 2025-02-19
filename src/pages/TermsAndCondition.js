@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-
+import TermsAndImage from "../TermsImageSection";
 const termsData = [
   {
     title: "Acceptance of Terms",
@@ -97,28 +97,7 @@ const termsData = [
 export default function TermsAndConditions() {
   return (
     <MainContainer>
-      <HeaderSection>
-        <HeaderContainer>
-          <HeaderContent>
-            <Title>Terms & Conditions</Title>
-            <Description>
-              Welcome to Selvapriya Computers! These Terms & Conditions govern
-              your use of our website and services. By accessing or using our
-              site, you agree to comply with these terms. Please read them
-              carefully, as they define your rights and responsibilities while
-              using our platform.
-            </Description>
-          </HeaderContent>
-        </HeaderContainer>
-      </HeaderSection>
-      {/* ✅ Wrap BannerImage inside BannerWrapper */}
-      <BannerWrapper>
-        <BannerImage
-          loading="lazy"
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d26a9b147e97c44239a617afeed833a65149a2388d7565d8c6987c8e10c3a26?placeholderIfAbsent=true&apiKey=1e478041483c415d8c6ecd66dd4ddacc"
-          alt="Terms and conditions banner"
-        />
-      </BannerWrapper>
+      <TermsAndImage />
       <ContentContainer>
         {termsData.map((section, index) => (
           <ContentBlock key={index}>
@@ -131,109 +110,75 @@ export default function TermsAndConditions() {
   );
 }
 
-const MainContainer = styled.main`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  margin-top: 80px; /* Pushes content below navbar */
-  @media (max-width: 991px) {
-    margin-top: 60px;
-  }
-`;
+const MainContainer = styled.main``;
 
-const HeaderSection = styled.section`
-  background-color: rgba(207, 230, 242, 1);
-  display: flex;
-  max-width: 1239px;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 80px 40px; /* Adjust padding for spacing */
-  position: relative; /* Needed for overlapping effect */
-  z-index: 2; /* Ensures it stays on top of the banner */
-  @media (max-width: 991px) {
-    padding: 60px 20px;
-  }
-`;
-
-const HeaderContainer = styled.div`
-  max-width: 1025px;
-  position: relative;
-`;
-
-const HeaderContent = styled.div`
-  font-family: Philosopher, Regular;
-  color: rgba(30, 30, 30, 1);
-`;
-
-const Title = styled.h1`
-  font-size: 48px;
-  font-weight: 700;
-  @media (max-width: 991px) {
-    font-size: 40px;
-  }
-`;
-
-const Description = styled.p`
-  font-size: 20px;
-  font-weight: 400;
-  margin-top: 20px;
-  @media (max-width: 991px) {
-    font-size: 18px;
-  }
-`;
-
-const BannerWrapper = styled.div`
-  position: relative;
-  height: 800px; /* Adjust height */
-  overflow: hidden; /* Prevents extra spacing */
-  margin-top: -180px; /* Moves it up to overlap HeaderSection */
-  @media (max-width: 991px) {
-    height: 250px;
-    margin-top: -60px;
-  }
-`;
-
-const BannerImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-`;
 const ContentContainer = styled.section`
   display: flex;
   flex-direction: column;
-  margin-top: 40px; /* Adjust based on spacing */
-  padding: 0 20px;
-  @media (max-width: 991px) {
-    margin-top: 20px;
+  padding-bottom: 64px;
+  padding-right: 100px;
+  padding-left: 100px;
+  @media (max-width: 660px) {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+  @media (max-width: 330px) {
+    padding-right: 12px;
+    padding-left: 12px;
   }
 `;
-const ContentBlock = styled.article`
-  margin-bottom: 40px;
-  @media (max-width: 991px) {
-    margin-bottom: 20px;
-  }
-`;
+const ContentBlock = styled.article``;
 
 const BlockTitle = styled.h2`
-  font-size: 28px;
+  font-size: 1.75rem; /* Default */
   font-weight: 700;
   font-family: Philosopher, Regular;
   color: rgba(30, 30, 30, 1);
-  margin-bottom: 16px;
-  @media (max-width: 991px) {
-    font-size: 24px;
+  @media (max-width: 1200px) {
+    font-size: 1.6rem;
+  }
+
+  @media (max-width: 992px) {
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.3rem;
+  }
+
+  @media (max-width: 420px) {
+    font-size: 1.2rem;
   }
 `;
 
 const BlockContent = styled.p`
-  font-size: 20px;
-  font-weight: 400;
-  font-family: Philosopher, Regular;
-  color: rgba(30, 30, 30, 1);
-  @media (max-width: 991px) {
-    font-size: 18px;
+  font-size: 1.25rem; /* Default font size for larger screens */
+  line-height: 1.6; /* Maintain readability */
+  color: #1e1e1e;
+
+  @media (max-width: 1200px) {
+    font-size: 1.15rem; /* Slightly reduce font size for medium screens */
+  }
+
+  @media (max-width: 992px) {
+    font-size: 1.125rem; /* Further reduction for smaller screens */
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem; /* Adjust for tablets and small devices */
+    line-height: 1.5; /* Adjust line height for compact text */
+  }
+
+  @media (max-width: 576px) {
+    font-size: 0.875rem; /* Slightly smaller for smaller phones */
+  }
+
+  @media (max-width: 420px) {
+    font-size: 0.75rem; /* Final reduction for very small screens */
+    line-height: 1.4; /* Tighten line spacing for smaller space */
   }
 `;
