@@ -137,26 +137,20 @@ const Header = styled.div`
   padding-right:100px;
   padding-left:100px;
   margin: 0; /* Initial margin set to 0 */
-  font-family: "Philosopher", serif;
+  
 
-  @media (max-width: 992px) {
-    
-  }
-  @media (max-width: 768px) {
-    
-  }
   @media (max-width: 660px) {
-        padding-right: 24px;
+  padding-right: 24px;
   padding-left: 24px;
   }
   @media (max-width: 330px) {
-              padding-right: 12px;
+  padding-right: 12px;
   padding-left: 12px;
   }
   h1,
   h3,
   p {
-    font-family: "Philosopher", serif; /* Ensure all text uses Philosopher font */
+    
     margin: 0; /* Reset margin for all */
   }
 

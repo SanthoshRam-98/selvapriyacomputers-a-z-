@@ -110,7 +110,15 @@ export default function TermsAndConditions() {
   );
 }
 
-const MainContainer = styled.main``;
+const MainContainer = styled.main`
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @media (max-width: 420px) {
+    gap: 0px;
+  }
+`;
 
 const ContentContainer = styled.section`
   display: flex;
@@ -118,6 +126,7 @@ const ContentContainer = styled.section`
   padding-bottom: 64px;
   padding-right: 100px;
   padding-left: 100px;
+  gap: 64px;
   @media (max-width: 660px) {
     padding-right: 24px;
     padding-left: 24px;
@@ -127,12 +136,15 @@ const ContentContainer = styled.section`
     padding-left: 12px;
   }
 `;
-const ContentBlock = styled.article``;
+const ContentBlock = styled.article`
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+`;
 
 const BlockTitle = styled.h2`
   font-size: 1.75rem; /* Default */
   font-weight: 700;
-  font-family: Philosopher, Regular;
   color: rgba(30, 30, 30, 1);
   @media (max-width: 1200px) {
     font-size: 1.6rem;
@@ -159,7 +171,7 @@ const BlockContent = styled.p`
   font-size: 1.25rem; /* Default font size for larger screens */
   line-height: 1.6; /* Maintain readability */
   color: #1e1e1e;
-
+  margin-bottom: 0px;
   @media (max-width: 1200px) {
     font-size: 1.15rem; /* Slightly reduce font size for medium screens */
   }
@@ -180,5 +192,35 @@ const BlockContent = styled.p`
   @media (max-width: 420px) {
     font-size: 0.75rem; /* Final reduction for very small screens */
     line-height: 1.4; /* Tighten line spacing for smaller space */
+  }
+
+  a {
+    text-decoration: none;
+
+    font-size: 1.25rem; /* Default font size for larger screens */
+    line-height: 1.6; /* Maintain readability */
+    color: #1e1e1e;
+    margin-bottom: 0px;
+    @media (max-width: 1200px) {
+      font-size: 1.15rem; /* Slightly reduce font size for medium screens */
+    }
+
+    @media (max-width: 992px) {
+      font-size: 1.125rem; /* Further reduction for smaller screens */
+    }
+
+    @media (max-width: 768px) {
+      font-size: 1rem; /* Adjust for tablets and small devices */
+      line-height: 1.5; /* Adjust line height for compact text */
+    }
+
+    @media (max-width: 576px) {
+      font-size: 0.875rem; /* Slightly smaller for smaller phones */
+    }
+
+    @media (max-width: 420px) {
+      font-size: 0.75rem; /* Final reduction for very small screens */
+      line-height: 1.4; /* Tighten line spacing for smaller space */
+    }
   }
 `;

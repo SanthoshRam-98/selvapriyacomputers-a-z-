@@ -1,36 +1,24 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { BsFillHeartFill, BsHeart } from "react-icons/bs"; // Smaller icons for mobile
+
 import { IoArrowBack, IoArrowBackOutline } from "react-icons/io5"; // Import icons
 import { useNavigate } from "react-router-dom";
-import WeddingCard1 from "../../WeddingCardsImages/D 1.png";
-import WeddingCard2 from "../../WeddingCardsImages/D 2.png";
-import WeddingCard3 from "../../WeddingCardsImages/D 3.png";
-import WeddingCard4 from "../../WeddingCardsImages/D 4.png";
-import WeddingCard5 from "../../WeddingCardsImages/D 5.png";
-import WeddingCard6 from "../../WeddingCardsImages/D 6.png";
-import WeddingCard7 from "../../WeddingCardsImages/D 7.png";
-import WeddingCard8 from "../../WeddingCardsImages/D 8.png";
-import WeddingCard9 from "../../WeddingCardsImages/D 9.png";
-import WeddingCard10 from "../../WeddingCardsImages/D 10.png";
-import WeddingCard11 from "../../WeddingCardsImages/D 11.png";
-import WeddingCard12 from "../../WeddingCardsImages/D 12.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
 const cards = [
-  { id: 1, image: WeddingCard1 },
-  { id: 2, image: WeddingCard2 },
-  { id: 3, image: WeddingCard3 },
-  { id: 4, image: WeddingCard4 },
-  { id: 5, image: WeddingCard5 },
-  { id: 6, image: WeddingCard6 },
-  { id: 7, image: WeddingCard7 },
-  { id: 8, image: WeddingCard8 },
-  { id: 9, image: WeddingCard9 },
-  { id: 10, image: WeddingCard10 },
-  { id: 11, image: WeddingCard11 },
-  { id: 12, image: WeddingCard12 },
+  { id: 1, image: "D 1.png" },
+  { id: 2, image: "D 2.png" },
+  { id: 3, image: "D 3.png" },
+  { id: 4, image: "D 4.png" },
+  { id: 5, image: "D 5.png" },
+  { id: 6, image: "D 6.png" },
+  { id: 7, image: "D 7.png" },
+  { id: 8, image: "D 8.png" },
+  { id: 9, image: "D 9.png" },
+  { id: 10, image: "D 10.png" },
+  { id: 11, image: "D 11.png" },
+  { id: 12, image: "D 12.png" },
 ];
 
 const Container = styled.div`
@@ -263,7 +251,11 @@ const WeddingCardsGrid = () => {
       <GridContainer data-aos="fade-up">
         {cards.map((card) => (
           <ImageContainer key={card.id}>
-            <img src={card.image} alt={`Card ${card.id}`} />
+            <img
+              src={`${process.env.PUBLIC_URL}/WeddingCardsImages/${card.image}`}
+              alt={`Card ${card.id}`}
+              loading="lazy"
+            />
             <LikeButton
               liked={likedCards[card.id]}
               onClick={() => toggleLike(card.id)}

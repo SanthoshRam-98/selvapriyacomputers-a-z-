@@ -69,7 +69,6 @@ const FooterContainer = styled.footer`
   padding-top: 64px;
   padding-bottom: 64px;
   margin-left: 100px;
-  font-family: "Philosopher", Regular;
 
   box-sizing: border-box; /* Ensures padding doesn't add extra width */
   @media (max-width: 660px) {

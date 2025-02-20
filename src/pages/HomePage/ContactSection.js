@@ -5,7 +5,7 @@ const ContactPage = () => {
   const contactInfo = {
     email: {
       label: "Email",
-      value: "Selvapriyacomputer@gmail.com",
+      value: "selvapriyacomputer@gmail.com",
     },
     phone: {
       label: "Phone",

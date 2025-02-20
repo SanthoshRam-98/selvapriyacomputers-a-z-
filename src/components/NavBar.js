@@ -1,41 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import { FiMenu, FiX } from "react-icons/fi";
 import QuotationForm from "../pages/QuotationForm"; // Import the form component
 
-// Global Styles
-// Global Styles
-const GlobalStyle = createGlobalStyle`
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Philosopher', serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-`;
-
-// Styled Components
 const Nav = styled.nav`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 24px 100px;
-  position: sticky;
   width: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
   background: white;
-  z-index: 10000;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
   @media (max-width: 660px) {
     padding: 24px 24px;
   }
@@ -291,6 +273,11 @@ const LinkMenu = styled.div`
     gap: 2px; /* Further reduced gap */
   }
 `;
+const NavWrapper = styled.div`
+  width: 100%;
+  height: auto; /* Ensure auto height */
+  position: relative; /* Add this for better stacking context */
+`;
 
 // React Component
 const NavigationBar = () => {
@@ -327,84 +314,85 @@ const NavigationBar = () => {
 
   return (
     <>
-      <Nav>
-        <GlobalStyle isQuoteOpen={isQuoteOpen} />
-        <LogoWrapper as={Link} to="/">
-          <CompanyName>Selvapriya</CompanyName>
-          <CompanyType>Computers</CompanyType>
-        </LogoWrapper>
-        <MenuIcon
-          isQuoteOpen={isQuoteOpen}
-          onClick={() => {
-            if (isQuoteOpen) {
-              navigate(prevPage);
-              setIsQuoteOpen(false);
-            } else {
-              setMenuOpen(!menuOpen);
-            }
-          }}
-        >
-          {isQuoteOpen || menuOpen ? <StyledFiX /> : <StyledFiMenu />}
-        </MenuIcon>
+      <NavWrapper>
+        <Nav>
+          <LogoWrapper as={Link} to="/">
+            <CompanyName>Selvapriya</CompanyName>
+            <CompanyType>Computers</CompanyType>
+          </LogoWrapper>
+          <MenuIcon
+            isQuoteOpen={isQuoteOpen}
+            onClick={() => {
+              if (isQuoteOpen) {
+                navigate(prevPage);
+                setIsQuoteOpen(false);
+              } else {
+                setMenuOpen(!menuOpen);
+              }
+            }}
+          >
+            {isQuoteOpen || menuOpen ? <StyledFiX /> : <StyledFiMenu />}
+          </MenuIcon>
 
-        <Menu open={menuOpen}>
-          <LinkMenu>
+          <Menu open={menuOpen}>
+            <LinkMenu>
+              <MenuItem>
+                <StyledLink
+                  to="/"
+                  active={location.pathname === "/" ? 1 : 0}
+                  onClick={handleMenuClick}
+                >
+                  HOME
+                </StyledLink>
+              </MenuItem>
+              <MenuItem>
+                <StyledLink
+                  to="/services"
+                  active={location.pathname === "/services" ? 1 : 0}
+                  onClick={handleMenuClick}
+                >
+                  SERVICES
+                </StyledLink>
+              </MenuItem>
+              <MenuItem>
+                <StyledLink
+                  to="/pricing"
+                  active={location.pathname === "/pricing" ? 1 : 0}
+                  onClick={handleMenuClick}
+                >
+                  PRICING
+                </StyledLink>
+              </MenuItem>
+              <MenuItem>
+                <StyledLink
+                  to="/about"
+                  active={location.pathname === "/about" ? 1 : 0}
+                  onClick={handleMenuClick}
+                >
+                  ABOUT
+                </StyledLink>
+              </MenuItem>
+              <MenuItem>
+                <StyledLink
+                  to="/contact"
+                  active={location.pathname === "/contact" ? 1 : 0}
+                  onClick={handleMenuClick}
+                >
+                  CONTACT
+                </StyledLink>
+              </MenuItem>
+            </LinkMenu>
             <MenuItem>
-              <StyledLink
-                to="/"
-                active={location.pathname === "/" ? 1 : 0}
-                onClick={handleMenuClick}
+              <QuoteButton
+                to={isQuoteOpen ? prevPage : "/quoteform"}
+                onClick={handleQuoteClick}
               >
-                HOME
-              </StyledLink>
+                {isQuoteOpen ? <StyledFiX /> : "Get a Quote"}
+              </QuoteButton>
             </MenuItem>
-            <MenuItem>
-              <StyledLink
-                to="/services"
-                active={location.pathname === "/services" ? 1 : 0}
-                onClick={handleMenuClick}
-              >
-                SERVICES
-              </StyledLink>
-            </MenuItem>
-            <MenuItem>
-              <StyledLink
-                to="/pricing"
-                active={location.pathname === "/pricing" ? 1 : 0}
-                onClick={handleMenuClick}
-              >
-                PRICING
-              </StyledLink>
-            </MenuItem>
-            <MenuItem>
-              <StyledLink
-                to="/about"
-                active={location.pathname === "/about" ? 1 : 0}
-                onClick={handleMenuClick}
-              >
-                ABOUT
-              </StyledLink>
-            </MenuItem>
-            <MenuItem>
-              <StyledLink
-                to="/contact"
-                active={location.pathname === "/contact" ? 1 : 0}
-                onClick={handleMenuClick}
-              >
-                CONTACT
-              </StyledLink>
-            </MenuItem>
-          </LinkMenu>
-          <MenuItem>
-            <QuoteButton
-              to={isQuoteOpen ? prevPage : "/quoteform"}
-              onClick={handleQuoteClick}
-            >
-              {isQuoteOpen ? <StyledFiX /> : "Get a Quote"}
-            </QuoteButton>
-          </MenuItem>
-        </Menu>
-      </Nav>
+          </Menu>
+        </Nav>
+      </NavWrapper>
     </>
   );
 };

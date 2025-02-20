@@ -27,21 +27,39 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import ScrollToTop from "./ScrollToTop";
+import { createGlobalStyle } from "styled-components";
 function App() {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
 
   const handleQuoteClick = () => {
     setIsQuoteOpen(!isQuoteOpen);
   };
+  const GlobalStyle = createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Philosopher', serif;
+  }
+  html, body {
+    
+  }
+`;
 
   return (
     <Router>
-      <ScrollToTop /> {/* Add this line */}
-      <AppContainer>
-        <NavigationBar onQuoteClick={handleQuoteClick} />
-        {/* <QuotationForm isOpen={showQuotation} onClose={handleQuoteClick} /> */}
-        <MainContent $isBlurred={isQuoteOpen}>
-          <div>
+      <GlobalStyle isQuoteOpen={isQuoteOpen} />
+      <ScrollToTop>
+        {" "}
+        {/* Add this line */}
+        <AppContainer>
+          <NavigationBar
+            isQuoteOpen={isQuoteOpen}
+            onQuoteClick={handleQuoteClick}
+          />
+
+          {/* <QuotationForm isOpen={showQuotation} onClose={handleQuoteClick} /> */}
+          <MainContent $isBlurred={isQuoteOpen}>
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/services" element={<ServicesPage />} />
@@ -92,12 +110,12 @@ function App() {
               <Route path="/quoteform" element={<QuotationForm />} />
               {/* <QuotationForm isOpen={isQuoteOpen} onClose={handleQuoteClick} /> */}
             </Routes>
-          </div>
-        </MainContent>
-      </AppContainer>
-      <FooterContainers>
-        <Footer />
-      </FooterContainers>
+          </MainContent>
+        </AppContainer>
+        <FooterContainers>
+          <Footer />
+        </FooterContainers>
+      </ScrollToTop>
     </Router>
   );
 }
@@ -108,7 +126,15 @@ const AppContainer = styled.div`
 `;
 
 const MainContent = styled.main`
+  padding-top: 108px;
   flex: 1; /* Allow the main content to grow and push the footer down */
+  @media (max-width: 660px) {
+    padding-top: 80px;
+  }
+
+  @media (max-width: 330px) {
+    padding-top: 60px;
+  }
 `;
 
 const FooterContainers = styled.div`

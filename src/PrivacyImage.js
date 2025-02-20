@@ -87,7 +87,7 @@ const ImageSection = styled.div`
 const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 32px;
   background-color: #cfe6f2;
   padding: 24px;
 `;
