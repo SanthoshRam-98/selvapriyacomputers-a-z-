@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo, useCallback } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Helmet } from "react-helmet";
+import { motion } from "framer-motion";
 
 // Product Data with Dynamic Image Import
 const products = [
@@ -28,42 +30,135 @@ export function ProductGrid() {
     });
   }, []);
 
-  return (
-    <Section>
-      <Header>
-        <Heading>All Products</Heading>
-        <SubHeading>
-          Explore our premium range of high-quality printings and customized
-          design solutions for your needs.
-        </SubHeading>
-      </Header>
-      <GridContainer data-aos="fade-up">
-        {products.map((product, index) => (
-          <GridItem key={index}>
-            <Link
-              to={`/services/${product.title
-                .toLowerCase()
-                .replace(/\s+/g, "-")}`}
-            >
-              <ImageContainer>
+  const generateUrl = useCallback(
+    (title) => `/services/${title.toLowerCase().replace(/\s+/g, "-")}`,
+    []
+  );
+
+  const renderedProductList = useMemo(
+    () =>
+      products.map((product, index) => (
+        <GridItem
+          key={`${product.title}-${index}`}
+          itemScope
+          itemType="https://schema.org/Product"
+        >
+          <Link to={generateUrl(product.title)} itemProp="url">
+            <figure>
+              <ImageContainer as={motion.div} whileHover={{ scale: 1.05 }}>
                 <img
                   src={`${process.env.PUBLIC_URL}/ProductImages/${product.image}`}
-                  alt={product.title}
-                  loading="lazy" // Lazy Loading
+                  srcSet={`${process.env.PUBLIC_URL}/ProductImages/${product.image} 1x, ${process.env.PUBLIC_URL}/ProductImages/${product.image} 2x`}
+                  alt={`${product.title} - High-Quality Premium Printing Solution`}
+                  loading="lazy"
+                  width="300"
+                  height="300"
+                  itemProp="image"
                 />
                 <Overlay>
-                  <ViewMore>View More</ViewMore>
+                  <ViewMore aria-label="View more about this product">
+                    View More
+                  </ViewMore>
                 </Overlay>
               </ImageContainer>
-              <Title>
-                {product.title}
-                <Underline />
-              </Title>
-            </Link>
-          </GridItem>
+              <figcaption>
+                <Title itemProp="name">
+                  {product.title}
+                  <Underline aria-hidden="true" />
+                </Title>
+              </figcaption>
+            </figure>
+          </Link>
+        </GridItem>
+      )),
+    [generateUrl]
+  );
+
+  return (
+    <>
+      <Helmet>
+        <title>Our Products | Premium Printing Solutions</title>
+        <meta
+          name="description"
+          content="Explore our premium range of high-quality printings and customized design solutions. From wedding cards to business essentials, find what you need."
+        />
+        <meta
+          name="keywords"
+          content="Printing solutions, Wedding cards, Business cards, Custom designs, High-quality printings"
+        />
+        <link rel="canonical" href={window.location.href} />
+
+        {/* Open Graph Meta Tags for Social Media Sharing */}
+        <meta
+          property="og:title"
+          content="Our Products | Premium Printing Solutions"
+        />
+        <meta
+          property="og:description"
+          content="Discover high-quality printings and customized design solutions for weddings, businesses, and more."
+        />
+        <meta
+          property="og:image"
+          content={`${process.env.PUBLIC_URL}/ProductImages/${products[0]?.image}`}
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={window.location.href} />
+
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Our Products | Premium Printing Solutions"
+        />
+        <meta
+          name="twitter:description"
+          content="Explore our premium range of high-quality printings and customized designs."
+        />
+        <meta
+          name="twitter:image"
+          content={`${process.env.PUBLIC_URL}/ProductImages/${products[0]?.image}`}
+        />
+
+        {/* JSON-LD Structured Data for Product SEO */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ProductCollection",
+            name: "Premium Printing Solutions",
+            description:
+              "Explore high-quality printings and customized design solutions.",
+            url: window.location.href,
+            product: products.map((product) => ({
+              "@type": "Product",
+              name: product.title,
+              image: `${process.env.PUBLIC_URL}/ProductImages/${product.image}`,
+              url: generateUrl(product.title),
+              description: `${product.title} - High-Quality Premium Printing Solution`,
+            })),
+          })}
+        </script>
+
+        {/* Prefetch Links for Better Performance */}
+        {products.map((product) => (
+          <link
+            rel="prefetch"
+            href={generateUrl(product.title)}
+            key={product.title}
+          />
         ))}
-      </GridContainer>
-    </Section>
+      </Helmet>
+
+      <Section>
+        <Header>
+          <Heading>All Products</Heading>
+          <SubHeading>
+            Explore our premium range of high-quality printings and customized
+            design solutions for your needs.
+          </SubHeading>
+        </Header>
+        <GridContainer data-aos="fade-up">{renderedProductList}</GridContainer>
+      </Section>
+    </>
   );
 }
 

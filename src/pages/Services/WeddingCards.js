@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import styled from "styled-components";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-
-import { IoArrowBack, IoArrowBackOutline } from "react-icons/io5"; // Import icons
+import { Helmet } from "react-helmet";
+import { IoArrowBack, IoArrowBackOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 const cards = [
-  { id: 1, image: "D 1.png" },
-  { id: 2, image: "D 2.png" },
-  { id: 3, image: "D 3.png" },
-  { id: 4, image: "D 4.png" },
-  { id: 5, image: "D 5.png" },
-  { id: 6, image: "D 6.png" },
-  { id: 7, image: "D 7.png" },
-  { id: 8, image: "D 8.png" },
-  { id: 9, image: "D 9.png" },
-  { id: 10, image: "D 10.png" },
-  { id: 11, image: "D 11.png" },
-  { id: 12, image: "D 12.png" },
+  { id: 1, image: "D 1.webp" },
+  { id: 2, image: "D 2.webp" },
+  { id: 3, image: "D 3.webp" },
+  { id: 4, image: "D 4.webp" },
+  { id: 5, image: "D 5.webp" },
+  { id: 6, image: "D 6.webp" },
+  { id: 7, image: "D 7.webp" },
+  { id: 8, image: "D 8.webp" },
+  { id: 9, image: "D 9.webp" },
+  { id: 10, image: "D 10.webp" },
+  { id: 11, image: "D 11.webp" },
+  { id: 12, image: "D 12.webp" },
 ];
 
 const Container = styled.div`
@@ -196,16 +196,20 @@ const TitleSection = styled.div`
   flex-direction: column;
   justify-content: center;
 `;
+const Header = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+`;
 const WeddingCardsGrid = () => {
-  const [likedCards, setLikedCards] = useState({});
+  const [likedCards, setLikedCards] = useState(new Set());
   const navigate = useNavigate();
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 330);
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true, // Ensures animations trigger only once
-    });
+    AOS.init({ duration: 1000, once: true });
+    return () => AOS.refresh();
   }, []);
+
   useEffect(() => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth <= 330);
@@ -215,57 +219,122 @@ const WeddingCardsGrid = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const toggleLike = (id) => {
-    setLikedCards((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
+  const toggleLike = useCallback((id) => {
+    setLikedCards((prev) => {
+      const updated = new Set(prev);
+      if (updated.has(id)) {
+        updated.delete(id);
+      } else {
+        updated.add(id);
+      }
+      return updated;
+    });
+  }, []);
 
   const goBack = () => {
     navigate("/services");
   };
 
-  const Header = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  `;
+  const Card = React.memo(({ card, liked, toggleLike }) => (
+    <ImageContainer>
+      <picture>
+        <source
+          srcSet={`${process.env.PUBLIC_URL}/WeddingCardsImages/${card.image}`}
+          type="image/webp"
+        />
+        <img
+          src={`${process.env.PUBLIC_URL}/WeddingCardsImages/${card.image}`}
+          srcSet={`${process.env.PUBLIC_URL}/WeddingCardsImages/${
+            card.image
+          } 1x, ${
+            process.env.PUBLIC_URL
+          }/WeddingCardsImages/${card.image.replace(".webp", "@2x.webp")} 2x`}
+          alt={`Wedding card design ${card.id}`}
+          loading="lazy"
+        />
+      </picture>
+      <LikeButton
+        liked={liked}
+        onClick={() => toggleLike(card.id)}
+        aria-label={liked ? "Unlike this card" : "Like this card"}
+      >
+        {liked ? <AiFillHeart /> : <AiOutlineHeart />}
+      </LikeButton>
+    </ImageContainer>
+  ));
+  const cardsList = useMemo(
+    () =>
+      cards.map((card) => (
+        <Card
+          key={card.id}
+          card={card}
+          liked={likedCards.has(card.id)}
+          toggleLike={toggleLike}
+        />
+      )),
+    [likedCards, toggleLike]
+  );
 
   return (
-    <Container>
-      <Header>
-        <TitleSection>
-          <BackButton onClick={goBack}>
-            {isSmallScreen ? (
-              <IoArrowBackOutline size={16} />
-            ) : (
-              <IoArrowBack size={24} />
-            )}
-          </BackButton>
-          <Title>Wedding Cards</Title>
-        </TitleSection>
-        <Subtitle>
-          Celebrate your special day with our exquisite wedding card designs.
-          Find the one that suits your style and make your big day
-          unforgettable.
-        </Subtitle>
-      </Header>
-      <GridContainer data-aos="fade-up">
-        {cards.map((card) => (
-          <ImageContainer key={card.id}>
-            <img
-              src={`${process.env.PUBLIC_URL}/WeddingCardsImages/${card.image}`}
-              alt={`Card ${card.id}`}
-              loading="lazy"
-            />
-            <LikeButton
-              liked={likedCards[card.id]}
-              onClick={() => toggleLike(card.id)}
-            >
-              {likedCards[card.id] ? <AiFillHeart /> : <AiOutlineHeart />}
-            </LikeButton>
-          </ImageContainer>
-        ))}
-      </GridContainer>
-    </Container>
+    <>
+      <Helmet>
+        <title>Wedding Cards Collection | Exquisite Designs</title>
+        <meta
+          name="description"
+          content="Explore our exquisite collection of wedding cards. Perfect designs to make your special day unforgettable."
+        />
+        <meta
+          name="keywords"
+          content="Wedding cards, Wedding invitations, Custom wedding cards, Wedding card designs"
+        />
+
+        {/* Open Graph Meta Tags for SEO and Social Sharing */}
+        <meta property="og:title" content="Wedding Cards Collection" />
+        <meta
+          property="og:description"
+          content="Explore our exquisite collection of wedding cards."
+        />
+        <meta
+          property="og:image"
+          content={`${process.env.PUBLIC_URL}/WeddingCardsImages/D 1.webp`}
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={window.location.href} />
+
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Wedding Cards Collection" />
+        <meta
+          name="twitter:description"
+          content="Explore our exquisite collection of wedding cards."
+        />
+        <meta
+          name="twitter:image"
+          content={`${process.env.PUBLIC_URL}/WeddingCardsImages/D 1.webp`}
+        />
+      </Helmet>
+
+      <Container>
+        <Header>
+          <TitleSection>
+            <BackButton onClick={goBack}>
+              {isSmallScreen ? (
+                <IoArrowBackOutline size={16} />
+              ) : (
+                <IoArrowBack size={24} />
+              )}
+            </BackButton>
+            <Title>Wedding Cards</Title>
+          </TitleSection>
+          <Subtitle>
+            Celebrate your special day with our exquisite wedding card designs.
+            Find the one that suits your style and make your big day
+            unforgettable.
+          </Subtitle>
+        </Header>
+        <GridContainer data-aos="fade-up">{cardsList}</GridContainer>
+      </Container>
+    </>
   );
 };
 

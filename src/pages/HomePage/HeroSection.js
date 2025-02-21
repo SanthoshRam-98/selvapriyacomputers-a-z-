@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import hero1 from "../../CorousalImages/hero1.png";
-import hero2 from "../../CorousalImages/hero2.png";
-import hero3 from "../../CorousalImages/hero3.png";
-import hero4 from "../../CorousalImages/hero4.png";
-
-const images = [hero1, hero2, hero3, hero4];
+import { Helmet } from "react-helmet";
+const images = [
+  `${process.env.PUBLIC_URL}/CorousalImages/hero1.webp`,
+  `${process.env.PUBLIC_URL}/CorousalImages/hero2.webp`,
+  `${process.env.PUBLIC_URL}/CorousalImages/hero3.webp`,
+  `${process.env.PUBLIC_URL}/CorousalImages/hero4.webp`,
+];
 
 export function HeroSectionCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -18,35 +19,62 @@ export function HeroSectionCarousel() {
   }, []);
 
   return (
-    <HeroContainer>
-      <CarouselContainer>
-        <Carousel>
-          {images.map((image, index) => (
-            <Slide
-              key={index}
-              src={image}
-              alt={`Slide ${index + 1}`}
-              isVisible={index === currentIndex}
-            />
-          ))}
-        </Carousel>
-      </CarouselContainer>
+    <>
+      <Helmet>
+        <title>Selvapriya Computers - Quality Printing & Design</title>
+        <meta
+          name="description"
+          content="40 Years of Trusted Quality in Printing & Design. Discover why quality matters to us and our clients."
+        />
+        <meta
+          name="keywords"
+          content="Selvapriya Computers, Printing Services, Design Solutions, Quality Printing, Trusted Printing"
+        />
+        <meta
+          property="og:title"
+          content="Selvapriya Computers - Quality Printing & Design"
+        />
+        <meta
+          property="og:description"
+          content="40 Years of Trusted Quality in Printing & Design."
+        />
+        <meta
+          property="og:image"
+          content={`${process.env.PUBLIC_URL}/CorousalImages/hero1.webp`}
+        />
+        <meta property="og:type" content="website" />
+      </Helmet>
 
-      <ContentWrapper>
-        <Title>Welcome to Selvapriya Computers</Title>
-        <Subtitle>40 Years of Trusted Quality in Printing & Design</Subtitle>
-        <Description>
-          Our commitment to quality and innovation has made us a trusted name in
-          the printing industry. Explore our services and discover why quality
-          matters to us and our clients.
-        </Description>
-        <ButtonWrapper>
-          <StyledButton role="button" tabIndex={0}>
-            Get a Quote
-          </StyledButton>
-        </ButtonWrapper>
-      </ContentWrapper>
-    </HeroContainer>
+      <HeroContainer>
+        <CarouselContainer>
+          <Carousel>
+            {images.map((image, index) => (
+              <Slide
+                key={index}
+                src={image}
+                alt={`Slide ${index + 1}`}
+                isVisible={index === currentIndex}
+              />
+            ))}
+          </Carousel>
+        </CarouselContainer>
+
+        <ContentWrapper>
+          <Title>Welcome to Selvapriya Computers</Title>
+          <Subtitle>40 Years of Trusted Quality in Printing & Design</Subtitle>
+          <Description>
+            Our commitment to quality and innovation has made us a trusted name
+            in the printing industry. Explore our services and discover why
+            quality matters to us and our clients.
+          </Description>
+          <ButtonWrapper>
+            <StyledButton role="button" tabIndex={0}>
+              Get a Quote
+            </StyledButton>
+          </ButtonWrapper>
+        </ContentWrapper>
+      </HeroContainer>
+    </>
   );
 }
 

@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { FiMenu, FiX } from "react-icons/fi";
-import QuotationForm from "../pages/QuotationForm"; // Import the form component
-
+import { Helmet } from "react-helmet";
 const Nav = styled.nav`
   position: fixed;
   top: 0;
@@ -312,14 +311,76 @@ const NavigationBar = () => {
     }
   }, [location.pathname]); // 🔥 Runs whenever the page changes
 
+  // Dynamic SEO content based on route
+  const seoData = {
+    "/": {
+      title: "Selvapriya Computers - Home",
+      description:
+        "Discover high-quality printing and design solutions at Selvapriya Computers. Trusted for over 40 years.",
+      keywords:
+        "Selvapriya Computers, Printing Solutions, Design Services, High-Quality Printing",
+    },
+    "/services": {
+      title: "Our Services - Selvapriya Computers",
+      description:
+        "Explore a wide range of printing and design services tailored to meet your needs.",
+      keywords:
+        "Printing Services, Design Solutions, Custom Printing, Selvapriya Computers",
+    },
+    "/pricing": {
+      title: "Pricing - Selvapriya Computers",
+      description:
+        "Affordable and transparent pricing for high-quality printing and design services.",
+      keywords:
+        "Printing Pricing, Design Costs, Custom Quotes, Selvapriya Computers",
+    },
+    "/about": {
+      title: "About Us - Selvapriya Computers",
+      description:
+        "Learn more about Selvapriya Computers, our legacy, values, and commitment to quality.",
+      keywords:
+        "About Selvapriya Computers, Printing Legacy, Quality Commitment",
+    },
+    "/contact": {
+      title: "Contact Us - Selvapriya Computers",
+      description:
+        "Get in touch with Selvapriya Computers for inquiries, quotes, and customer support.",
+      keywords:
+        "Contact Selvapriya Computers, Customer Support, Printing Inquiries",
+    },
+    "/quoteform": {
+      title: "Request a Quote - Selvapriya Computers",
+      description:
+        "Get a custom quote for your printing and design needs at Selvapriya Computers.",
+      keywords:
+        "Quote Request, Custom Printing Quote, Design Quote, Selvapriya Computers",
+    },
+  };
+
+  const currentSeo = seoData[location.pathname] || seoData["/"];
   return (
     <>
+      <Helmet>
+        <title>{currentSeo.title}</title>
+        <meta name="description" content={currentSeo.description} />
+        <meta name="keywords" content={currentSeo.keywords} />
+        <meta property="og:title" content={currentSeo.title} />
+        <meta property="og:description" content={currentSeo.description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={window.location.href} />
+        <meta
+          property="og:image"
+          content={`${process.env.PUBLIC_URL}/og-image.png`}
+        />
+      </Helmet>
+
       <NavWrapper>
         <Nav>
-          <LogoWrapper as={Link} to="/">
+          <LogoWrapper as={Link} to="/" aria-label="Selvapriya Computers Home">
             <CompanyName>Selvapriya</CompanyName>
             <CompanyType>Computers</CompanyType>
           </LogoWrapper>
+
           <MenuIcon
             isQuoteOpen={isQuoteOpen}
             onClick={() => {
@@ -330,6 +391,7 @@ const NavigationBar = () => {
                 setMenuOpen(!menuOpen);
               }
             }}
+            aria-label="Menu Toggle"
           >
             {isQuoteOpen || menuOpen ? <StyledFiX /> : <StyledFiMenu />}
           </MenuIcon>
@@ -341,6 +403,7 @@ const NavigationBar = () => {
                   to="/"
                   active={location.pathname === "/" ? 1 : 0}
                   onClick={handleMenuClick}
+                  aria-label="Home"
                 >
                   HOME
                 </StyledLink>
@@ -350,6 +413,7 @@ const NavigationBar = () => {
                   to="/services"
                   active={location.pathname === "/services" ? 1 : 0}
                   onClick={handleMenuClick}
+                  aria-label="Services"
                 >
                   SERVICES
                 </StyledLink>
@@ -359,6 +423,7 @@ const NavigationBar = () => {
                   to="/pricing"
                   active={location.pathname === "/pricing" ? 1 : 0}
                   onClick={handleMenuClick}
+                  aria-label="Pricing"
                 >
                   PRICING
                 </StyledLink>
@@ -368,6 +433,7 @@ const NavigationBar = () => {
                   to="/about"
                   active={location.pathname === "/about" ? 1 : 0}
                   onClick={handleMenuClick}
+                  aria-label="About"
                 >
                   ABOUT
                 </StyledLink>
@@ -377,6 +443,7 @@ const NavigationBar = () => {
                   to="/contact"
                   active={location.pathname === "/contact" ? 1 : 0}
                   onClick={handleMenuClick}
+                  aria-label="Contact"
                 >
                   CONTACT
                 </StyledLink>
@@ -386,6 +453,7 @@ const NavigationBar = () => {
               <QuoteButton
                 to={isQuoteOpen ? prevPage : "/quoteform"}
                 onClick={handleQuoteClick}
+                aria-label="Request a Quote"
               >
                 {isQuoteOpen ? <StyledFiX /> : "Get a Quote"}
               </QuoteButton>
@@ -396,5 +464,4 @@ const NavigationBar = () => {
     </>
   );
 };
-
 export default NavigationBar;
